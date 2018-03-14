@@ -38,4 +38,13 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  # FIX
+  config.excluded_models += [
+    'App::Models::Mongoid::GridFs',
+    'App::Models::Mongoid::GridFs::Fs::Chunk',
+    'App::Models::Mongoid::GridFs::Fs::File',
+    'Mongoid-gridFs',
+    'Mongoid::GridFs::Version'
+  ]
 end

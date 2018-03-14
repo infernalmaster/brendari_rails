@@ -34,10 +34,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'haml-rails', '~> 1.0'
 gem 'mongoid', '~> 6.3.0'
+
+# TODO: this 2 unused
 gem 'simple-navigation', '~> 4.0.5'
 gem 'simple_form', '~> 3.5.0'
 
-# gem 'autoprefixer-rails'
+gem 'autoprefixer-rails'
 gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
 gem 'kaminari-actionview'
 gem 'kaminari-mongoid'
@@ -46,7 +48,6 @@ gem 'kaminari-mongoid'
 gem 'webpacker', '~> 3.3'
 gem 'rails_admin', '~> 1.3'
 gem "rails_admin_mongoid_localize_field", "~> 0.1.2"
-# gem 'rails_admin_settings'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
