@@ -22,3 +22,10 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+https://github.com/sferik/rails_admin/wiki/CKEditor
+https://ckeditor.com/ckeditor-5-builds/
+https://github.com/kreativgebiet/rich
+https://github.com/glebtv/rails-uploader
+https://github.com/luizpicolo/rails_admin_dropzone
