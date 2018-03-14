@@ -1,0 +1,42 @@
+%nav{class: "main-nav js-menu #{controller_name == 'pages' && action_name == 'home' ? 'main-nav-home' : ''}"}
+
+  = link_to root_path, class: "main-nav-link link-home" do
+    %svg.main-nav-icon{:height => "11", :viewbox => "0 0 10 11", :width => "10", :xmlns => "http://www.w3.org/2000/svg"}
+      %path{:d => "M4.98.648L.5 4.35v6.15h4.098V6.563h2.898V10.5H9.5V4.35L4.98.65z", :fill => "#F00", "fill-rule" => "evenodd", :stroke => "#F00"}
+    %object.nav-home-logo{:data => asset_path("svg/logo.svg"), :type => "image/svg+xml"} Brendari
+
+  .main-nav-other
+    .main-nav-close.js-close-menu
+      %svg{:height => "35", :viewbox => "0 0 35 35", :width => "35", :xmlns => "http://www.w3.org/2000/svg"}
+        %g{:fill => "none", "fill-rule" => "evenodd"}
+          %circle{:cx => "17.5", :cy => "17.5", :r => "17", :stroke => "#515151"}
+        %path{:d => "M18.9 17.485l3.535-3.535-1.414-1.414-3.535 3.535-3.535-3.534-1.414 1.414 3.535 3.535-3.534 3.536 1.414 1.415 3.535-3.536 3.536 3.535 1.415-1.414-3.536-3.535z", :fill => "#515151"}
+
+    - active = controller_name == 'pages' && action_name == 'about' ? "is-active" : ""
+    = link_to about_path, class: "main-nav-link #{active}" do
+      %svg.main-nav-icon{:height => "10", :viewbox => "0 0 10 10", :width => "10", :xmlns => "http://www.w3.org/2000/svg"}
+        %circle{:cx => "45", :cy => "6", :fill => "#F00", "fill-rule" => "evenodd", :r => "4.5", :stroke => "#F00", :transform => "translate(-40 -1)"}
+      = t("menu.about")
+
+    - active = controller_name == 'projects' && action_name == 'index' ? "is-active" : ""
+    = link_to projects_path, class: "main-nav-link #{active}" do
+      %svg.main-nav-icon{:height => "9", :viewbox => "0 0 9 9", :width => "9", :xmlns => "http://www.w3.org/2000/svg"}
+        %path{:d => "M.5.5h8v8h-8z", :fill => "#F00", "fill-rule" => "evenodd", :stroke => "#F00"}
+      = t("menu.projects")
+
+    - active = controller_name == 'logos' && action_name == 'index' ? "is-active" : ""
+    = link_to logos_path, class: "main-nav-link #{active}" do
+      %svg.main-nav-icon{:height => "11", :viewbox => "0 0 11 11", :width => "11", :xmlns => "http://www.w3.org/2000/svg"}
+        %path{:d => "M5.5.63L.58 4.386 2.47 10.5h6.06l1.89-6.113L5.5.63z", :fill => "#F00", "fill-rule" => "evenodd", :stroke => "#F00"}
+      = t("menu.logos")
+
+    - active = controller_name == 'pages' && action_name == 'contacts' ? "is-active" : ""
+    = link_to contacts_path, class: "main-nav-link #{active}" do
+      %svg.main-nav-icon{:height => "10", :viewbox => "0 0 12 10", :width => "12", :xmlns => "http://www.w3.org/2000/svg"}
+        %path{:d => "M6 9.028L.883.5h10.234L6 9.028z", :fill => "#F00", "fill-rule" => "evenodd", :stroke => "#F00"}
+      = t("menu.contacts")
+
+  .main-nav-sandwich.js-open-menu
+    %svg{:height => "18", :viewbox => "0 0 35 18", :width => "35", :xmlns => "http://www.w3.org/2000/svg"}
+      %path{:d => "M1 16h33c.552 0 1 .448 1 1s-.448 1-1 1H1c-.552 0-1-.448-1-1s.448-1 1-1zM1 0h33c.552 0 1 .448 1 1s-.448 1-1 1H1c-.552 0-1-.448-1-1s.448-1 1-1zm0 8h33c.552 0 1 .448 1 1s-.448 1-1 1H1c-.552 0-1-.448-1-1s.448-1 1-1z", :fill => "#474747", "fill-rule" => "evenodd"}
+  = link_to '', change_locale_path, class: "lang-switch ls-#{next_locale}"

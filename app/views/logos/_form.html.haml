@@ -1,0 +1,19 @@
+= form_for @logo do |f|
+  - if @logo.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@logo.errors.count, "error")} prohibited this logo from being saved:"
+      %ul
+        - @logo.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :size
+    = f.text_field :size
+  .field
+    = f.label :position
+    = f.text_field :position
+  .actions
+    = f.submit 'Save'

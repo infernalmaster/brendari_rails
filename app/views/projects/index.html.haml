@@ -1,0 +1,15 @@
+= render "partials/nav"
+
+.msnry-wrap.msnry-projects
+  .msnry.js-msnry
+    - @projects.each do |project|
+      .msnry-item{class: "msnry-item-#{project.size}"}
+        .msnry-aspect
+          .msnry-aspect-inner
+            .msnry-item-bg.lazyload{'data-src': project.image_url}
+            %noscript
+              %img.msnry-logo{src: project.image_url}
+            .msnry-item-title= project.title
+            .msnry-item-dscr= project.subtitle
+
+= render "partials/footer"

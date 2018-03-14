@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @project.title
+%p
+  %b Size:
+  = @project.size
+%p
+  %b Position:
+  = @project.position
+
+= link_to 'Edit', edit_project_path(@project)
+\|
+= link_to 'Back', projects_path

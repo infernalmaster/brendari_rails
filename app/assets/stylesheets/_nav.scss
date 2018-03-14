@@ -1,0 +1,160 @@
+.main-nav {
+  padding: 50px 0;
+  margin: auto;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  background: #fff;
+  line-height: 19px;
+  max-height: 120px;
+}
+
+.main-nav-home {
+  background: transparent;
+  .link-home {
+    display: none;
+  }
+}
+
+.main-nav-link {
+  font-size: 16px;
+  color: #131313;
+  font-weight: bold;
+  text-decoration: none;
+  margin-right: 172px;
+  position: relative;
+  &:last-child {
+    margin-right: 0;
+  }
+  &.is-active {
+    color: #9E9E9E;
+    svg {
+      circle,
+      path {
+        fill: none;
+      }
+    }
+  }
+  &:hover {
+    svg {
+      circle,
+      path {
+        fill: none;
+      }
+    }
+  }
+}
+
+.main-nav-icon {
+  margin-right: 10px;
+}
+
+.main-nav-other {
+  display: inline;
+  transition: transform 0.3s;
+  will-change: transform;
+}
+
+.nav-home-logo {
+  height: 15px;
+  width: 78.1px;
+  position: relative;
+  z-index: -1;
+}
+
+.lang-switch {
+  position: absolute;
+  z-index: 10;
+  width: 25px;
+  height: 17px;
+  right: 80px;
+  top: 54px;
+  &.ls-uk {
+    background: image-url('svg/lang-mob-uk.svg');
+  }
+  &.ls-en {
+    background: image-url('svg/lang-mob-en.svg');
+  }
+}
+
+.lang-switch-text {
+  position: absolute;
+  right: 35px;
+  bottom: 0;
+  font-size: 22px;
+  color: #fff;
+  text-decoration: none;
+  line-height: 19px;
+}
+
+.main-nav-sandwich {
+  display: none;
+}
+
+.main-nav-close {
+  display: none;
+}
+
+@media (max-width: 1500px) {
+  .main-nav-link {
+    margin-right: 80px;
+  }
+  .lang-switch {
+    right: 20px;
+  }
+}
+
+@media #{$tablet} {
+  .main-nav {
+    padding: 30px 0 28px;
+  }
+  .main-nav-other {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    background: #121212;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: scroll;
+    transform: translate3d(0, -101%, 0);
+    .main-nav-link {
+      font-size: 34px;
+      line-height: 41px;
+      color: #fff;
+      margin: auto;
+      display: block;
+      margin-top: 85px;
+    }
+    .main-nav-icon {
+      position: absolute;
+      left: 50%;
+      top: -15px;
+      transform: translateX(-50%);
+    }
+  }
+  .main-nav-sandwich {
+    display: inline-block;
+    cursor: pointer;
+  }
+  .main-nav-close {
+    margin-top: 20px;
+    display: inline-block;
+    cursor: pointer;
+  }
+  .link-home {
+    position: absolute;
+    left: 20px;
+  }
+  .lang-switch {
+    top: 30px;
+  }
+  .main-nav.is-active {
+    .main-nav-other {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}

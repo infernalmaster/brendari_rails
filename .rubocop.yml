@@ -1,0 +1,66 @@
+AllCops:
+  TargetRubyVersion: 2.5
+
+  Include:
+    - Rakefile
+    - config.ru
+    - lib/**/*.rake
+  Exclude:
+    - logs
+    - bin/*
+    - docs/**/*.rb
+
+Rails:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
+
+Style/MutableConstant:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+  IgnoreCopDirectives: true
+  Exclude:
+    - config/initializers/*.rb
+
+Layout/IndentationConsistency:
+  Enabled: true
+  EnforcedStyle: rails
+
+Naming/FileName:
+  Enabled: true
+  Exclude:
+    - "Gemfile"
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_test.rb"
+    - "**/*_spec.rb"
+    - spec/factories/*.rb
+    - config/routes.rb
+
+Metrics/ClassLength:
+  Exclude:
+    - "**/*_test.rb"
+    - "**/*_spec.rb"
+    - spec/factories/*.rb
+
+Metrics/MethodLength:
+  Max: 15
+  CountComments: false
+  Exclude:
+    - "spec/**/**"

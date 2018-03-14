@@ -1,0 +1,41 @@
+html {
+  -webkit-font-smoothing: antialiased;
+  background: #121212;
+}
+
+body {
+  background: #fff;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
+  font-family: "Helvetica Neue", HelveticaNeue, "TeX Gyre Heros", TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Rooto, Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+$tablet: "(max-width: 1023px)";
+$mobile: "(max-width: 600px)";
+//    @media #{$tablet} {
+//        font-size: 18px;
+//    }
+
+//    @media #{$mobile} {
+//        font-size: 20px;
+//    }
+
+.accent {
+  color: #FF0000;
+}
+
+.hdn {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.bg-cover {
+  background: center center no-repeat;
+  background-size: cover;
+}

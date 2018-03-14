@@ -1,0 +1,15 @@
+uk:
+  home:
+    slogan: "is a <span class='accent'>graphic design</span> studio, focused on branding and systems of visual identification."
+    explore: переглянути
+
+  menu:
+    about: Про студію
+    projects: Ми створили
+    logos: Логотипи
+    contacts: Контакти
+
+  general:
+    brief: Бриф
+    presentation: Презентація
+    rights: "Всі права захищені"

@@ -1,0 +1,72 @@
+run.config:
+  engine: ruby
+  engine.config:
+    runtime: ruby-2.5.0
+  extra_packages:
+    - nodejs
+    - pkgconf
+    - libxml2
+    - libxslt
+    - nginx
+  build_triggers:
+    - Gemfile
+    - Gemfile.lock
+    - package.json
+  cache_dirs:
+    - node_modules
+    - public/assets
+  extra_steps:
+    - npm install
+
+data.db:
+  image: nanobox/mongodb:3.4
+  cron:
+    - id: backup
+      schedule: '0 3 * * *'
+      command: |
+        mongodump --gzip --archive |
+        curl -k -H "X-AUTH-TOKEN: ${WAREHOUSE_DATA_HOARDER_TOKEN}" https://${WAREHOUSE_DATA_HOARDER_HOST}:7410/blobs/backup-${HOSTNAME}-$(date -u +%Y-%m-%d.%H-%M-%S).gz --data-binary @- >&2 ;
+        curl -k -s -H "X-AUTH-TOKEN: ${WAREHOUSE_DATA_HOARDER_TOKEN}" https://${WAREHOUSE_DATA_HOARDER_HOST}:7410/blobs/ |
+        sed 's/,/\n/g' |
+        grep ${HOSTNAME} |
+        sort |
+        head -n-${BACKUP_COUNT:-1} |
+        sed 's/.*: \?"\(.*\)".*/\1/' |
+        while read file
+        do
+          curl -k -H "X-AUTH-TOKEN: ${WAREHOUSE_DATA_HOARDER_TOKEN}" https://${WAREHOUSE_DATA_HOARDER_HOST}:7410/blobs/${file} -X DELETE
+        done
+  # https://content.nanobox.io/data-safety-with-nanobox-backup-and-recovery/
+  # If ever we need to restore from the backup, that's pretty straightforward as well:
+  #    nanobox console [remote] data.mongodb
+  # to connect to your storage component's console, and:
+  #    curl -k -H "X-AUTH-TOKEN: ${WAREHOUSE_DATA_HOARDER_TOKEN}" https://${WAREHOUSE_DATA_HOARDER_HOST}:7410/blobs/backup-${HOSTNAME}-{date}.gz | mongorestore --gzip --archive
+
+
+web.main:
+  start:
+    nginx: nginx -c /app/config/nginx.conf
+    puma: bundle exec puma -C /app/config/puma.rb
+  writable_dirs:
+    - tmp
+    - log
+  network_dirs:           #| Network Dirs Config
+    data.storage:         #| Storage Component Designation
+      - public/uploads    #| Network Directory
+  log_watch:
+    rails: /app/log/production.log
+
+data.storage:             #| Storage Component
+  image: nanobox/unfs:0.9 #|
+# # add a worker component and give it a "start" command
+# worker.main:
+#   start: sidekiq
+#   writable_dirs:
+#     - tmp
+#     - log
+
+deploy.config:
+  extra_steps:
+    # this is runn on local machine, so we don't have server env variables there
+    # but gem devise needs SECRET_KEY_BASE, so we set it
+    - rake assets:precompile RAILS_ENV=production SECRET_KEY_BASE=x

@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @logo.title
+%p
+  %b Size:
+  = @logo.size
+%p
+  %b Position:
+  = @logo.position
+
+= link_to 'Edit', edit_logo_path(@logo)
+\|
+= link_to 'Back', logos_path
