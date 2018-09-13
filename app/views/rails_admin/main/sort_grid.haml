@@ -1,0 +1,17 @@
+<script src="http://hammerjs.github.io/dist/hammer.min.js"></script>
+<script src="https://unpkg.com/muuri@0.6.3/dist/muuri.min.js"></script>
+
+.msnry-wrap
+  .msnry.js-msnry
+    - @objects.each do |object|
+      .msnry-item{class: "msnry-item-#{object.size}", data: {id: object.id.to_s}}
+        .msnry-aspect-inner
+          - img = object.try(:image_gray_url) || object.try(:main_image_url)
+
+          - if object.try(:image_gray_url)
+            %img.msnry-logo.lazyload{src: object.try(:image_gray_url)}
+          - else
+            .msnry-item-bg.lazyload{style: "background-image: url(#{object.try(:main_image_url)})"}
+
+
+

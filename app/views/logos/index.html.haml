@@ -9,9 +9,9 @@
             .msnry-gif-icon.js-play{'data-video': logo.animation_url} GIF
 
           -# .msnry-open-icon
-          %img.msnry-logo.lazyload{'data-src': logo.image_gray_url, alt: logo.title}
+          %img.msnry-logo.lazyload{'data-src': logo.image_gray_url, alt: logo.title, src: image_path('0.png')}
           - if logo.image_colorfull.present?
-            .msnry-logo-color.lazyload{'data-src': logo.image_colorfull_url}
+            .msnry-logo-color.lazyload{'data-src': logo.image_colorfull_url, src: image_path('0.png')}
           %noscript
             %img.msnry-logo{src: logo.image_gray_url}
 

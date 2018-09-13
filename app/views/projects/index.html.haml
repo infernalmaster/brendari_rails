@@ -5,7 +5,7 @@
     - @projects.each do |project|
       .msnry-item{class: "msnry-item-#{project.size}"}
         .msnry-aspect-inner
-          .msnry-item-bg.lazyload{'data-src': project.main_image_url}
+          .msnry-item-bg.lazyload{'data-src': project.main_image_url, src: image_path('0.png'), alt: project.title}
           %noscript
             %img.msnry-logo{src: project.main_image_url}
           .msnry-item-title= project.title

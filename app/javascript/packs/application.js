@@ -103,21 +103,6 @@ document.addEventListener('DOMContentLoaded', function () {
       })
     })()
 
-    // FIX logo color
-    ;(() => {
-      var object = document.querySelector('.nav-home-logo')
-      if (!object) return
-
-      function show () {
-        setTimeout(() => {
-          var logo = object.contentDocument.getElementsByTagName('path')[0]
-          logo.setAttribute('fill', '#131313')
-        }, 50)
-      }
-      if (object.contentDocument) show()
-      object.addEventListener('load', show, false)
-    })()
-
     // gifs player on logos page
     ;(() => {
       let video

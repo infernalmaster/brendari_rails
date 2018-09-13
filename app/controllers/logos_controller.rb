@@ -4,7 +4,7 @@ class LogosController < ApplicationController
   # GET /logos
   # GET /logos.json
   def index
-    @logos = Logo.all
+    @logos = Logo.order_by(position: :asc)
   end
 
   # GET /logos/1

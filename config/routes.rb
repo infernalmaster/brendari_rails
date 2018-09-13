@@ -12,10 +12,5 @@ Rails.application.routes.draw do
     root to: 'pages#home'
   end
 
-  get 'about', to: 'pages#about'
-  get 'contacts', to: 'pages#contacts'
-  resources :projects
-  resources :logos
-
   root to: 'pages#home'
 end

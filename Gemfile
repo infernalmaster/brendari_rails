@@ -32,7 +32,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
-gem 'haml-rails', '~> 1.0'
+# gem 'haml-rails', '~> 1.0'
+gem 'hamlit'
 gem 'mongoid', '~> 6.3.0'
 gem 'mongoid-slug'
 
@@ -68,7 +69,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  gem 'rack-mini-profiler'
+  # gem 'rack-mini-profiler'
 
   gem 'guard-rspec', require: false
 end
