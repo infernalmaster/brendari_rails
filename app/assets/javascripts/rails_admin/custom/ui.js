@@ -1,4 +1,4 @@
-$(document).on('rails_admin.dom_ready', function() {
+$(document).on('ready', function() {
   // grid
   const msnryContainer = document.querySelector('.js-msnry')
   if (msnryContainer) {

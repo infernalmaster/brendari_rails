@@ -17,7 +17,7 @@ FactoryBot.define do
     end
 
     main_image do
-      Rack::Test::UploadedFile.new(Rails.root.join('spec', 'support', 'projects', "#{Faker::Number.between(0, 11)}.jpg"),
+      Rack::Test::UploadedFile.new(Rails.root.join('spec', 'support', 'projects', "#{Faker::Number.between(0, 10)}.jpg"),
                                    'image/jpeg')
     end
   end
