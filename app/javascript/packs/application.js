@@ -2,6 +2,7 @@ import Swipejs from 'swipejs'
 import Muuri from 'muuri'
 import LazyLoad from './lazyload.js'
 import loadScript from './loadScript.js'
+import 'intersection-observer'
 
     // "barba.js": "^1.0.0",
     // "cta": "^0.3.2",
@@ -24,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // && document.body.clientWidth > 1023
       msnryContainer.classList.add('js-activated')
 
-      new Muuri(msnryContainer, {
+      const grid = new Muuri(msnryContainer, {
         items: '.msnry-item',
         layout: {
           fillGaps: true,
@@ -34,6 +35,44 @@ document.addEventListener('DOMContentLoaded', function () {
           rounding: false
         }
       })
+
+
+
+      let loading = false
+      let observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.intersectionRatio > 0 && !loading) {
+            loading = true
+
+            Rails.ajax({
+              type: 'GET',
+              url: document.location.pathname,
+              data: `skip=${msnryContainer.childElementCount}`,
+              beforeSend: () => true, // looks like bug
+              success: (data) => {
+                if (data.body.children.length > 0) {
+                  console.log(data)
+                  grid.add(data.body.children)
+                  new LazyLoad()
+                } else {
+                  observer.disconnect()
+                }
+              },
+              error: (err) => {
+                console.log(err)
+              },
+              complete: () => {
+                loading = false
+              }
+            })
+          }
+        });
+      }, {
+        root: null,
+        rootMargin: "500px",
+        threshold: [0]
+      })
+      observer.observe(document.querySelector('.main-footer'))
     }
 
     // GMAP

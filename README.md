@@ -1,31 +1,20 @@
 # README
 
-GMAPS_API_KEY
-SECRET_KEY_BASE
+KEYS
+* GMAPS_API_KEY
+* SECRET_KEY_BASE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
+# Todo:
+* seo tags/fb tags
+* blog // https://marketplace.ghost.org/
+* shop
+* animations/ http://barbajs.org/
+* images resize
+* debploy
+* about us page
+* open project and logo page
+* admin for settings
 
 https://github.com/sferik/rails_admin/wiki/CKEditor
 https://ckeditor.com/ckeditor-5-builds/

@@ -1,6 +1,6 @@
 html {
   -webkit-font-smoothing: antialiased;
-  background: #121212;
+  // background: #121212;
 }
 
 body {
@@ -39,3 +39,28 @@ $mobile: "(max-width: 600px)";
   background: center center no-repeat;
   background-size: cover;
 }
+
+// .lazyload {
+//   transition: all 0.8s ease;
+//   opacity: 0;
+// }
+
+// .revealed {
+//   opacity: 1;
+// }
+
+
+// .revealed {
+//   animation-duration: 1s;
+//   animation-name: reveal;
+// }
+
+// @keyframes reveal {
+//   from {
+//     opacity: 0;
+//   }
+
+//   to {
+//     opacity: 1;
+//   }
+// }

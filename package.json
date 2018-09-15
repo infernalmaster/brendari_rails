@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "^3.3.1",
+    "intersection-observer": "^0.5.0",
     "muuri": "^0.5.3",
     "swipejs": "^2.2.10"
   },
