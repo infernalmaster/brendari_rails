@@ -1,0 +1,12 @@
+$tablet: "(max-width: 1023px)";
+$mobile: "(max-width: 600px)";
+
+@import "../../projects.scss";
+
+.muuri-item-dragging {
+  z-index: 3;
+}
+
+.msnry-item {
+  background: red;
+}

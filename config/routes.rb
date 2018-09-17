@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get 'contacts', to: 'pages#contacts'
     resources :projects
     resources :logos
+    resources :posts
 
     root to: 'pages#home'
   end

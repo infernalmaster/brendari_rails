@@ -4,6 +4,8 @@
   "dependencies": {
     "@rails/webpacker": "^3.3.1",
     "intersection-observer": "^0.5.0",
+    "medium-editor": "^5.23.3",
+    "medium-editor-autolist": "^1.0.1",
     "muuri": "^0.5.3",
     "swipejs": "^2.2.10"
   },
