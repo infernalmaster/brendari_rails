@@ -1,0 +1,117 @@
+.rich-text {
+  p,
+  .medium-insert-images,
+  .medium-insert-embeds {
+    margin: 1em 0;
+  }
+//   font-size: pem(18);
+//   line-height: pem(28);
+//   text-align: left;
+
+// //  -webkit-font-smoothing: antialiased;
+
+
+//   p { @include scale(margin, 24 40 0 40, 18); }
+
+//   h2 {
+//     @include scale(margin, 40 40 0 40, 24);
+//     @include scale(font-size, 24, 18);
+//     @include scale(line-height, 26, 24);
+//     font-weight: 800;
+//     font-family: $heading-font;
+//   }
+
+//   h3 {
+//     color: $base-color;
+//     @include scale(margin, 40 40 0 40, 18);
+//     font-size: pem(18);
+//     font-weight: 800;
+//     font-family: $heading-font;
+//     @include scale(line-height, 20, 18);
+//     text-transform: none;
+//   }
+
+
+//   ul {
+//     @include scale(margin, 24 40 40 25, 18);
+//     @include scale(padding, 0 0 0 15, 18);
+//     li {
+//       @include scale(margin-top, 10, 18);
+//       @include scale(line-height, 20, 18);
+//       list-style: disc image-url("square-bullet.png");
+//     }
+//   }
+
+
+//   blockquote {
+//     font-size: pem(18);
+//     @include scale(padding, 30, 18);
+//     border: 1px solid $blue-color;
+//     @include scale(margin, 24 0 0 0,18);
+//     p { margin: 0; }
+//   }
+
+  figure {
+    margin: 0;
+    img {
+      display: block;
+    }
+  }
+
+  .medium-insert-images {
+    figure {
+      img {
+        max-width: 100%;
+        margin-top: 1em;
+        vertical-align: top;
+        width: 100%;
+      }
+    }
+
+    figure:first-child img {
+      margin-top: 0;
+    }
+
+    &.medium-insert-images-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: center;
+      margin: 1em -0.5em;
+      figure {
+        flex: 1 0 0;
+        img {
+          max-width: calc(100% - 1em);
+          margin: 0 0.5em;
+        }
+      }
+    }
+
+
+
+  }
+
+//   figcaption {}
+
+
+//   .medium-insert-images, .medium-insert-embeds {
+//     @include scale(margin-top, 24);
+
+//     figcaption {
+//       text-align: left;
+//       font-size: pem(12);
+//       margin-top: pem(10, 16);
+//       color: #808080;
+//       @include scale(line-height, 18, 12);
+//     }
+//   }
+//   .medium-insert-images {
+//     img {
+//       width: 100%;
+//       display: block;
+//       min-height: 200px;
+//       background: #f1f1f1;
+//     }
+//   }
+
+}

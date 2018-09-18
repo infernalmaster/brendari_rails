@@ -1,6 +1,13 @@
 //= require medium-editor/dist/js/medium-editor.js
 //= require medium-editor-autolist/dist/autolist.js
+// = require 'handlebars/dist/handlebars.runtime.min.js'
+// = require 'blueimp-file-upload/js/jquery.fileupload.js'
+// = require './medium-editor-insert-plugin.js'
 
+// So rails tries to load application.js|css from jquery-sortable
+// It's strange behavior of sprockets.
+// So it just copies medium-editor-insert-plugin
+// https://github.com/johnny/jquery-sortable/issues/134
 
 
 $(document).on('rails_admin.dom_ready', function() {
@@ -8,73 +15,66 @@ $(document).on('rails_admin.dom_ready', function() {
   $('[data-richeditor=medium]').not('.js-initialized').each(function(index, domEle) {
     var $el = $(domEle)
 
+    $editorEl = $('<div></div>')
+      .html(
+        $el.val()
+          .replace(/(contenteditable="false"|contenteditable="true")/g, '')
+      )
+      .addClass($el.prop('class'))
 
-    $editorEl = $('<div></div>').html($el.val());
-    $editorEl.addClass($el.prop('class'));
     $el.after($editorEl)
+    $editorEl.wrap("<div class='medium-editor-wrap'></div>");
 
 
     var autolist = new AutoList();
     var editor = new MediumEditor($editorEl[0], {
       autoLink: true,
-
+      imageDragging: false,
+      disableExtraSpaces: true,
       buttonLabels: 'fontawesome',
       extensions: {
-          'autolist': autolist
+        'autolist': autolist
       },
-
       toolbar: {
-        /* These are the default options for the toolbar,
-            if nothing is passed this is what is used */
-        allowMultiParagraphSelection: true,
-
-        buttons: ['bold', 'italic', 'underline',
-        'anchor', 'h2', 'h3',
-        'quote', 'unorderedlist', 'orderedlist', 'image'
-        // "indent", "outdent"
-      ],
-
-
-        // buttons: Object.keys(MediumEditor.extensions.button.prototype.defaults),
-        diffLeft: 0,
-        diffTop: -10,
-        firstButtonClass: 'medium-editor-button-first',
-        lastButtonClass: 'medium-editor-button-last',
-        relativeContainer: null,
-        standardizeSelectionStart: false,
-        static: false,
-        /* options which only apply when static is true */
-        align: 'center',
-        sticky: false,
-        updateOnEmptySelection: false
+        buttons: [
+          'bold', 'italic', 'underline',
+          'anchor', 'h2', 'h3',
+          'quote', 'unorderedlist', 'orderedlist'
+        ]
       }
     });
 
-    // function debounce(fn, timeout) {
-    //   var timer;
+    $editorEl.mediumInsert({
+      editor: editor,
+      addons: {
+        images: {
+          sorting: function() {}, // sorting plugin is a trash so I removed it
+          fileUploadOptions: {
+            url: '/article_photos/create',
+            acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
+          },
+          deleteScript: '/article_photos/delete',
 
-    //   return function() {
-    //     if (timer) {
-    //       clearTimeout(timer)
-    //     }
-    //     let args = arguments
-    //     timer = setTimeout(function() {
-    //       timer = null
-    //       fn.apply(null, args);
-    //     }, timeout);
-    //   }
-    // }
-
-    function syncEditorToForm() {
-      $el.html(editor.getContent())
-    }
-
-    // var debounceSyncEditorToForm = debounce(syncEditorToForm, 1000);
-    editor.subscribe('editableInput', function (event, editable) {
-      syncEditorToForm()
+          preview: false, // preview is very laggy
+          captions: true,
+          autoGrid: 2 // (integer) Min number of images that automatically form a grid
+        }
+      }
     });
 
+    function syncEditorToForm() {
+      $el.html(
+        editor.serialize()['element-0'].value
+          .replace(/(contenteditable="true"|contenteditable="false")/g, '')
+          .replace(/(medium-insert-active)/g, '')
+      )
+    }
 
-    $el.addClass('js-initialized')//.wrap( "<div style='display: none'></div>" )
+
+    editor.subscribe('editableInput', syncEditorToForm);
+    // because image drag don not triggers editableInput
+    $editorEl.on('mouseleave', syncEditorToForm);
+
+    $el.addClass('js-initialized').wrap("<div style='display: none'></div>")
   })
 });
