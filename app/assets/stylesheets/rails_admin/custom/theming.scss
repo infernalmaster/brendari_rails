@@ -1,0 +1,7 @@
+@import "sort_grid";
+@import "medium";
+
+// fix delete button for nested
+body.rails_admin .form-horizontal.denser .remove_nested_fields, body.rails_admin .form-horizontal.denser .remove_nested_one_fields {
+  z-index: 99;
+}

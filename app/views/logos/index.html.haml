@@ -2,17 +2,6 @@
 
 .msnry-wrap.msnry-logos
   .msnry.js-msnry
-    - @logos.each do |logo|
-      .msnry-item{class: "msnry-item-#{logo.size}"}
-        .msnry-aspect
-          .msnry-aspect-inner
-            - if logo.animation.present?
-              .msnry-gif-icon.js-play{'data-video': logo.animation_url} GIF
-
-            .msnry-open-icon
-            %img.msnry-logo.lazyload{'data-src': logo.image_gray_url}
-            .msnry-logo-color.lazyload{'data-src': logo.image_colorfull_url}
-            %noscript
-              %img.msnry-logo{src: logo.image_gray_url}
+    = render "items"
 
 = render "partials/footer"

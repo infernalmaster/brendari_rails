@@ -32,8 +32,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
-gem 'haml-rails', '~> 1.0'
+# gem 'haml-rails', '~> 1.0'
+gem 'hamlit'
 gem 'mongoid', '~> 6.3.0'
+gem 'mongoid-slug'
 
 # TODO: this 2 unused
 gem 'simple-navigation', '~> 4.0.5'
@@ -52,6 +54,11 @@ gem "rails_admin_mongoid_localize_field", "~> 0.1.2"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'cucumber-rails', '~> 1.5', require: false
+  gem 'database_cleaner', '~> 1.6', '>= 1.6.1'
+  gem 'factory_bot_rails'
+  gem 'faker', git: 'git://github.com/stympy/faker.git', branch: 'master'
+  gem 'rspec-rails', '~> 3.7'
 end
 
 group :development do
@@ -61,6 +68,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  gem 'rack-mini-profiler'
+
+  gem 'guard-rspec', require: false
 end
 
 group :test do

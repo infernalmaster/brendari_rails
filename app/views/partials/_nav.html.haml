@@ -1,9 +1,9 @@
-%nav{class: "main-nav js-menu #{controller_name == 'pages' && action_name == 'home' ? 'main-nav-home' : ''}"}
+%nav{class: "main-nav js-menu"}
 
   = link_to root_path, class: "main-nav-link link-home" do
     %svg.main-nav-icon{:height => "11", :viewbox => "0 0 10 11", :width => "10", :xmlns => "http://www.w3.org/2000/svg"}
       %path{:d => "M4.98.648L.5 4.35v6.15h4.098V6.563h2.898V10.5H9.5V4.35L4.98.65z", :fill => "#F00", "fill-rule" => "evenodd", :stroke => "#F00"}
-    %object.nav-home-logo{:data => asset_path("svg/logo.svg"), :type => "image/svg+xml"} Brendari
+    %object.nav-home-logo{:data => asset_path("svg/logo-black.svg"), :type => "image/svg+xml"} Brendari
 
   .main-nav-other
     .main-nav-close.js-close-menu
@@ -17,12 +17,6 @@
       %svg.main-nav-icon{:height => "10", :viewbox => "0 0 10 10", :width => "10", :xmlns => "http://www.w3.org/2000/svg"}
         %circle{:cx => "45", :cy => "6", :fill => "#F00", "fill-rule" => "evenodd", :r => "4.5", :stroke => "#F00", :transform => "translate(-40 -1)"}
       = t("menu.about")
-
-    - active = controller_name == 'projects' && action_name == 'index' ? "is-active" : ""
-    = link_to projects_path, class: "main-nav-link #{active}" do
-      %svg.main-nav-icon{:height => "9", :viewbox => "0 0 9 9", :width => "9", :xmlns => "http://www.w3.org/2000/svg"}
-        %path{:d => "M.5.5h8v8h-8z", :fill => "#F00", "fill-rule" => "evenodd", :stroke => "#F00"}
-      = t("menu.projects")
 
     - active = controller_name == 'logos' && action_name == 'index' ? "is-active" : ""
     = link_to logos_path, class: "main-nav-link #{active}" do

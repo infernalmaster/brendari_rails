@@ -1,0 +1,30 @@
+@import "medium-editor/dist/css/medium-editor";
+@import "medium-editor/dist/css/themes/tim";
+@import "medium-editor-insert-plugin";
+
+@import "./../../rich_text.scss";
+
+.tab-content {
+  width: 100%;
+}
+
+
+.medium-editor-wrap {
+  margin-left: -60px;
+  position: relative;
+}
+.medium-editor-insert-plugin {
+  padding-left: 60px;
+}
+.medium-editor-insert-plugin.medium-editor-placeholder:after {
+  padding: 1em 60px;
+  font-size: 16px;
+  line-height: 26px;
+  color: #c3c3c3;
+}
+
+
+// .medium-editor-870 {
+//   //  870 + 60
+//   max-width: 930px;
+// }
