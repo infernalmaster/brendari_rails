@@ -1,5 +1,5 @@
 !!!
-%html
+%html{lang: I18n.locale}
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title BrendariRails
@@ -8,9 +8,6 @@
     %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
     = stylesheet_link_tag 'application', media: 'all'
   %body{data: {gmap_api_key: "#{Rails.application.secrets.gmaps_api_key}"}}
-    /
-      <p class="notice"><haml_loud> notice </haml_loud></p>
-      <p class="alert"><haml_loud> alert </haml_loud></p>
     = yield
     = javascript_include_tag 'application'
     = javascript_pack_tag 'application'

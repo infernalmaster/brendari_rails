@@ -6,12 +6,12 @@ KEYS
 
 
 # Todo:
-* seo tags/fb tags
+* seo tags/fb tags/title/description
 * blog // https://marketplace.ghost.org/
-* shop
+* shop?
 * animations/ http://barbajs.org/
 * images resize
-* debploy
+* deploy
 * about us page
 * open project and logo page
 * admin for settings

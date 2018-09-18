@@ -1,8 +1,12 @@
 //= require medium-editor/dist/js/medium-editor.js
 //= require medium-editor-autolist/dist/autolist.js
-// = require 'handlebars/dist/handlebars.runtime.min.js'
-// = require 'blueimp-file-upload/js/jquery.fileupload.js'
-// = require './medium-editor-insert-plugin.js'
+//= require 'handlebars/dist/handlebars.runtime.min.js'
+//= require 'blueimp-file-upload/js/jquery.fileupload.js'
+//= require './medium-editor-insert-plugin.js'
+
+
+// medium-editor-autolist fork used because of bug
+// https://github.com/varun-raj/medium-editor-autolist/issues/1
 
 // So rails tries to load application.js|css from jquery-sortable
 // It's strange behavior of sprockets.
@@ -15,11 +19,13 @@ $(document).on('rails_admin.dom_ready', function() {
   $('[data-richeditor=medium]').not('.js-initialized').each(function(index, domEle) {
     var $el = $(domEle)
 
+    function getTextareaContent() {
+      return $el.val()
+        .replace(/(contenteditable="false"|contenteditable="true")/g, '')
+    }
+
     $editorEl = $('<div></div>')
-      .html(
-        $el.val()
-          .replace(/(contenteditable="false"|contenteditable="true")/g, '')
-      )
+      .html(getTextareaContent())
       .addClass($el.prop('class'))
 
     $el.after($editorEl)
@@ -39,7 +45,7 @@ $(document).on('rails_admin.dom_ready', function() {
         buttons: [
           'bold', 'italic', 'underline',
           'anchor', 'h2', 'h3',
-          'quote', 'unorderedlist', 'orderedlist'
+          'quote', 'unorderedlist', 'orderedlist', 'removeFormat'
         ]
       }
     });
@@ -67,14 +73,20 @@ $(document).on('rails_admin.dom_ready', function() {
         editor.serialize()['element-0'].value
           .replace(/(contenteditable="true"|contenteditable="false")/g, '')
           .replace(/(medium-insert-active)/g, '')
+          .replace(/class=""/g, '')
       )
     }
 
+    function syncFromToEditor() {
+      editor.setContent(getTextareaContent())
+    }
 
     editor.subscribe('editableInput', syncEditorToForm);
-    // because image drag don not triggers editableInput
+    // because image drag do not triggers editableInput
     $editorEl.on('mouseleave', syncEditorToForm);
 
-    $el.addClass('js-initialized').wrap("<div style='display: none'></div>")
+    $el.addClass('js-initialized')
+
+    $el.on('change input', syncFromToEditor)
   })
 });

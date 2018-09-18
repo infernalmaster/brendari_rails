@@ -10,6 +10,7 @@ class Project
   field :subtitle, type: String, localize: true
   field :size, type: String, default: SIZES.first
   field :position, type: Integer
+  field :body, type: String, localize: true
 
   mount_uploader :main_image, AssetUploader
 
@@ -34,6 +35,14 @@ class Project
 
     edit do
       exclude_fields :_slugs
+      configure :body do
+        html_attributes do
+          {
+            data: { richeditor: 'medium' },
+            class: 'rich-text'
+          }
+        end
+      end
     end
   end
 end

@@ -1,61 +1,66 @@
+// <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,700i" rel="stylesheet">
+
 .rich-text {
-  p,
-  .medium-insert-images,
-  .medium-insert-embeds {
-    margin: 1em 0;
+  font-size: 20px;
+  line-height: 1.5;
+  width: 100%;
+  padding: 0 10px;
+
+  p {
+    hyphens:auto;
   }
-//   font-size: pem(18);
-//   line-height: pem(28);
-//   text-align: left;
 
-// //  -webkit-font-smoothing: antialiased;
+  p,
+  blockquote,
+  ul, ol,
+  h1, h2, h3, h4, h5, h6 {
+    margin: 1.5em auto;
+    max-width: 740px;
 
+    font-size: inherit;
+    line-height: inherit;
+  }
 
-//   p { @include scale(margin, 24 40 0 40, 18); }
+  h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+    margin-top: 0;
+  }
 
-//   h2 {
-//     @include scale(margin, 40 40 0 40, 24);
-//     @include scale(font-size, 24, 18);
-//     @include scale(line-height, 26, 24);
-//     font-weight: 800;
-//     font-family: $heading-font;
-//   }
+  h1, h2, h3, h4, h5, h6 {
+    margin: 1.5em auto 0.5em;
+    line-height: 1.2;
+  }
 
-//   h3 {
-//     color: $base-color;
-//     @include scale(margin, 40 40 0 40, 18);
-//     font-size: pem(18);
-//     font-weight: 800;
-//     font-family: $heading-font;
-//     @include scale(line-height, 20, 18);
-//     text-transform: none;
-//   }
+  h1 {
+    font-size: 2em;
+  }
+  h2 {
+    font-size: 2em;
+  }
+  h3 {
+    font-size: 1.5em;
+  }
 
+  blockquote {
+    font-style: italic;
+    padding: 0 1.5em;
+    border-left: 3px solid #F00;
+    font-size: 1.25em;
+    font-weight: 700;
+    line-height: 1.4;
+  }
 
-//   ul {
-//     @include scale(margin, 24 40 40 25, 18);
-//     @include scale(padding, 0 0 0 15, 18);
-//     li {
-//       @include scale(margin-top, 10, 18);
-//       @include scale(line-height, 20, 18);
-//       list-style: disc image-url("square-bullet.png");
-//     }
-//   }
-
-
-//   blockquote {
-//     font-size: pem(18);
-//     @include scale(padding, 30, 18);
-//     border: 1px solid $blue-color;
-//     @include scale(margin, 24 0 0 0,18);
-//     p { margin: 0; }
-//   }
 
   figure {
     margin: 0;
     img {
       display: block;
     }
+  }
+
+  .medium-insert-images,
+  .medium-insert-embeds {
+    font-size: 10px;
+    margin: 1em 0;
   }
 
   .medium-insert-images {
@@ -86,32 +91,24 @@
         }
       }
     }
+  }
 
+  .medium-insert-images.medium-insert-images-left,
+  .medium-insert-images.medium-insert-images-right {
+    margin-top: 2em;
+    max-width: 50%;
+  }
 
+  .medium-insert-images-left {
+    margin-right: 2em;
+    float: left;
+  }
 
+  .medium-insert-images-right {
+    margin-left: 2em;
+    float: right;
   }
 
 //   figcaption {}
-
-
-//   .medium-insert-images, .medium-insert-embeds {
-//     @include scale(margin-top, 24);
-
-//     figcaption {
-//       text-align: left;
-//       font-size: pem(12);
-//       margin-top: pem(10, 16);
-//       color: #808080;
-//       @include scale(line-height, 18, 12);
-//     }
-//   }
-//   .medium-insert-images {
-//     img {
-//       width: 100%;
-//       display: block;
-//       min-height: 200px;
-//       background: #f1f1f1;
-//     }
-//   }
 
 }

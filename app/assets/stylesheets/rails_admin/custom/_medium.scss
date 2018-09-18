@@ -23,8 +23,11 @@
   color: #c3c3c3;
 }
 
-
-// .medium-editor-870 {
-//   //  870 + 60
-//   max-width: 930px;
-// }
+body.rails_admin .form-horizontal.denser .rich-text p {
+  font-size: 20px;
+  line-height: 1.5;
+}
+body.rails_admin .form-horizontal textarea.rich-text {
+  width: 100%;
+  min-height: 200px;
+}
