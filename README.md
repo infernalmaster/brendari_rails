@@ -29,6 +29,3 @@ https://ckeditor.com/ckeditor-5-builds/
 https://github.com/kreativgebiet/rich
 https://github.com/glebtv/rails-uploader
 https://github.com/luizpicolo/rails_admin_dropzone
-
-https://github.com/luruke/barba.js
-https://github.com/chinchang/cta.js/blob/master/src/cta.js

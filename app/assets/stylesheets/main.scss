@@ -9,26 +9,3 @@
 @import "contacts.scss";
 
 @import "admin.scss";
-
-.fs-anim {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 40px;
-  background: white;
-  color: white;
-  z-index: 9999;
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  transition: 200ms ease;
-  overflow: auto;
-}
-
-.fs-anim.show {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
