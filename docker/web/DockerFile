@@ -1,4 +1,3 @@
-# Base image
 FROM nginx
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -10,8 +9,6 @@ ENV RAILS_ROOT /var/www/rails_app
 
 # Set our working directory inside the image
 WORKDIR $RAILS_ROOT
-# create log directory
-RUN mkdir log
 # copy over static assets
 COPY public public/
 # Copy Nginx config template

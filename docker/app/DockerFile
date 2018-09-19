@@ -17,6 +17,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -\
 ENV RAILS_ROOT /var/www/rails_app
 ENV RAILS_ENV='production'
 ENV RACK_ENV='production'
+ENV RAILS_LOG_TO_STDOUT true
 
 RUN mkdir -p $RAILS_ROOT
 # Set working directory
@@ -24,6 +25,7 @@ WORKDIR $RAILS_ROOT
 # Adding gems
 COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
+RUN bundle config --global frozen 1
 RUN bundle install --jobs 20 --retry 5 --without development test
 # Adding project files
 COPY . .

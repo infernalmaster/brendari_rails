@@ -2,6 +2,8 @@ version: '3'
 volumes:
   mongo_data:
     external: false
+  app_uploads:
+    external: false
 services:
   app:
     restart: always
@@ -12,15 +14,18 @@ services:
     build:
       context: .
       dockerfile: ./docker/app/DockerFile
+    volumes:
+      - app_uploads:/var/www/rails_app/public/uploads
     depends_on:
-      - db
-  db:
+      - mongodb
+  mongodb:
     restart: always
     env_file: prod.env
     image: mongo:4.0.2
     # ports:
     #   - 27017:27017
-    # command: mongod
+    environment:
+      - MONGO_DATA_DIR=/data/db
     volumes:
       - mongo_data:/data/db
   web:
@@ -29,9 +34,9 @@ services:
     build:
       context: .
       dockerfile: ./docker/web/DockerFile
-    depends_on:
-      - app
     ports:
       - 80:80
-
-# WARNING: Image for service app was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+    volumes:
+      - app_uploads:/var/www/rails_app/public/uploads
+    depends_on:
+      - app
