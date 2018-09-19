@@ -1,7 +1,7 @@
 import Swipejs from 'swipejs'
 import Muuri from 'muuri'
-import LazyLoad from './lazyload.js'
-import loadScript from './loadScript.js'
+import LazyLoad from '../lazyload.js'
+import loadScript from '../loadScript.js'
 import 'intersection-observer'
 
     // "barba.js": "^1.0.0",

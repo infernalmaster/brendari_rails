@@ -1,12 +1,12 @@
 production:
   clients:
     default:
-      database: trucks
+      database: brendari
       hosts:
-        - <%= ENV['DATA_DB_HOST'] %>
+        - localhost:27017
       options:
-        user: <%= ENV['DATA_DB_USER'] %>
-        password: <%= ENV['DATA_DB_PASS'] %>
+        user: <%= ENV['MONGO_INITDB_ROOT_USERNAME'] %>
+        password: <%= ENV['MONGO_INITDB_ROOT_PASSWORD'] %>
 
 development:
   # Configure available database clients. (required)

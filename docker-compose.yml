@@ -1,0 +1,37 @@
+version: '3'
+volumes:
+  mongo_data:
+    external: false
+services:
+  app:
+    restart: always
+    # https://github.com/moby/moby/issues/28617
+    env_file: prod.env
+    ports:
+      - 3000:3000
+    build:
+      context: .
+      dockerfile: ./docker/app/DockerFile
+    depends_on:
+      - db
+  db:
+    restart: always
+    env_file: prod.env
+    image: mongo:4.0.2
+    # ports:
+    #   - 27017:27017
+    # command: mongod
+    volumes:
+      - mongo_data:/data/db
+  web:
+    restart: always
+    env_file: prod.env
+    build:
+      context: .
+      dockerfile: ./docker/web/DockerFile
+    depends_on:
+      - app
+    ports:
+      - 80:80
+
+# WARNING: Image for service app was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.

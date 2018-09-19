@@ -3,11 +3,11 @@
 
 $(document).on('ready', function() {
   // grid
-  const msnryContainer = document.querySelector('.js-msnry')
+  var msnryContainer = document.querySelector('.js-msnry');
   if (msnryContainer) {
-    msnryContainer.classList.add('js-activated')
+    msnryContainer.classList.add('js-activated');
 
-    const g = new Muuri('.msnry', {
+    var g = new Muuri('.msnry', {
       items: '.msnry-item',
       dragEnabled: true,
       dragSort: true,
@@ -23,9 +23,10 @@ $(document).on('ready', function() {
         alignBottom: false,
         rounding: false
       }
-    }).on('dragReleaseEnd', () => {
-      g.synchronize()
-      const ids = Array.from(document.querySelectorAll('.msnry-item')).map(el => el.dataset.id)
+    }).on('dragReleaseEnd', function() {
+      g.synchronize();
+      var ids = Array.from(document.querySelectorAll('.msnry-item'))
+        .map(function(el) { return el.dataset.id });
 
       $.ajax({
         type: 'POST',
@@ -33,11 +34,11 @@ $(document).on('ready', function() {
         data: {
           ids: ids.join(','),
         },
-        success: (resp) => {
+        success: function(resp) {
           console.log('saved')
         },
         dataType: 'json'
-      })
-    })
+      });
+    });
   }
 });
