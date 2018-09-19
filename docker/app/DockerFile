@@ -14,12 +14,12 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -\
     && apt-get install -y yarn
 
 # Set an environment variable where the Rails app is installed to inside of Docker image
-ENV RAILS_ROOT /var/www/rails_app
-ENV RAILS_ENV='production'
-ENV RACK_ENV='production'
-ENV RAILS_LOG_TO_STDOUT true
+ENV RAILS_ENV=production \
+    RACK_ENV=production \
+    NODE_ENV=production \
+    RAILS_ROOT /rails_app \
+    RAILS_LOG_TO_STDOUT true
 
-RUN mkdir -p $RAILS_ROOT
 # Set working directory
 WORKDIR $RAILS_ROOT
 # Adding gems
@@ -31,6 +31,7 @@ RUN bundle install --jobs 20 --retry 5 --without development test
 COPY . .
 # SECRET_KEY_BASE is setter after build inside prod.env file
 # but gem devise needs SECRET_KEY_BASE, so we set it
+# https://github.com/moby/moby/issues/28617
 RUN bundle exec rake assets:precompile SECRET_KEY_BASE=x
 EXPOSE 3000
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

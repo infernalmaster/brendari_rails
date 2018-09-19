@@ -7,7 +7,6 @@ volumes:
 services:
   app:
     restart: always
-    # https://github.com/moby/moby/issues/28617
     env_file: prod.env
     ports:
       - 3000:3000
@@ -15,13 +14,14 @@ services:
       context: .
       dockerfile: ./docker/app/DockerFile
     volumes:
-      - app_uploads:/var/www/rails_app/public/uploads
+      - app_uploads:/rails_app/public/uploads
     depends_on:
       - mongodb
   mongodb:
     restart: always
     env_file: prod.env
     image: mongo:4.0.2
+    # mongo withou auth, so dont do it
     # ports:
     #   - 27017:27017
     environment:
@@ -30,13 +30,12 @@ services:
       - mongo_data:/data/db
   web:
     restart: always
-    env_file: prod.env
     build:
       context: .
       dockerfile: ./docker/web/DockerFile
     ports:
       - 80:80
     volumes:
-      - app_uploads:/var/www/rails_app/public/uploads
+      - app_uploads:/rails_app/public/uploads
     depends_on:
       - app
