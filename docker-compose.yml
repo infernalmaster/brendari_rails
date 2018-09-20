@@ -1,11 +1,10 @@
-# https://github.com/ledermann/docker-rails/blob/develop/Dockerfile
-
-# todo nginx.conf
 version: '3'
 volumes:
   mongo_data:
     external: false
   app_uploads:
+    external: false
+  image_cache:
     external: false
 services:
   app:
@@ -57,3 +56,18 @@ services:
       options:
         max-size: "1m"
         max-file: "10"
+  # imageproxy:
+  #   restart: always
+  #   image: willnorris/imageproxy
+  #   ports:
+  #     - 8081:8081
+  #   volumes:
+  #     - image_cache:/tmp/imageproxy
+  #   entrypoint:
+  #     - /go/bin/imageproxy
+  #     - -addr
+  #     - 0.0.0.0:8081
+  #     - -cache
+  #     - /tmp/imageproxy
+  #     # - -referrers
+  #     # - brendari.com
