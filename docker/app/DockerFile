@@ -1,37 +1,61 @@
-FROM ruby:2.5.1
-# RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
+FROM ruby:2.5.1-alpine3.7 as Builder
 
-ARG DEBIAN_FRONTEND=noninteractive
+RUN apk add --update --no-cache \
+    build-base \
+    nodejs \
+    yarn \
+    tzdata
 
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
-    && apt-get update -qq \
-    && apt-get install -y build-essential dialog apt-utils \
-    && apt-get install -y nodejs
-# yarn
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -\
-    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-    && apt-get update \
-    && apt-get install -y yarn
+    # linux-headers \
+    # git \
 
 # Set an environment variable where the Rails app is installed to inside of Docker image
 ENV RAILS_ENV=production \
     RACK_ENV=production \
     NODE_ENV=production \
-    RAILS_ROOT /rails_app \
-    RAILS_LOG_TO_STDOUT true
+    RAILS_ROOT=/rails_app
 
 # Set working directory
 WORKDIR $RAILS_ROOT
-# Adding gems
-COPY Gemfile Gemfile
-COPY Gemfile.lock Gemfile.lock
-RUN bundle config --global frozen 1
-RUN bundle install --jobs 20 --retry 5 --without development test
-# Adding project files
+
 COPY . .
+
+RUN bundle config --global frozen 1 \
+ && bundle install -j4 --retry 3 --without development test \
+ # Remove unneeded files (cached *.gem, *.o, *.c)
+ && rm -rf /usr/local/bundle/cache/*.gem \
+ && find /usr/local/bundle/gems/ -name "*.c" -delete \
+ && find /usr/local/bundle/gems/ -name "*.o" -delete
+
 # SECRET_KEY_BASE is setter after build inside prod.env file
 # but gem devise needs SECRET_KEY_BASE, so we set it
 # https://github.com/moby/moby/issues/28617
 RUN bundle exec rake assets:precompile SECRET_KEY_BASE=x
+
+RUN rm -rf spec node_modules app/assets vendor/assets lib/assets tmp/cache
+
+### final stage
+FROM ruby:2.5.1-alpine3.7
+
+RUN apk add --update --no-cache \
+    tzdata \
+    file
+
+ENV RAILS_ENV=production \
+    RACK_ENV=production \
+    RAILS_ROOT=/rails_app \
+    RAILS_LOG_TO_STDOUT=true \
+    EXECJS_RUNTIME=Disabled
+
+WORKDIR $RAILS_ROOT
+
+RUN addgroup -g 1000 -S app \
+ && adduser -u 1000 -S app -G app
+USER app
+
+# Copy app with gems from former build stage
+COPY --from=Builder /usr/local/bundle/ /usr/local/bundle/
+COPY --from=Builder --chown=app:app $RAILS_ROOT .
+
 EXPOSE 3000
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
