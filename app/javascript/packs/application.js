@@ -1,4 +1,4 @@
-import Swipejs from 'swipejs'
+// import Swipejs from 'swipejs'
 import Muuri from 'muuri'
 import LazyLoad from '../lazyload.js'
 import loadScript from '../loadScript.js'

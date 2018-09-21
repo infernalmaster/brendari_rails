@@ -2,12 +2,10 @@
   padding: 5px;
 }
 .msnry-projects {
-  padding-top: 21.61458333%;
+  padding-top: 15%;
 }
 
 .msnry-logos {
-  padding-top: 115px;
-
   .msnry-aspect-inner {
     border: 1px solid #e1e1e1;
     transition: border-color 0.3s;
@@ -151,12 +149,12 @@
     }
   }
 
-  .msnry-wrap {
-    padding: 78px 0 0 0;
-  }
 }
 
 @media #{$mobile} {
+  .msnry-wrap {
+    padding: 0;
+  }
   .msnry-aspect-inner {
     top: 0;
     left: 0;

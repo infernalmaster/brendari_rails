@@ -98,6 +98,10 @@
   display: none;
 }
 
+.nav-push {
+  height: 120px;
+}
+
 @media (max-width: 1500px) {
   .main-nav-link {
     margin-right: 80px;
@@ -156,5 +160,8 @@
     .main-nav-other {
       transform: translate3d(0, 0, 0);
     }
+  }
+  .nav-push {
+    height: 78px;
   }
 }
