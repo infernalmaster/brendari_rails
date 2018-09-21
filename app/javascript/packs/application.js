@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
       const grid = new Muuri(msnryContainer, {
         items: '.msnry-item',
+        // disable animations because safari doesn't support web-animations
+        layoutDuration: 0,
         layout: {
           fillGaps: true,
           horizontal: false,

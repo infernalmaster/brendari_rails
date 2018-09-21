@@ -9,6 +9,8 @@ $(document).on('ready', function() {
 
     var g = new Muuri('.msnry', {
       items: '.msnry-item',
+      layoutDuration: 0,
+      dragReleaseDuration: 0,
       dragEnabled: true,
       dragSort: true,
       dragSortInterval: 20,
