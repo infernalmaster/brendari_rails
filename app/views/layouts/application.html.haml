@@ -6,7 +6,12 @@
     = csrf_meta_tags
     %meta{charset: "utf-8"}/
     %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
-    = stylesheet_link_tag 'application', media: 'all'
+    - if Rails.env.production?
+      %style
+        = File.read(File.join(Rails.root, 'public', asset_path('application', type: :stylesheet))).html_safe
+    - else
+      = stylesheet_link_tag 'application', media: 'all'
+
   %body{data: {gmap_api_key: "#{Rails.application.secrets.gmaps_api_key}"}}
     = yield
     = javascript_include_tag 'application'

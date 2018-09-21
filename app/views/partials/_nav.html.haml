@@ -18,6 +18,12 @@
         %circle{:cx => "45", :cy => "6", :fill => "#F00", "fill-rule" => "evenodd", :r => "4.5", :stroke => "#F00", :transform => "translate(-40 -1)"}
       = t("menu.about")
 
+    - active = controller_name == 'projects' && action_name == 'index' ? "is-active" : ""
+    = link_to projects_path, class: "main-nav-link #{active}" do
+      %svg.main-nav-icon{:height => "9", :viewbox => "0 0 9 9", :width => "9", :xmlns => "http://www.w3.org/2000/svg"}
+        %path{:d => "M.5.5h8v8h-8z", :fill => "#F00", "fill-rule" => "evenodd", :stroke => "#F00"}
+      = t("menu.projects")
+
     - active = controller_name == 'logos' && action_name == 'index' ? "is-active" : ""
     = link_to logos_path, class: "main-nav-link #{active}" do
       %svg.main-nav-icon{:height => "11", :viewbox => "0 0 11 11", :width => "11", :xmlns => "http://www.w3.org/2000/svg"}
