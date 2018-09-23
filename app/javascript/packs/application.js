@@ -1,9 +1,9 @@
 import Swipejs from 'swipejs'
 import Muuri from 'muuri'
+import Barba from 'barba.js'
 import LazyLoad from '../lazyload'
 import loadScriptIfWasNot from '../loadScript'
 import 'intersection-observer'
-import Barba from 'barba.js'
 
 // "cta": "^0.3.2",
 // import cta from 'cta'
@@ -37,13 +37,13 @@ function initAll(ctx) {
     })
 
     let loading = false
-    const observer = new IntersectionObserver(
-      ((entries) => {
-        entries.forEach(function(entry) {
+    const observer = new window.IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
           if (entry.intersectionRatio > 0 && !loading) {
             loading = true
 
-            Rails.ajax({
+            window.Rails.ajax({
               type: 'GET',
               url: document.location.pathname,
               data: `skip=${msnryContainer.childElementCount}`,
@@ -65,7 +65,7 @@ function initAll(ctx) {
             })
           }
         })
-      }),
+      },
       {
         root: null,
         rootMargin: '500px',
@@ -88,8 +88,8 @@ function initAll(ctx) {
         gmapsEls.forEach(el => {
           const mapOptions = {
             zoom: 17,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            center: new google.maps.LatLng(0, 0),
+            mapTypeId: window.google.maps.MapTypeId.ROADMAP,
+            center: new window.google.maps.LatLng(0, 0),
             disableDefaultUI: el.classList.contains('js-map-no-ui'),
             mapTypeControl: false,
             styles: [
@@ -259,15 +259,15 @@ function initAll(ctx) {
               }
             ]
           }
-          const map = new google.maps.Map(el, mapOptions)
-          const marker = new google.maps.Marker({
-            position: new google.maps.LatLng(48.923564, 24.711256),
+          const map = new window.google.maps.Map(el, mapOptions)
+          const marker = new window.google.maps.Marker({
+            position: new window.google.maps.LatLng(48.923564, 24.711256),
             icon: {
               path:
                 'M21.216.014C10.26.397 1.156 8.924.106 19.804-.11 21.982.013 24.09.398 26.11c0 0 .033.235.146.687.34 1.51.848 2.977 1.48 4.352 2.206 5.21 7.306 13.926 18.75 23.41.7.587 1.73.587 2.44 0 11.444-9.472 16.544-18.19 18.76-23.422.644-1.376 1.142-2.83 1.48-4.353.103-.44.148-.688.148-.688.26-1.353.396-2.74.396-4.16C44 9.553 33.722-.427 21.216.013zM22 34c-6.076 0-11-4.924-11-11s4.924-11 11-11 11 4.924 11 11-4.924 11-11 11z',
               fillColor: '#FF0D35',
               fillOpacity: 1,
-              anchor: new google.maps.Point(22, 55),
+              anchor: new window.google.maps.Point(22, 55),
               strokeWeight: 0
             },
             map
@@ -280,12 +280,12 @@ function initAll(ctx) {
 
   // MENU
   const menu = ctx.querySelector('.js-menu')
-  ctx.querySelector('.js-open-menu').addEventListener('click', (e) => {
+  ctx.querySelector('.js-open-menu').addEventListener('click', e => {
     e.preventDefault()
     document.body.classList.add('no-scroll')
     menu.classList.add('is-active')
   })
-  ctx.querySelector('.js-close-menu').addEventListener('click', (e) => {
+  ctx.querySelector('.js-close-menu').addEventListener('click', e => {
     e.preventDefault()
     document.body.classList.remove('no-scroll')
     menu.classList.remove('is-active')
@@ -317,7 +317,7 @@ function initAll(ctx) {
   // gifs player on logos page
   ;(() => {
     let video
-    ctx.addEventListener('mouseover', (e) => {
+    ctx.addEventListener('mouseover', e => {
       if (e.target && e.target.classList.contains('js-play')) {
         video = document.createElement('video')
         video.src = e.target.dataset.video
@@ -327,7 +327,7 @@ function initAll(ctx) {
         e.target.parentNode.append(video)
       }
     })
-    ctx.addEventListener('mouseout', (e) => {
+    ctx.addEventListener('mouseout', e => {
       if (e.target && e.target.classList.contains('js-play')) {
         video.remove()
       }
@@ -337,11 +337,11 @@ function initAll(ctx) {
     const btn = ctx.querySelector('.js-play-home-video')
     const video = ctx.querySelector('.js-home-video')
     if (video) {
-      btn.addEventListener('mouseover', e => {
+      btn.addEventListener('mouseover', _ => {
         video.currentTime = 0
         video.play()
       })
-      btn.addEventListener('mouseout', e => {
+      btn.addEventListener('mouseout', _ => {
         video.pause()
       })
     }
@@ -357,7 +357,7 @@ function initAll(ctx) {
       // disableScroll: true,
       // stopPropagation: true,
       // callback: function (index, element) {},
-      transitionEnd(index, element) {
+      transitionEnd(index, _) {
         dots.forEach(d => d.classList.remove('is-active'))
         dots[index].classList.add('is-active')
 
@@ -371,7 +371,7 @@ function initAll(ctx) {
     })
 
     dots.forEach((d, index) =>
-      d.addEventListener('click', e => {
+      d.addEventListener('click', _ => {
         homeSlider.slide(index, 300)
       })
     )
@@ -441,7 +441,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })
 
-  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+  const isSafari = /^((?!chrome|android).)*safari/i.test(
+    window.navigator.userAgent
+  )
   Barba.Pjax.getTransition = function() {
     if (!isSafari) return FadeTransition
 

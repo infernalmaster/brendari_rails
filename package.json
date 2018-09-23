@@ -5,6 +5,7 @@
     "semicolon": false,
     "space": true,
     "prettier": true,
+    "globals": ["window", "document"],
     "rules": {
       "capitalized-comments": 0
     }
