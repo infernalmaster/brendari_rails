@@ -30,6 +30,10 @@ $mobile: "(max-width: 600px)";
   overflow: hidden;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 .bg-cover {
   background: center center no-repeat;
   background-size: cover;

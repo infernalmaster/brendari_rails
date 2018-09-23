@@ -1,7 +1,7 @@
 import Swipejs from 'swipejs'
 import Muuri from 'muuri'
-import LazyLoad from '../lazyload.js'
-import loadScriptIfWasNot from '../loadScript.js'
+import LazyLoad from '../lazyload'
+import loadScriptIfWasNot from '../loadScript'
 import 'intersection-observer'
 import Barba from 'barba.js'
 
@@ -17,7 +17,6 @@ import Barba from 'barba.js'
 // })
 
 function initAll(ctx) {
-  console.log('initAll')
   // grid
   const msnryContainer = ctx.querySelector('.js-msnry')
   if (msnryContainer) {
@@ -37,41 +36,42 @@ function initAll(ctx) {
       }
     })
 
-
-
     let loading = false
-    let observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.intersectionRatio > 0 && !loading) {
-          loading = true
+    const observer = new IntersectionObserver(
+      ((entries) => {
+        entries.forEach(function(entry) {
+          if (entry.intersectionRatio > 0 && !loading) {
+            loading = true
 
-          Rails.ajax({
-            type: 'GET',
-            url: document.location.pathname,
-            data: `skip=${msnryContainer.childElementCount}`,
-            beforeSend: () => true, // looks like bug
-            success: (data) => {
-              if (data.body.children.length > 0) {
-                grid.add(data.body.children)
-                new LazyLoad()
-              } else {
-                observer.disconnect()
+            Rails.ajax({
+              type: 'GET',
+              url: document.location.pathname,
+              data: `skip=${msnryContainer.childElementCount}`,
+              beforeSend: () => true, // looks like bug
+              success: data => {
+                if (data.body.children.length > 0) {
+                  grid.add(data.body.children)
+                  new LazyLoad()
+                } else {
+                  observer.disconnect()
+                }
+              },
+              error: err => {
+                console.log(err)
+              },
+              complete: () => {
+                loading = false
               }
-            },
-            error: (err) => {
-              console.log(err)
-            },
-            complete: () => {
-              loading = false
-            }
-          })
-        }
-      });
-    }, {
+            })
+          }
+        })
+      }),
+      {
         root: null,
-        rootMargin: "500px",
+        rootMargin: '500px',
         threshold: [0]
-      })
+      }
+    )
     observer.observe(ctx.querySelector('.main-footer'))
   }
 
@@ -79,268 +79,269 @@ function initAll(ctx) {
 
   // GMAP
   const gmapsEls = ctx.querySelectorAll('.js-gmap')
-  if (gmapsEls.length) {
-    loadScriptIfWasNot(`http://maps.google.com/maps/api/js?key=${document.body.dataset.gmapApiKey}`, () => {
-      gmapsEls.forEach(el => {
-        var mapOptions = {
-          zoom: 17,
-          mapTypeId: google.maps.MapTypeId.ROADMAP,
-          center: new google.maps.LatLng(0, 0),
-          disableDefaultUI: el.classList.contains('js-map-no-ui'),
-          mapTypeControl: false,
-          styles: [
-            {
-              "elementType": "geometry",
-              "stylers": [
-                {
-                  "color": "#333333"
-                }
-              ]
+  if (gmapsEls.length > 0) {
+    loadScriptIfWasNot(
+      `http://maps.google.com/maps/api/js?key=${
+        document.body.dataset.gmapApiKey
+      }`,
+      () => {
+        gmapsEls.forEach(el => {
+          const mapOptions = {
+            zoom: 17,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            center: new google.maps.LatLng(0, 0),
+            disableDefaultUI: el.classList.contains('js-map-no-ui'),
+            mapTypeControl: false,
+            styles: [
+              {
+                elementType: 'geometry',
+                stylers: [
+                  {
+                    color: '#333333'
+                  }
+                ]
+              },
+              {
+                elementType: 'labels.icon',
+                stylers: [
+                  {
+                    visibility: 'off'
+                  }
+                ]
+              },
+              {
+                elementType: 'labels.text.fill',
+                stylers: [
+                  {
+                    color: '#757575'
+                  }
+                ]
+              },
+              {
+                elementType: 'labels.text.stroke',
+                stylers: [
+                  {
+                    color: '#212121'
+                  }
+                ]
+              },
+              {
+                featureType: 'administrative',
+                stylers: [
+                  {
+                    visibility: 'off'
+                  }
+                ]
+              },
+              {
+                featureType: 'landscape.man_made',
+                stylers: [
+                  {
+                    visibility: 'off'
+                  }
+                ]
+              },
+              {
+                featureType: 'poi',
+                elementType: 'labels.text.fill',
+                stylers: [
+                  {
+                    color: '#757575'
+                  }
+                ]
+              },
+              {
+                featureType: 'poi.park',
+                elementType: 'geometry',
+                stylers: [
+                  {
+                    color: '#2c2c2c'
+                  }
+                ]
+              },
+              {
+                featureType: 'road',
+                elementType: 'geometry.fill',
+                stylers: [
+                  {
+                    color: '#1d1d1d'
+                  }
+                ]
+              },
+              {
+                featureType: 'road',
+                elementType: 'labels.text.fill',
+                stylers: [
+                  {
+                    color: '#8a8a8a'
+                  }
+                ]
+              },
+              {
+                featureType: 'road.arterial',
+                elementType: 'geometry',
+                stylers: [
+                  {
+                    color: '#373737'
+                  }
+                ]
+              },
+              {
+                featureType: 'road.arterial',
+                elementType: 'geometry.fill',
+                stylers: [
+                  {
+                    color: '#1d1d1d'
+                  }
+                ]
+              },
+              {
+                featureType: 'road.highway.controlled_access',
+                elementType: 'geometry',
+                stylers: [
+                  {
+                    color: '#4e4e4e'
+                  }
+                ]
+              },
+              {
+                featureType: 'road.local',
+                stylers: [
+                  {
+                    weight: 3
+                  }
+                ]
+              },
+              {
+                featureType: 'road.local',
+                elementType: 'geometry.fill',
+                stylers: [
+                  {
+                    color: '#282828'
+                  }
+                ]
+              },
+              {
+                featureType: 'road.local',
+                elementType: 'labels.text.fill',
+                stylers: [
+                  {
+                    color: '#616161'
+                  }
+                ]
+              },
+              {
+                featureType: 'transit',
+                elementType: 'labels.text.fill',
+                stylers: [
+                  {
+                    color: '#757575'
+                  }
+                ]
+              },
+              {
+                featureType: 'water',
+                elementType: 'geometry',
+                stylers: [
+                  {
+                    color: '#000000'
+                  }
+                ]
+              },
+              {
+                featureType: 'water',
+                elementType: 'labels.text.fill',
+                stylers: [
+                  {
+                    color: '#3d3d3d'
+                  }
+                ]
+              }
+            ]
+          }
+          const map = new google.maps.Map(el, mapOptions)
+          const marker = new google.maps.Marker({
+            position: new google.maps.LatLng(48.923564, 24.711256),
+            icon: {
+              path:
+                'M21.216.014C10.26.397 1.156 8.924.106 19.804-.11 21.982.013 24.09.398 26.11c0 0 .033.235.146.687.34 1.51.848 2.977 1.48 4.352 2.206 5.21 7.306 13.926 18.75 23.41.7.587 1.73.587 2.44 0 11.444-9.472 16.544-18.19 18.76-23.422.644-1.376 1.142-2.83 1.48-4.353.103-.44.148-.688.148-.688.26-1.353.396-2.74.396-4.16C44 9.553 33.722-.427 21.216.013zM22 34c-6.076 0-11-4.924-11-11s4.924-11 11-11 11 4.924 11 11-4.924 11-11 11z',
+              fillColor: '#FF0D35',
+              fillOpacity: 1,
+              anchor: new google.maps.Point(22, 55),
+              strokeWeight: 0
             },
-            {
-              "elementType": "labels.icon",
-              "stylers": [
-                {
-                  "visibility": "off"
-                }
-              ]
-            },
-            {
-              "elementType": "labels.text.fill",
-              "stylers": [
-                {
-                  "color": "#757575"
-                }
-              ]
-            },
-            {
-              "elementType": "labels.text.stroke",
-              "stylers": [
-                {
-                  "color": "#212121"
-                }
-              ]
-            },
-            {
-              "featureType": "administrative",
-              "stylers": [
-                {
-                  "visibility": "off"
-                }
-              ]
-            },
-            {
-              "featureType": "landscape.man_made",
-              "stylers": [
-                {
-                  "visibility": "off"
-                }
-              ]
-            },
-            {
-              "featureType": "poi",
-              "elementType": "labels.text.fill",
-              "stylers": [
-                {
-                  "color": "#757575"
-                }
-              ]
-            },
-            {
-              "featureType": "poi.park",
-              "elementType": "geometry",
-              "stylers": [
-                {
-                  "color": "#2c2c2c"
-                }
-              ]
-            },
-            {
-              "featureType": "road",
-              "elementType": "geometry.fill",
-              "stylers": [
-                {
-                  "color": "#1d1d1d"
-                }
-              ]
-            },
-            {
-              "featureType": "road",
-              "elementType": "labels.text.fill",
-              "stylers": [
-                {
-                  "color": "#8a8a8a"
-                }
-              ]
-            },
-            {
-              "featureType": "road.arterial",
-              "elementType": "geometry",
-              "stylers": [
-                {
-                  "color": "#373737"
-                }
-              ]
-            },
-            {
-              "featureType": "road.arterial",
-              "elementType": "geometry.fill",
-              "stylers": [
-                {
-                  "color": "#1d1d1d"
-                }
-              ]
-            },
-            {
-              "featureType": "road.highway.controlled_access",
-              "elementType": "geometry",
-              "stylers": [
-                {
-                  "color": "#4e4e4e"
-                }
-              ]
-            },
-            {
-              "featureType": "road.local",
-              "stylers": [
-                {
-                  "weight": 3
-                }
-              ]
-            },
-            {
-              "featureType": "road.local",
-              "elementType": "geometry.fill",
-              "stylers": [
-                {
-                  "color": "#282828"
-                }
-              ]
-            },
-            {
-              "featureType": "road.local",
-              "elementType": "labels.text.fill",
-              "stylers": [
-                {
-                  "color": "#616161"
-                }
-              ]
-            },
-            {
-              "featureType": "transit",
-              "elementType": "labels.text.fill",
-              "stylers": [
-                {
-                  "color": "#757575"
-                }
-              ]
-            },
-            {
-              "featureType": "water",
-              "elementType": "geometry",
-              "stylers": [
-                {
-                  "color": "#000000"
-                }
-              ]
-            },
-            {
-              "featureType": "water",
-              "elementType": "labels.text.fill",
-              "stylers": [
-                {
-                  "color": "#3d3d3d"
-                }
-              ]
-            }
-          ]
-        }
-        var map = new google.maps.Map(el, mapOptions)
-        var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(48.923564, 24.711256),
-          icon: {
-            path:
-              'M21.216.014C10.26.397 1.156 8.924.106 19.804-.11 21.982.013 24.09.398 26.11c0 0 .033.235.146.687.34 1.51.848 2.977 1.48 4.352 2.206 5.21 7.306 13.926 18.75 23.41.7.587 1.73.587 2.44 0 11.444-9.472 16.544-18.19 18.76-23.422.644-1.376 1.142-2.83 1.48-4.353.103-.44.148-.688.148-.688.26-1.353.396-2.74.396-4.16C44 9.553 33.722-.427 21.216.013zM22 34c-6.076 0-11-4.924-11-11s4.924-11 11-11 11 4.924 11 11-4.924 11-11 11z',
-            fillColor: '#FF0D35',
-            fillOpacity: 1,
-            anchor: new google.maps.Point(22, 55),
-            strokeWeight: 0
-          },
-          map: map
+            map
+          })
+          map.panTo(marker.getPosition())
         })
-        map.panTo(marker.getPosition())
-      })
-    })
+      }
+    )
   }
 
   // MENU
-  var menu = ctx.querySelector('.js-menu')
-  ctx
-    .querySelector('.js-open-menu')
-    .addEventListener('click', function (e) {
-      console.log('open-menu-click')
-      e.preventDefault()
-      menu.classList.add('is-active')
-    })
-  ctx
-    .querySelector('.js-close-menu')
-    .addEventListener('click', function (e) {
-      console.log('close-menu-click')
-      e.preventDefault()
-      menu.classList.remove('is-active')
-    })
+  const menu = ctx.querySelector('.js-menu')
+  ctx.querySelector('.js-open-menu').addEventListener('click', (e) => {
+    e.preventDefault()
+    document.body.classList.add('no-scroll')
+    menu.classList.add('is-active')
+  })
+  ctx.querySelector('.js-close-menu').addEventListener('click', (e) => {
+    e.preventDefault()
+    document.body.classList.remove('no-scroll')
+    menu.classList.remove('is-active')
+  })
 
-    // fix position for contacts page
-    ; (() => {
-      var contactsText = ctx.querySelector('.js-contacts-text')
-      if (!contactsText) return
-      const homeLink = ctx.querySelector('.main-nav-link.link-home')
+  // fix position for contacts page
+  ;(() => {
+    const contactsText = ctx.querySelector('.js-contacts-text')
+    if (!contactsText) return
+    const homeLink = ctx.querySelector('.main-nav-link.link-home')
 
-      function fixPosition() {
-        if (window.innerWidth > 1023) {
-          const left = homeLink.getBoundingClientRect().x
-          contactsText.setAttribute('style', `padding-left: ${left}px`)
-        } else {
-          contactsText.removeAttribute('style')
-        }
+    function fixPosition() {
+      if (window.innerWidth > 1023) {
+        const left = homeLink.getBoundingClientRect().x
+        contactsText.setAttribute('style', `padding-left: ${left}px`)
+      } else {
+        contactsText.removeAttribute('style')
       }
-      fixPosition()
+    }
+    fixPosition()
 
-      let resizeTimer
-      window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer)
-        resizeTimer = setTimeout(fixPosition, 100)
-      })
-    })()
+    let resizeTimer
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer)
+      resizeTimer = setTimeout(fixPosition, 100)
+    })
+  })()
 
-    // gifs player on logos page
-    ; (() => {
-      let video
-      ctx.addEventListener('mouseover', function (e) {
-        if (e.target && e.target.classList.contains('js-play')) {
-          video = document.createElement('video')
-          video.src = e.target.dataset.video
-          video.autoplay = true
-          video.loop = true
-          video.classList.add('msnry-logo-video')
-          e.target.parentNode.append(video)
-        }
-      })
-      ctx.addEventListener('mouseout', function (e) {
-        if (e.target && e.target.classList.contains('js-play')) {
-          video.remove()
-        }
-      })
-    })()
+  // gifs player on logos page
+  ;(() => {
+    let video
+    ctx.addEventListener('mouseover', (e) => {
+      if (e.target && e.target.classList.contains('js-play')) {
+        video = document.createElement('video')
+        video.src = e.target.dataset.video
+        video.autoplay = true
+        video.loop = true
+        video.classList.add('msnry-logo-video')
+        e.target.parentNode.append(video)
+      }
+    })
+    ctx.addEventListener('mouseout', (e) => {
+      if (e.target && e.target.classList.contains('js-play')) {
+        video.remove()
+      }
+    })
+  })()
   ;(() => {
     const btn = ctx.querySelector('.js-play-home-video')
     const video = ctx.querySelector('.js-home-video')
     if (video) {
-      btn.addEventListener('mouseover', function (e) {
+      btn.addEventListener('mouseover', e => {
         video.currentTime = 0
         video.play()
       })
-      btn.addEventListener('mouseout', function (e) {
+      btn.addEventListener('mouseout', e => {
         video.pause()
       })
     }
@@ -356,7 +357,7 @@ function initAll(ctx) {
       // disableScroll: true,
       // stopPropagation: true,
       // callback: function (index, element) {},
-      transitionEnd: function (index, element) {
+      transitionEnd(index, element) {
         dots.forEach(d => d.classList.remove('is-active'))
         dots[index].classList.add('is-active')
 
@@ -370,7 +371,7 @@ function initAll(ctx) {
     })
 
     dots.forEach((d, index) =>
-      d.addEventListener('click', function (e) {
+      d.addEventListener('click', e => {
         homeSlider.slide(index, 300)
       })
     )
@@ -380,7 +381,6 @@ function initAll(ctx) {
   new LazyLoad(ctx.querySelectorAll('.load-now')).loadAndDestroy()
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => initAll(document))
   Barba.Pjax.start()
@@ -388,21 +388,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let linkClicked = true
   // let lastElementClicked = null
-  Barba.Dispatcher.on("linkClicked", function(el) {
+  Barba.Dispatcher.on('linkClicked', el => {
     linkClicked = true
     // lastElementClicked = el
   })
   Barba.Dispatcher.on('transitionCompleted', () => {
     linkClicked = false
     // lastElementClicked = null
+    document.body.classList.remove('no-scroll')
   })
 
-  var HideShowTransition = Barba.BaseTransition.extend({
-    start: function() {
-      this.newContainerLoading.then(this.finish.bind(this));
+  const HideShowTransition = Barba.BaseTransition.extend({
+    start() {
+      this.newContainerLoading.then(this.finish.bind(this))
     },
 
-    finish: function() {
+    finish() {
       // safari needs some time, because it freezes without timeout
       setTimeout(() => {
         window.scrollTo(0, 0)
@@ -410,30 +411,30 @@ document.addEventListener('DOMContentLoaded', () => {
         this.done()
       })
     }
-  });
+  })
 
   // some page transitions examples
   // https://codepen.io/djmarland/pen/CxEbK
   // https://codepen.io/jcoulterdesign/pen/EPNrzg
-  var FadeTransition = Barba.BaseTransition.extend({
+  const FadeTransition = Barba.BaseTransition.extend({
     start() {
       this.newContainerLoading.then(() => initAll(this.newContainer))
-      Promise
-        .all([this.newContainerLoading, this.fadeOut()])
-        .then(this.fadeIn.bind(this));
+      Promise.all([this.newContainerLoading, this.fadeOut()]).then(
+        this.fadeIn.bind(this)
+      )
     },
 
     fadeOut() {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         this.oldContainer.classList.add('zoomOut')
         setTimeout(resolve, 300)
       })
     },
 
     fadeIn() {
-      window.scrollTo(0, 0);
+      window.scrollTo(0, 0)
       this.newContainer.classList.add('zoomIn')
-      this.done();
+      this.done()
       setTimeout(() => {
         this.newContainer.classList.remove('zoomIn')
       }, 300)
@@ -441,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
-  Barba.Pjax.getTransition = function () {
+  Barba.Pjax.getTransition = function() {
     if (!isSafari) return FadeTransition
 
     return linkClicked ? FadeTransition : HideShowTransition

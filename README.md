@@ -11,7 +11,7 @@ KEYS
 * GA and other scripts
 * animations/ http://barbajs.org/
 * рандомні картинки на головну
-* all 135 logos напис
+* відео з логотипами на головну
 
 # Ideas
 * images resize
