@@ -13,6 +13,8 @@
       = stylesheet_link_tag 'application', media: 'all'
 
   %body{data: {gmap_api_key: "#{Rails.application.secrets.gmaps_api_key}"}}
-    = yield
+    #barba-wrapper
+      .barba-container
+        = yield
     = javascript_include_tag 'application'
     = javascript_pack_tag 'application'

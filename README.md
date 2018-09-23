@@ -6,16 +6,25 @@ KEYS
 
 
 # Todo:
-* blog // https://marketplace.ghost.org/
-* animations/ http://barbajs.org/
-* images resize
-* about us page
 * seo tags/fb tags/title/description
-* open project and logo page
 * admin for settings
 * GA and other scripts
-# game
+* animations/ http://barbajs.org/
+
+* рандомні картинки на головну
+* почистити від попередньої головної
+* all 135 logos напис
+* в safari при свайпі назад, то ще анімація потім програється, можливо її відкючати для сафарі
+
+# Ideas
+* images resize
+* game
 * shop?
+* blog // https://marketplace.ghost.org/
+
+# Block
+* open project and logo page
+* about us page
 * HTTPS
 
 # Для Сивака:

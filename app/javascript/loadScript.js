@@ -1,4 +1,4 @@
-export default function loadScript (src, callback) {
+export function loadScript (src, callback) {
   var s,
     r,
     t
@@ -14,4 +14,14 @@ export default function loadScript (src, callback) {
   }
   t = document.getElementsByTagName('script')[0]
   t.parentNode.insertBefore(s, t)
+}
+
+
+export default function loadScriptIfWasNot(src, callback) {
+  if (document.querySelector(`script[src="${src}"]`)) {
+    callback()
+    return
+  }
+
+  loadScript (src, callback)
 }

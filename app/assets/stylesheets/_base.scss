@@ -1,11 +1,6 @@
-html {
-  -webkit-font-smoothing: antialiased;
-  // background: #121212;
-}
-
 body {
+  -webkit-font-smoothing: antialiased;
   background: #fff;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
   font-family: "Helvetica Neue", HelveticaNeue, "TeX Gyre Heros", TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Rooto, Helvetica, Arial, sans-serif;
   font-size: 22px;
   line-height: 1.5;
@@ -38,4 +33,38 @@ $mobile: "(max-width: 600px)";
 .bg-cover {
   background: center center no-repeat;
   background-size: cover;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.zoomIn {
+  animation-duration: 300ms;
+  animation-fill-mode: both;
+  animation-name: zoomIn;
+}
+
+@keyframes zoomOut {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+.zoomOut {
+  animation-duration: 300ms;
+  animation-fill-mode: both;
+  animation-name: zoomOut;
 }
