@@ -186,7 +186,24 @@ $hover-link-size: 90px;
   transform: translateY(-50%);
 }
 
+.projects-number-wrap {
+  position: absolute;
+  bottom: 150px;
+  left: 0;
+  width: 100%;
+  color: #2C2C2C;
+  text-align: right;
+  line-height: 0.75;
+  font-weight: 500;
+}
+.projects-number-txt {
+  font-size: 8vw;
+  line-height: 0.9;
+}
+.projects-number {
+  font-size: 15vw;
 
+}
 
 //.grid {
 //  display: inline-block;

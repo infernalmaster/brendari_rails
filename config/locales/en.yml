@@ -33,9 +33,9 @@ en:
   home:
     slogan: "is a <span class='accent'>graphic design</span> studio, focused on branding and systems of visual identification."
     explore: explore
+    all: all
 
   menu:
-    home: Home
     about: About studio
     projects: We created
     logos: Logos

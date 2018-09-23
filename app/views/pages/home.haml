@@ -27,6 +27,11 @@
     .plate-divide-cross
   %section.big-plate
     .overflow-hdn
+
+      .projects-number-wrap
+        .projects-number-txt= t("home.all")
+        .projects-number= @numbers_of_logos
+
       .bp-link-wrap.js-play-home-video
         = link_to t("menu.logos"), logos_path, class: 'bp-link'
         %svg{class: "bp-shape", width: "11", height: "11", viewBox: "0 0 11 11", xmlns: "http://www.w3.org/2000/svg"}
@@ -57,11 +62,11 @@
       = link_to t("home.explore"), about_path, class: 'btn-explore'
     %section.mob-section.bg-cover.load-now{'data-src': asset_path("created.jpg")}
       %h2.mob-title= t("menu.projects")
-      = link_to t("home.explore"), about_path, class: 'btn-explore'
+      = link_to t("home.explore"), projects_path, class: 'btn-explore'
     %section.mob-section
       %video.home-mob-video.load-now.js-home-mob-video{'data-src': asset_path("gonir.mp4"), loop: "", muted: "", playsinline: ""}
       %h2.mob-title= t("menu.logos")
-      = link_to t("home.explore"), about_path, class: 'btn-explore'
+      = link_to t("home.explore"), logos_path, class: 'btn-explore'
     %section.mob-section
       .gmap.js-gmap.js-map-no-ui
       %h2.mob-title= t("menu.contacts")

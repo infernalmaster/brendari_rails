@@ -10,11 +10,8 @@ KEYS
 * admin for settings
 * GA and other scripts
 * animations/ http://barbajs.org/
-
 * рандомні картинки на головну
-* почистити від попередньої головної
 * all 135 logos напис
-* в safari при свайпі назад, то ще анімація потім програється, можливо її відкючати для сафарі
 
 # Ideas
 * images resize
