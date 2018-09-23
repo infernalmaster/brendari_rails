@@ -97,7 +97,7 @@ $hover-link-size: 90px;
 }
 .bp-link {
     width: 400%;
-    font-size: 34px;
+    font-size: 90px;
     color: #fff;
     text-decoration: none;
     font-weight: bold;
@@ -107,11 +107,12 @@ $hover-link-size: 90px;
     left: 70px;
     transition: transform 0.3s;
     transform-origin: 0 100%;
+    transform: scale(0.37735);
     line-height: 0.79;
     will-change: transform;
 }
 .bp-link-wrap:hover .bp-link {
-    transform: scale(2.65);
+    transform: scale(1);
 }
 
 
