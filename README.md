@@ -56,5 +56,7 @@ docker cp /tmp/packs brendari_rails_web_1:/rails_app/public/
 # Deploy
 Redeploys only app container
 ```
+eval (docker-machine env brendari)
+
 ./deploy.sh
 ```
