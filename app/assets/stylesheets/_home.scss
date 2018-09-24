@@ -282,7 +282,8 @@ $hover-link-size: 90px;
     position: absolute;
     width: 100%;
     top: 50%;
-    margin-top: -30px
+    margin-top: -30px;
+    z-index: 3;
   }
   .btn-explore {
     border: 1px solid #FF0000;

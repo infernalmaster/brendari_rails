@@ -31,6 +31,10 @@ KEYS
 - іконка мови en
 
 
+# strange things
+* old yarn have bug and installs dev deps on prod and this causes errors ("xo": "^0.23.0"). But there is no newer yarn for ruby:2.5.1-alpine3.7.
+
+
 ```
 docker-machine create --driver digitalocean --digitalocean-access-token=XXXXX --digitalocean-size=1gb --digitalocean-region=fra1 brendari
 
