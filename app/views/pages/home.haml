@@ -38,7 +38,7 @@
           %path{d: "M5.5.63L.58 4.386 2.47 10.5h6.06l1.89-6.113L5.5.63z", stroke: "#F00", fill: "#F00", 'fill-rule': "evenodd"}
         %span.bp-red-line
       .bp-hover-wrap
-        %video.home-video.load-now.js-home-video{'data-src': asset_path("gonir.mp4"), loop: ""}
+        %video.home-video.load-now.js-home-video{'data-src': asset_path("home_vid.mp4"), loop: true, muted: true, preload: "auto", type: "video/mp4"}
   .plate-divider.plate-divider-3
     .plate-divide-cross
   %section.big-plate
@@ -63,8 +63,8 @@
     %section.mob-section.bg-cover.load-now{'data-src': asset_path("created.jpg")}
       %h2.mob-title= t("menu.projects")
       = link_to t("home.explore"), projects_path, class: 'btn-explore'
-    %section.mob-section
-      %video.home-mob-video.load-now.js-home-mob-video{'data-src': asset_path("gonir.mp4"), loop: "", muted: "", playsinline: ""}
+    %section.mob-section.mob-section-video
+      %video.home-mob-video.load-now.js-home-mob-video{'data-src': asset_path("home_vid.mp4"), loop: true, muted: true, playsinline: true, preload: "auto", type: "video/mp4"}
       %h2.mob-title= t("menu.logos")
       = link_to t("home.explore"), logos_path, class: 'btn-explore'
     %section.mob-section

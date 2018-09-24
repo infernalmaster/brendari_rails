@@ -162,6 +162,7 @@ $hover-link-size: 90px;
     transition: transform 0.3s;
     transform: translate3d(-105%, 0, 0);
     will-change: transform;
+    overflow: hidden;
 }
 
 .bg-2men {
@@ -184,6 +185,7 @@ $hover-link-size: 90px;
   position: absolute;
   top: calc(50% - 75px);
   transform: translateY(-50%);
+  transform: scale(1.7, 1.7);
 }
 
 .projects-number-wrap {
@@ -269,6 +271,9 @@ $hover-link-size: 90px;
     text-align: center;
     position: relative;
   }
+  .mob-section-video {
+    background: #000;
+  }
   .mob-title {
     font-size: 50px;
     margin: 0;
@@ -316,6 +321,7 @@ $hover-link-size: 90px;
     position: absolute;
     width: 100%;
     left: 0;
-    top: 0;
+    top: 100px;
+    transform: scale(1.7, 1.7);
   }
 }

@@ -337,12 +337,13 @@ function initAll(ctx) {
     const btn = ctx.querySelector('.js-play-home-video')
     const video = ctx.querySelector('.js-home-video')
     if (video) {
+      let playPromise
       btn.addEventListener('mouseover', _ => {
         video.currentTime = 0
-        video.play()
+        playPromise = video.play()
       })
       btn.addEventListener('mouseout', _ => {
-        video.pause()
+        playPromise.then(_ => video.pause()).catch(console.log)
       })
     }
   })()
