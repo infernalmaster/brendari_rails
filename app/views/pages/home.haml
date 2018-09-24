@@ -1,3 +1,6 @@
+- content_for :title, t("seo.home.title")
+- content_for :description, t("seo.home.description")
+
 .home-desktop
 
   = link_to change_locale_path, class: "lang-switch ls-#{next_locale}" do

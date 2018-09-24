@@ -1,0 +1,29 @@
+%title= yield(:title)
+%meta{content: yield(:title), property: "og:title"}/
+%meta{content: yield(:title), name: "twitter:title"}/
+%meta{content: yield(:title), itemprop: "name"}/
+
+%meta{content: yield(:description), name: "description"}/
+%meta{content: yield(:description), property: "og:description"}/
+%meta{content: yield(:description), name: "twitter:description"}/
+%meta{content: yield(:description), itemprop: "description"}/
+
+%link{href: request.url, rel: "canonical"}/
+%meta{content: request.url, property: "og:url"}/
+%meta{content: request.url, name: "twitter:url"}/
+
+%meta{content: asset_url("logo-seo.png"), property: "og:image"}/
+%meta{content: asset_url("logo-seo.png"), name: "twitter:image"}/
+%meta{content: asset_url("logo-seo.png"), itemprop: "image"}/
+
+/ iOS
+%meta{content: "Brendari", name: "apple-mobile-web-app-title"}/
+/ Android
+%meta{content: "#000000", name: "theme-color"}/
+/ Facebook / Open Graph globals
+%meta{content: "website", property: "og:type"}/
+%meta{content: "Brendari", property: "og:site_name"}/
+%meta{content: SiteConfig.get("fb:app_id"), property: "fb:app_id"}/
+/ Twitter globals
+%meta{content: "summary_large_image", name: "twitter:card"}/
+%meta{content: "brendari.com", name: "twitter:domain"}/

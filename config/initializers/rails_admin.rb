@@ -29,12 +29,16 @@ RailsAdmin.config do |config|
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
-    new
+    new do
+      except ['SiteConfig', 'TextTranslation']
+    end
     export
     bulk_delete
     show
     edit
-    delete
+    delete do
+      except ['SiteConfig', 'TextTranslation']
+    end
     show_in_app
 
     sort_grid

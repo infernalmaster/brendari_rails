@@ -14,3 +14,20 @@ uk:
     brief: Бриф
     presentation: Презентація
     rights: "Всі права захищені"
+
+  seo:
+    home:
+      title: "Головна - Brendari"
+      description: "Brendari is a branding and design agency based in Ivano-Frankivsk, Ukraine"
+    about:
+      title: "Про нас - Brendari"
+      description: "Brendari is a branding and design agency based in Ivano-Frankivsk, Ukraine"
+    projects:
+      title: "Проекти - Brendari"
+      description: "Brendari is a branding and design agency based in Ivano-Frankivsk, Ukraine"
+    logos:
+      title: "Логотипи - Brendari"
+      description: "Brendari is a branding and design agency based in Ivano-Frankivsk, Ukraine"
+    contacts:
+      title: "Контакти - Brendari"
+      description: "Brendari is a branding and design agency based in Ivano-Frankivsk, Ukraine"

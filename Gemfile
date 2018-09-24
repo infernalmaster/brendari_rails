@@ -31,6 +31,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'i18n_backend_mongoid', git: "https://github.com/infernalmaster/i18n_backend_mongoid.git", branch: "lazyload"
+gem 'request_store'
+
 gem 'devise'
 # gem 'haml-rails', '~> 1.0'
 gem 'hamlit'

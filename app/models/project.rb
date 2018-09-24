@@ -12,6 +12,9 @@ class Project
   field :position, type: Integer
   field :body, type: String, localize: true
 
+  field :seo_title, type: String, localize: true
+  field :seo_description, type: String, localize: true
+
   mount_uploader :main_image, AssetUploader
 
   validates :size, inclusion: { in: SIZES }, presence: true

@@ -1,3 +1,6 @@
+- content_for :title, t("seo.contacts.title")
+- content_for :description, t("seo.contacts.description")
+
 = render "partials/nav"
 
 .p-contacts
@@ -27,17 +30,18 @@
       .c-email.email{itemprop: "email"} hello@brendari.com
 
       .c-phone.tel{itemprop: "telephone"}
-        <span>+38</span> 067 998-87-27
+        %span+38
+        = SiteConfig.get(:phone)
 
     %ul.scls.c-socials
       = render "partials/socials"
 
     %ul.footer-links
       %li
-        %a.footer-link.doc{href: "#"}= t("general.brief")
+        %a.footer-link.doc{href: SiteConfig.get(:brief_link)}= t("general.brief")
 
       %li
-        %a.footer-link.pdf{href: "#"}<
+        %a.footer-link.pdf{href: SiteConfig.get(:presentation_link)}<
           = t("general.presentation")
           %span.accent
             PDF

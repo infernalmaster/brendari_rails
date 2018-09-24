@@ -1,3 +1,5 @@
+I18n.backend = I18n::Backend::Chain.new(I18n::Backend::Mongoid.new(TextTranslation), I18n::Backend::Simple.new)
+
 # Where the I18n library should search for translation files
 I18n.load_path += Dir[Rails.root.join('lib', 'locale', '*.{rb,yml}')]
 

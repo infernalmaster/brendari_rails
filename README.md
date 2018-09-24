@@ -1,13 +1,10 @@
 # README
 
 KEYS
-* GMAPS_API_KEY
 * SECRET_KEY_BASE
 
 
 # Todo:
-* seo tags/fb tags/title/description
-* admin for settings
 * GA and other scripts
 * animations/ http://barbajs.org/
 * рандомні картинки на головну
@@ -63,4 +60,12 @@ Redeploys only app container
 eval (docker-machine env brendari)
 
 ./deploy.sh
+```
+
+# Rake tasks
+```
+brendari:logos_seeds
+brendari:projects_seeds
+brendari:configs_seeds
+brendari:user_seeds
 ```

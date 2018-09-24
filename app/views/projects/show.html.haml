@@ -1,3 +1,6 @@
+- content_for :title, @project.seo_title || @project.seo_title
+- content_for :description, @project.seo_description
+
 = render "partials/nav"
 
 .rich-text
