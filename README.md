@@ -8,7 +8,6 @@ KEYS
 * GA and other scripts
 * animations/ http://barbajs.org/
 * рандомні картинки на головну
-* відео з логотипами на головну
 
 # Ideas
 * images resize
@@ -20,12 +19,14 @@ KEYS
 * open project and logo page
 * about us page
 * HTTPS
+* відео з логотипами на головну
 
 # Для Сивака:
 - Головна
 - відкритий проект
 - про нас
 - іконка мови en
+- favicon
 
 
 # strange things

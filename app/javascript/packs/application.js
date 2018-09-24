@@ -3,6 +3,8 @@ import Muuri from 'muuri'
 import Barba from 'barba.js'
 import LazyLoad from '../lazyload'
 import loadScriptIfWasNot from '../loadScript'
+import gmapStyles from '../gmapsStyles'
+import {HideShowTransition, FadeTransition} from '../barbaTransitions'
 import 'intersection-observer'
 
 // "cta": "^0.3.2",
@@ -92,172 +94,7 @@ function initAll(ctx) {
             center: new window.google.maps.LatLng(0, 0),
             disableDefaultUI: el.classList.contains('js-map-no-ui'),
             mapTypeControl: false,
-            styles: [
-              {
-                elementType: 'geometry',
-                stylers: [
-                  {
-                    color: '#333333'
-                  }
-                ]
-              },
-              {
-                elementType: 'labels.icon',
-                stylers: [
-                  {
-                    visibility: 'off'
-                  }
-                ]
-              },
-              {
-                elementType: 'labels.text.fill',
-                stylers: [
-                  {
-                    color: '#757575'
-                  }
-                ]
-              },
-              {
-                elementType: 'labels.text.stroke',
-                stylers: [
-                  {
-                    color: '#212121'
-                  }
-                ]
-              },
-              {
-                featureType: 'administrative',
-                stylers: [
-                  {
-                    visibility: 'off'
-                  }
-                ]
-              },
-              {
-                featureType: 'landscape.man_made',
-                stylers: [
-                  {
-                    visibility: 'off'
-                  }
-                ]
-              },
-              {
-                featureType: 'poi',
-                elementType: 'labels.text.fill',
-                stylers: [
-                  {
-                    color: '#757575'
-                  }
-                ]
-              },
-              {
-                featureType: 'poi.park',
-                elementType: 'geometry',
-                stylers: [
-                  {
-                    color: '#2c2c2c'
-                  }
-                ]
-              },
-              {
-                featureType: 'road',
-                elementType: 'geometry.fill',
-                stylers: [
-                  {
-                    color: '#1d1d1d'
-                  }
-                ]
-              },
-              {
-                featureType: 'road',
-                elementType: 'labels.text.fill',
-                stylers: [
-                  {
-                    color: '#8a8a8a'
-                  }
-                ]
-              },
-              {
-                featureType: 'road.arterial',
-                elementType: 'geometry',
-                stylers: [
-                  {
-                    color: '#373737'
-                  }
-                ]
-              },
-              {
-                featureType: 'road.arterial',
-                elementType: 'geometry.fill',
-                stylers: [
-                  {
-                    color: '#1d1d1d'
-                  }
-                ]
-              },
-              {
-                featureType: 'road.highway.controlled_access',
-                elementType: 'geometry',
-                stylers: [
-                  {
-                    color: '#4e4e4e'
-                  }
-                ]
-              },
-              {
-                featureType: 'road.local',
-                stylers: [
-                  {
-                    weight: 3
-                  }
-                ]
-              },
-              {
-                featureType: 'road.local',
-                elementType: 'geometry.fill',
-                stylers: [
-                  {
-                    color: '#282828'
-                  }
-                ]
-              },
-              {
-                featureType: 'road.local',
-                elementType: 'labels.text.fill',
-                stylers: [
-                  {
-                    color: '#616161'
-                  }
-                ]
-              },
-              {
-                featureType: 'transit',
-                elementType: 'labels.text.fill',
-                stylers: [
-                  {
-                    color: '#757575'
-                  }
-                ]
-              },
-              {
-                featureType: 'water',
-                elementType: 'geometry',
-                stylers: [
-                  {
-                    color: '#000000'
-                  }
-                ]
-              },
-              {
-                featureType: 'water',
-                elementType: 'labels.text.fill',
-                stylers: [
-                  {
-                    color: '#3d3d3d'
-                  }
-                ]
-              }
-            ]
+            styles: gmapStyles
           }
           const map = new window.google.maps.Map(el, mapOptions)
           const marker = new window.google.maps.Marker({
@@ -280,21 +117,22 @@ function initAll(ctx) {
 
   // MENU
   const menu = ctx.querySelector('.js-menu')
-  ctx.querySelector('.js-open-menu').addEventListener('click', e => {
-    e.preventDefault()
-    document.body.classList.add('no-scroll')
-    menu.classList.add('is-active')
-  })
-  ctx.querySelector('.js-close-menu').addEventListener('click', e => {
-    e.preventDefault()
-    document.body.classList.remove('no-scroll')
-    menu.classList.remove('is-active')
-  })
+  if (menu) {
+    ctx.querySelector('.js-open-menu').addEventListener('click', e => {
+      e.preventDefault()
+      document.body.classList.add('no-scroll')
+      menu.classList.add('is-active')
+    })
+    ctx.querySelector('.js-close-menu').addEventListener('click', e => {
+      e.preventDefault()
+      document.body.classList.remove('no-scroll')
+      menu.classList.remove('is-active')
+    })
+  }
 
   // fix position for contacts page
-  ;(() => {
-    const contactsText = ctx.querySelector('.js-contacts-text')
-    if (!contactsText) return
+  const contactsText = ctx.querySelector('.js-contacts-text')
+  if (contactsText) {
     const homeLink = ctx.querySelector('.main-nav-link.link-home')
 
     function fixPosition() {
@@ -312,9 +150,9 @@ function initAll(ctx) {
       clearTimeout(resizeTimer)
       resizeTimer = setTimeout(fixPosition, 100)
     })
-  })()
+  }
 
-  // gifs player on logos page
+  // video players on logos page
   ;(() => {
     let video
     ctx.addEventListener('mouseover', e => {
@@ -333,6 +171,7 @@ function initAll(ctx) {
       }
     })
   })()
+  // video player on homepage
   ;(() => {
     const btn = ctx.querySelector('.js-play-home-video')
     const video = ctx.querySelector('.js-home-video')
@@ -355,9 +194,6 @@ function initAll(ctx) {
     const homeSlider = new Swipejs(ctx.querySelector('.js-swipe'), {
       draggable: true,
       continuous: false,
-      // disableScroll: true,
-      // stopPropagation: true,
-      // callback: function (index, element) {},
       transitionEnd(index, _) {
         dots.forEach(d => d.classList.remove('is-active'))
         dots[index].classList.add('is-active')
@@ -399,47 +235,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.remove('no-scroll')
   })
 
-  const HideShowTransition = Barba.BaseTransition.extend({
-    start() {
-      this.newContainerLoading.then(this.finish.bind(this))
-    },
-
-    finish() {
-      // safari needs some time, because it freezes without timeout
-      setTimeout(() => {
-        window.scrollTo(0, 0)
-        initAll(this.newContainer)
-        this.done()
-      })
-    }
-  })
-
-  // some page transitions examples
-  // https://codepen.io/djmarland/pen/CxEbK
-  // https://codepen.io/jcoulterdesign/pen/EPNrzg
-  const FadeTransition = Barba.BaseTransition.extend({
-    start() {
-      this.newContainerLoading.then(() => initAll(this.newContainer))
-      Promise.all([this.newContainerLoading, this.fadeOut()]).then(
-        this.fadeIn.bind(this)
-      )
-    },
-
-    fadeOut() {
-      return new Promise(resolve => {
-        this.oldContainer.classList.add('zoomOut')
-        setTimeout(resolve, 300)
-      })
-    },
-
-    fadeIn() {
-      window.scrollTo(0, 0)
-      this.newContainer.classList.add('zoomIn')
-      this.done()
-      setTimeout(() => {
-        this.newContainer.classList.remove('zoomIn')
-      }, 300)
-    }
+  Barba.Dispatcher.on('newPageReady', (currentStatus, prevStatus, HTMLElementContainer, newPageRawHTML) => {
+    initAll(HTMLElementContainer)
   })
 
   const isSafari = /^((?!chrome|android).)*safari/i.test(
