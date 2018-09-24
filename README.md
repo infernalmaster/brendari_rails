@@ -68,4 +68,6 @@ brendari:logos_seeds
 brendari:projects_seeds
 brendari:configs_seeds
 brendari:user_seeds
+translations:merge[en]
+translations:merge[uk]
 ```

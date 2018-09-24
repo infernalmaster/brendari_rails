@@ -14,7 +14,7 @@
     - else
       = stylesheet_link_tag 'application', media: 'all'
 
-  %body{data: {gmap_api_key: SiteConfig.get(key: 'GMAPS_API_KEY')}}
+  %body{data: {gmap_api_key: SiteConfig.get('GMAPS_API_KEY')}}
     #barba-wrapper
       .barba-container
         = yield
