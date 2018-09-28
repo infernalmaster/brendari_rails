@@ -88,11 +88,13 @@ function initAll(ctx) {
       }`,
       () => {
         gmapsEls.forEach(el => {
+          const isHomepage = el.classList.contains('js-map-homepage')
           const mapOptions = {
             zoom: 17,
             mapTypeId: window.google.maps.MapTypeId.ROADMAP,
             center: new window.google.maps.LatLng(0, 0),
-            disableDefaultUI: el.classList.contains('js-map-no-ui'),
+            disableDefaultUI: isHomepage,
+            draggable: !isHomepage,
             mapTypeControl: false,
             styles: gmapStyles
           }
@@ -109,7 +111,11 @@ function initAll(ctx) {
             },
             map
           })
-          map.panTo(marker.getPosition())
+          const mapCenter = new window.google.maps.LatLng(
+            marker.getPosition().lat() + (isHomepage ? -.0003 : 0),
+            marker.getPosition().lng()
+          )
+          map.panTo(mapCenter)
         })
       }
     )
