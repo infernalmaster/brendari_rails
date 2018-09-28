@@ -6,23 +6,23 @@ KEYS
 
 # Todo:
 * GA and other scripts
-* animations/ http://barbajs.org/
-* рандомні картинки на головну
+* mongo backups
 
 # Ideas
 * images resize
 * game
 * shop?
 * blog // https://marketplace.ghost.org/
+* погратися з анімаціями
 
 # Block
 * open project and logo page
 * about us page
 * HTTPS
 * відео з логотипами на головну
+* фото брендарів на головну
 
 # Для Сивака:
-- Головна
 - відкритий проект
 - про нас
 - іконка мови en
