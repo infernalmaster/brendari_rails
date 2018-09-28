@@ -64,7 +64,7 @@
     %section.mob-section.bg-2men.load-now{'data-src': asset_path("about.jpg")}
       %h2.mob-title= t("menu.about")
       = link_to t("home.explore"), about_path, class: 'btn-explore'
-    %section.mob-section.bg-cover.load-now{'data-src': asset_path("created.jpg")}
+    %section.mob-section.bg-cover.load-now{'data-src': @project_image}
       %h2.mob-title= t("menu.projects")
       = link_to t("home.explore"), projects_path, class: 'btn-explore'
     %section.mob-section.mob-section-video
