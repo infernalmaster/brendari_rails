@@ -2,17 +2,19 @@
 
   %ul.footer-links
     %li
-      %a.footer-link.doc{href: "#"}= t("general.brief")
+      %a.footer-link.doc{href: SiteConfig.get(:brief_link)}= t("general.brief")
 
     %li
-      %a.footer-link.pdf{href: "#"}<
+      %a.footer-link.pdf{href: SiteConfig.get(:presentation_link)}<
         = t("general.presentation")
         %span.accent
           PDF
 
   .f-contacs
     %p.fc-email hello@brendari.com
-    %p.fc-phone +38 067 998-87-27
+    %p.fc-phone
+      +38
+      = SiteConfig.get(:phone)
 
   .cf.lh-20
     %ul.c1-3.scls.f-socials
