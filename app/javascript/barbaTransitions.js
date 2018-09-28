@@ -19,24 +19,24 @@ export const HideShowTransition = Barba.BaseTransition.extend({
 // https://codepen.io/jcoulterdesign/pen/EPNrzg
 export const FadeTransition = Barba.BaseTransition.extend({
   start() {
-    Promise.all([this.newContainerLoading, this.fadeOut()]).then(
-      this.fadeIn.bind(this)
+    Promise.all([this.newContainerLoading, this.pageOut()]).then(
+      this.pageIn.bind(this)
     )
   },
 
-  fadeOut() {
+  pageOut() {
     return new Promise(resolve => {
-      this.oldContainer.classList.add('zoomOut')
+      this.oldContainer.classList.add('pageOut')
       setTimeout(resolve, 300)
     })
   },
 
-  fadeIn() {
+  pageIn() {
     window.scrollTo(0, 0)
-    this.newContainer.classList.add('zoomIn')
+    this.newContainer.classList.add('pageIn')
     this.done()
     setTimeout(() => {
-      this.newContainer.classList.remove('zoomIn')
+      this.newContainer.classList.remove('pageIn')
     }, 300)
   }
 })

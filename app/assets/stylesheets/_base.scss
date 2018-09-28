@@ -39,36 +39,49 @@ $mobile: "(max-width: 600px)";
   background-size: cover;
 }
 
-@keyframes zoomIn {
+@keyframes pageIn {
   from {
-    transform: translate3d(-100%, 0, 0);
+    opacity: 0;
     visibility: visible;
   }
 
   to {
-    transform: translate3d(0, 0, 0);
+    opacity: 1;
   }
 }
 
-.zoomIn {
+.pageIn {
   animation-duration: 300ms;
   animation-fill-mode: both;
-  animation-name: zoomIn;
+  animation-name: pageIn;
 }
 
-@keyframes zoomOut {
+@keyframes pageOut {
   from {
-    transform: translate3d(0, 0, 0);
+    opacity: 1;
   }
 
   to {
-    visibility: hidden;
-    transform: translate3d(100%, 0, 0);
+    opacity: 0;
   }
 }
 
-.zoomOut {
+.pageOut {
   animation-duration: 300ms;
   animation-fill-mode: both;
-  animation-name: zoomOut;
+  animation-name: pageOut;
 }
+
+
+
+// element.style {
+//   pointer-events: none !important;
+//   position: absolute !important;
+//   transform-origin: left top 0px !important;
+//   transition: all 10s ease 0s;
+//   width: 657px !important;
+//   height: 798px !important;
+//   left: 0px !important;
+//   top: 0px !important;
+//   background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 0, 0) !important;
+// }

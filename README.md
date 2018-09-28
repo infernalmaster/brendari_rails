@@ -28,6 +28,10 @@ KEYS
 - іконка мови en
 - favicon
 
+може використати епловський шрифт?́
+body {
+font-family: SF Pro Text,-apple-system,-apple-system-font,Helvetica Neue,Helvetica,Verdana,Arial,sans-serif;
+}
 
 # strange things
 * old yarn have bug and installs dev deps on prod and this causes errors ("xo": "^0.23.0"). But there is no newer yarn for ruby:2.5.1-alpine3.7.
