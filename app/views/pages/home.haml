@@ -1,6 +1,8 @@
 - content_for :title, t("seo.home.title")
 - content_for :description, t("seo.home.description")
 
+- project_image_url = @home_photo.present? ? @home_photo.image_url : asset_path('created.jpg')
+
 .home-desktop
 
   = link_to change_locale_path, class: "lang-switch ls-#{next_locale}" do
@@ -25,7 +27,7 @@
         %svg{class: "bp-shape", width: "9", height: "9", viewBox: "0 0 9 9", xmlns: "http://www.w3.org/2000/svg"}
           %path{d: "M.5.5h8v8h-8z", stroke: "#F00", fill: "#F00", 'fill-rule': "evenodd"}
         %span.bp-red-line
-      .bp-hover-wrap.bg-cover.load-now{'data-src': @project_image}
+      .bp-hover-wrap.bg-cover.load-now{'data-src': project_image_url}
 
   .plate-divider.plate-divider-2
     .plate-divide-cross
@@ -64,7 +66,7 @@
     %section.mob-section.bg-2men.load-now{'data-src': asset_path("about.jpg")}
       %h2.mob-title= t("menu.about")
       = link_to t("home.explore"), about_path, class: 'btn-explore'
-    %section.mob-section.bg-cover.load-now{'data-src': @project_image}
+    %section.mob-section.bg-cover.load-now{'data-src': project_image_url}
       %h2.mob-title= t("menu.projects")
       = link_to t("home.explore"), projects_path, class: 'btn-explore'
     %section.mob-section.mob-section-video

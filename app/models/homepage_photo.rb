@@ -6,7 +6,10 @@ class HomepagePhoto
   validates :image, presence: true
 
   def self.random
-    random_id = collection.aggregate([{ '$sample': { size: 1 } }]).first['_id']
-    find(random_id)
+    random_project_hash = collection.aggregate([{ '$sample': { size: 1 } }]).first
+
+    return nil if random_project_hash.blank?
+
+    find(random_project['_id'])
   end
 end
