@@ -4,7 +4,7 @@ volumes:
     external: false
   app_uploads:
     external: false
-  image_cache:
+  web_cache:
     external: false
 services:
   app:
@@ -47,6 +47,7 @@ services:
       - 80:80
     volumes:
       - app_uploads:/rails_app/public/uploads
+      - web_cache:/var/cache/nginx
     depends_on:
       - app
     logging:
