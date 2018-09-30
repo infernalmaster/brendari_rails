@@ -17,7 +17,10 @@ class Project
 
   mount_uploader :main_image, AssetUploader
 
+  field :main_image_color, type: String, default: '#ffffff'
+
   validates :size, inclusion: { in: SIZES }, presence: true
+  validates :main_image_color, length: {is: 7}, presence: true
 
   def size_enum
     SIZES
@@ -32,6 +35,7 @@ class Project
       end
       field :main_image
       field :size
+      field :position
       field :created_at
       field :updated_at
     end
@@ -46,6 +50,7 @@ class Project
           }
         end
       end
+      field :main_image_color, :string
     end
   end
 end

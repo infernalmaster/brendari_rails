@@ -30,6 +30,7 @@ class Logo
       end
       field :image_gray
       field :size
+      field :position
       field :created_at
       field :updated_at
     end

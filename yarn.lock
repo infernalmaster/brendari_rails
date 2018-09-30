@@ -1302,6 +1302,10 @@ colors@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/colors/-/colors-1.1.2.tgz#168a4701756b6a7f51a12ce0c97bfa28c084ed63"
 
+colorthief@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/colorthief/-/colorthief-2.0.2.tgz#40feda8b28c2e92aa069954e2627d482f906fa48"
+
 combined-stream@1.0.6:
   version "1.0.6"
   resolved "http://registry.npmjs.org/combined-stream/-/combined-stream-1.0.6.tgz#723e7df6e801ac5613113a7e445a9b69cb632818"
