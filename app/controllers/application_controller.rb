@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :set_locale
+  before_action :disbale_layout_if_barbajs
 
   def set_locale
     I18n.locale = params[:locale] || extract_locale_from_accept_language_header || I18n.default_locale
@@ -13,5 +14,9 @@ class ApplicationController < ActionController::Base
 
   def default_url_options
     { locale: I18n.locale }
+  end
+
+  def disbale_layout_if_barbajs
+    self.class.layout 'barbajs' if request.headers['x-barba'].present?
   end
 end
