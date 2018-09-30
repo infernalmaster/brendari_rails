@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
   end
 
   def disbale_layout_if_barbajs
-    self.class.layout 'barbajs' if request.headers['x-barba'].present?
+    if request.headers['x-barba'].present?
+      self.class.layout 'barbajs'
+    else
+      self.class.layout 'application'
+    end
   end
 end

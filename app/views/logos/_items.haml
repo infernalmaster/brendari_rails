@@ -7,6 +7,7 @@
       -# .msnry-open-icon
       %img.msnry-logo.lazyload{'data-src': logo.image_gray_url, alt: logo.title, src: image_path('0.png')}
       - if logo.image_colorfull.present?
-        .msnry-logo-color.lazyload{'data-src': logo.image_colorfull_url, src: image_path('0.png')}
+        -# background image has lower load priority
+        .msnry-logo-color.lazyload{'data-src': logo.image_colorfull_url}
       %noscript
-        %img.msnry-logo{src: logo.image_gray_url}
+        %img.msnry-logo{src: logo.image_gray_url, alt: logo.title}
