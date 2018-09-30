@@ -1,2 +1,7 @@
-.barba-container
-  = yield
+!!!
+%html
+  %head
+    %title= yield(:title)
+  %body
+    .barba-container
+      = yield
