@@ -233,7 +233,8 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   Barba.Dispatcher.on('newPageReady', (currentStatus, prevStatus, HTMLElementContainer, newPageRawHTML) => {
-    initAll(HTMLElementContainer)
+    // safari needs some time, because it freezes without timeout on back swipe
+    setTimeout(() => initAll(HTMLElementContainer))
   })
 
   const isSafari = /^((?!chrome|android).)*safari/i.test(

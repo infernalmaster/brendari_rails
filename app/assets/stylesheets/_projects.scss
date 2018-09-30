@@ -23,7 +23,7 @@
 
   // will be shown if js is disabled
   // or if enabled after add class .js-activated
-  visibility: hidden;
+  opacity: 0;
 
   &:after {
     content: "";
@@ -101,8 +101,10 @@
 }
 
 .msnry {
+  &.muuri {
+    opacity: 1;
+  }
   &.js-activated {
-    visibility: visible;
     .msnry-item {
       position: absolute;
       float: none;
@@ -238,24 +240,4 @@
   width: 100.1%;
   position: absolute;
   top: 0;
-}
-
-@keyframes itemShow {
-  from {
-    opacity: 0;
-    visibility: visible;
-    transform: scale(0.5);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-
-.muuri-item-shown > .msnry-aspect-inner {
-  animation-duration: 300ms;
-  animation-fill-mode: both;
-  animation-name: itemShow;
 }
