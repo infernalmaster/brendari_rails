@@ -1,6 +1,7 @@
 - @logos.each do |logo|
   .msnry-item{class: "msnry-item-#{logo.size}"}
     .msnry-aspect-inner
+      .msnry-logo-title= logo.title
       - if logo.animation.present?
         .msnry-gif-icon.js-play{'data-video': logo.animation_url} GIF
 

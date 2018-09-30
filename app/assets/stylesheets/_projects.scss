@@ -90,6 +90,12 @@
   will-change: transform;
   transform: translate3d(-125%, 0, 0);
 }
+.msnry-logo-title {
+  color: #c3c3c3;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+}
 .msnry-aspect-inner:hover {
   .msnry-item-bg {
     filter: blur(5px);
