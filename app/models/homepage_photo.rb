@@ -10,6 +10,6 @@ class HomepagePhoto
 
     return nil if random_project_hash.blank?
 
-    find(random_project['_id'])
+    find(random_project_hash['_id'])
   end
 end
