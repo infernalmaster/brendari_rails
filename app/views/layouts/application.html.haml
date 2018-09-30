@@ -14,6 +14,12 @@
     - else
       = stylesheet_link_tag 'application', media: 'all'
 
+    %noscript
+      :css
+        .msnry {
+          visibility: visible;
+        }
+
   %body{data: {gmap_api_key: SiteConfig.get('GMAPS_API_KEY')}}
     #barba-wrapper
       .barba-container

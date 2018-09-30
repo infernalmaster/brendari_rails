@@ -7,16 +7,6 @@ import gmapStyles from '../gmapsStyles'
 import {HideShowTransition, FadeTransition} from '../barbaTransitions'
 import 'intersection-observer'
 
-// "cta": "^0.3.2",
-// import cta from 'cta'
-// document.addEventListener('turbolinks:click', function () {
-//   console.log('click')
-//   const e1 = document.querySelectorAll('.big-plate')[2]
-//   const e2 = document.querySelector('.fs-anim')
-//   cta(e1, e2, { relativeToWindow: true }, function () {
-//     e2.classList.add('show')
-//   })
-// })
 
 function initAll(ctx) {
   // grid
@@ -29,6 +19,7 @@ function initAll(ctx) {
       items: '.msnry-item',
       // disable animations because safari doesn't support web-animations
       layoutDuration: 0,
+      visibleStyles: null,
       layout: {
         fillGaps: true,
         horizontal: false,
