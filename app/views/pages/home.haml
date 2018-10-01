@@ -8,7 +8,7 @@
   = link_to change_locale_path, class: "lang-switch ls-#{next_locale}" do
     .lang-switch-text= translate_locale(next_locale)
 
-  %object.big-logo{type: "image/svg+xml", data: asset_path("svg/logo.svg")}) Brendari
+  %img.big-logo{src: asset_path("svg/logo.svg"), alt: 'Brendari'}
   %section.big-plate
     .overflow-hdn
       %p.bp-studio-short= raw(t("home.slogan"))

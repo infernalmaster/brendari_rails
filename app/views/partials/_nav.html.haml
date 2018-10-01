@@ -5,7 +5,7 @@
   = link_to root_path, class: "main-nav-link link-home" do
     %svg.main-nav-icon{:height => "11", :viewbox => "0 0 10 11", :width => "10", :xmlns => "http://www.w3.org/2000/svg"}
       %path{:d => "M4.98.648L.5 4.35v6.15h4.098V6.563h2.898V10.5H9.5V4.35L4.98.65z", :fill => "#F00", "fill-rule" => "evenodd", :stroke => "#F00"}
-    %object.nav-home-logo{:data => asset_path("svg/logo-black.svg"), :type => "image/svg+xml"} Brendari
+    %img.nav-home-logo{src: asset_path("svg/logo-black.svg"), alt: 'Brendari'}
 
   .main-nav-other
     .main-nav-close.js-close-menu
