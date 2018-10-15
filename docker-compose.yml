@@ -26,7 +26,7 @@ services:
     restart: always
     env_file: prod.env
     image: mongo:4.0.2
-    # mongo withou auth, so dont do it
+    # mongo without auth, so dont do it
     # ports:
     #   - 27017:27017
     environment:
@@ -60,3 +60,8 @@ services:
     restart: always
     env_file: prod.env
     image: darthsim/imgproxy:latest
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "10"

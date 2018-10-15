@@ -26,12 +26,12 @@ module ApplicationHelper
   # ce - center;
   # sm - smart. libvips detects the most "interesting" section of the image and considers it as the center of the resulting image.
   # EXTENSIONS: jpg, png, webp, original
-  def resize(url, width: 300,
-                  height: 300,
+  def resize(url, w: 300,
+                  h: 300,
                   resize: 'fill',
                   gravity: 'ce',
                   enlarge: false,
-                  extension: 'original')
+                  ext: 'original')
 
     return url unless Rails.env.production?
 
@@ -42,9 +42,9 @@ module ApplicationHelper
                         .tr('=', '').scan(/.{1,16}/).join('/')
 
     enlarge = (enlarge ? 1 : 0)
-    extension = url.split('.').last.downcase if extension == 'original'
+    ext = url.split('.').last.downcase if ext == 'original'
 
-    path = "/#{resize}/#{width}/#{height}/#{gravity}/#{enlarge}/#{encoded_url}.#{extension}"
+    path = "/#{resize}/#{w}/#{h}/#{gravity}/#{enlarge}/#{encoded_url}.#{ext}"
 
     digest = OpenSSL::Digest.new('sha256')
     hmac = Base64.urlsafe_encode64(OpenSSL::HMAC.digest(digest, key, "#{salt}#{path}")).tr('=', '')

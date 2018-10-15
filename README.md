@@ -7,6 +7,7 @@ KEYS
 # Todo:
 * GA and other scripts
 * mongo backups
+* http://type-scale.com/
 
 # Ideas
 * images resize
@@ -18,7 +19,7 @@ KEYS
 # Block
 * open project and logo page
 * about us page
-* HTTPS
+* HTTPS https://www.digitalocean.com/community/tutorials/how-to-set-up-let-s-encrypt-with-nginx-server-blocks-on-ubuntu-16-04
 * відео з логотипами на головну
 * фото брендарів на головну
 
@@ -68,6 +69,11 @@ eval (docker-machine env brendari)
 ./deploy.sh
 ```
 
+To remove unused docker resources
+```
+docker system prune -a
+```
+
 # Rake tasks
 ```
 brendari:logos_seeds
@@ -77,3 +83,9 @@ brendari:user_seeds
 translations:merge[en]
 translations:merge[uk]
 ```
+
+1920x1280
+1440x960
+1280x853
+640x427
+320x213
