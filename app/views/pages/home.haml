@@ -6,7 +6,7 @@
 .home-desktop
 
   = link_to change_locale_path, class: "lang-switch ls-#{next_locale}" do
-    .lang-switch-text= translate_locale(next_locale)
+    %span.lang-switch-text= translate_locale(next_locale)
 
   %img.big-logo{src: asset_path("svg/logo.svg"), alt: 'Brendari'}
   %section.big-plate
