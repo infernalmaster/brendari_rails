@@ -6,10 +6,12 @@
         .msnry-gif-icon.js-play{'data-video': logo.animation_url} GIF
 
       -# .msnry-open-icon
-      %img.msnry-logo.lazyload{'data-src': resize(logo.image_gray_url, w: 1920, h: 1280, ext: 'jpg'), alt: logo.title, src: image_path('0.png')}
+
+      %img.msnry-logo.lazyload{'data-src': resized_grid_image(logo.size, logo.image_gray_url), alt: logo.title, src: image_path('0.png')}
+
       - if logo.image_colorfull.present?
         -# background image has lower load priority
-        .msnry-logo-color.lazyload{'data-src': resize(logo.image_colorfull_url, w: 1920, h: 1280, ext: 'jpg')}
+        .msnry-logo-color.lazyload{'data-src': resized_grid_image(logo.size, logo.image_colorfull_url)}
 
       - unless request.xhr?
         %noscript

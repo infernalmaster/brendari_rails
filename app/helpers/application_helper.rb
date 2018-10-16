@@ -51,4 +51,17 @@ module ApplicationHelper
 
     "/imgproxy/#{hmac}#{path}"
   end
+
+  def resized_grid_image(size, url)
+    case size
+    when '1x1'
+      resize(url, w: 960, h: 640, ext: 'jpg')
+    when '1x2'
+      resize(url, w: 960, h: 1280, ext: 'jpg')
+    when '2x1'
+      resize(url, w: 1920, h: 640, ext: 'jpg')
+    else
+      resize(url, w: 1920, h: 1280, ext: 'jpg')
+    end
+  end
 end

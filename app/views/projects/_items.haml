@@ -2,18 +2,7 @@
   = link_to project_path(project), class: "msnry-item msnry-item-#{project.size}" do
     .msnry-aspect-inner{style: "background: #{project.main_image_color}"}
 
-      - src = project.main_image_url
-      - case project.size
-      - when '2x2'
-        - src = resize(project.main_image_url, w: 1920, h: 1280, ext: 'jpg')
-      - when "1x1"
-        - src = resize(project.main_image_url, w: 960, h: 640, ext: 'jpg')
-      - when "1x2"
-        - src = resize(project.main_image_url, w: 960, h: 1280, ext: 'jpg')
-      - when "2x1"
-        - src = resize(project.main_image_url, w: 1920, h: 640, ext: 'jpg')
-
-      .msnry-item-bg.lazyload{'data-src': src}
+      .msnry-item-bg.lazyload{'data-src': resized_grid_image(project.size, project.main_image_url)}
 
       - unless request.xhr?
         %noscript
