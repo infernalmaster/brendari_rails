@@ -89,3 +89,5 @@ translations:merge[uk]
 1280x853
 640x427
 320x213
+
+412 x 274
