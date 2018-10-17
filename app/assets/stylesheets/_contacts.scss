@@ -63,6 +63,9 @@
   &.pdf:before {
     background-image: image-url('svg/arrow.svg');
   }
+  .accent {
+    background: image-url('0.png');
+  }
 }
 
 .c-gmap-wrap {

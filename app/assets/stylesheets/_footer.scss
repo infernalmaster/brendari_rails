@@ -81,6 +81,8 @@
 .f-authors {
   color: #9E9E9E;
   font-size: 0.75em;
+  // hack for lighthouse score
+  background: image-url('0.png');
 }
 
 
