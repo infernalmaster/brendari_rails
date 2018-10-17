@@ -6,6 +6,7 @@ import loadScriptIfWasNot from '../loadScript'
 import gmapStyles from '../gmapsStyles'
 import {HideShowTransition, FadeTransition} from '../barbaTransitions'
 import 'intersection-observer'
+import ajaxGet from '../ajaxGet'
 
 
 function initAll(ctx) {
@@ -36,26 +37,46 @@ function initAll(ctx) {
           if (entry.intersectionRatio > 0 && !loading) {
             loading = true
 
-            window.Rails.ajax({
-              type: 'GET',
-              url: document.location.pathname,
-              data: `skip=${msnryContainer.childElementCount}`,
-              beforeSend: () => true, // looks like bug
-              success: data => {
-                if (data.body.children.length > 0) {
-                  grid.add(data.body.children)
+            const url = `${document.location.pathname}?skip=${msnryContainer.childElementCount}`
+            ajaxGet({
+              url,
+              onSuccess: xhr => {
+                if (xhr.responseText.length > 0) {
+                  const el = document.createElement('div')
+                  el.innerHTML = xhr.responseText
+                  grid.add(el.children)
                   new LazyLoad()
                 } else {
                   observer.disconnect()
                 }
+                loading = false
               },
-              error: err => {
+              onError: err => {
                 console.log(err)
-              },
-              complete: () => {
                 loading = false
               }
             })
+
+            // window.Rails.ajax({
+            //   type: 'GET',
+            //   url: document.location.pathname,
+            //   data: `skip=${msnryContainer.childElementCount}`,
+            //   beforeSend: () => true, // looks like bug
+            //   success: data => {
+            //     if (data.body.children.length > 0) {
+            //       grid.add(data.body.children)
+            //       new LazyLoad()
+            //     } else {
+            //       observer.disconnect()
+            //     }
+            //   },
+            //   error: err => {
+            //     console.log(err)
+            //   },
+            //   complete: () => {
+            //     loading = false
+            //   }
+            // })
           }
         })
       },
