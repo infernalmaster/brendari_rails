@@ -4,12 +4,11 @@ import Barba from 'barba.js'
 import LazyLoad from '../lazyload'
 import loadScriptIfWasNot from '../loadScript'
 import gmapStyles from '../gmapsStyles'
-import {HideShowTransition, FadeTransition} from '../barbaTransitions'
+import { HideShowTransition, FadeTransition } from '../barbaTransitions'
 import 'intersection-observer'
 import ajaxGet from '../ajaxGet'
 
-
-function initAll(ctx) {
+function initAll (ctx) {
   // grid
   const msnryContainer = ctx.querySelector('.js-msnry')
   if (msnryContainer) {
@@ -94,43 +93,46 @@ function initAll(ctx) {
   // GMAP
   const gmapsEls = ctx.querySelectorAll('.js-gmap')
   if (gmapsEls.length > 0) {
-    loadScriptIfWasNot(
-      `http://maps.google.com/maps/api/js?key=${
-        document.body.dataset.gmapApiKey
-      }`,
-      () => {
-        gmapsEls.forEach(el => {
-          const isHomepage = el.classList.contains('js-map-homepage')
-          const mapOptions = {
-            zoom: 17,
-            mapTypeId: window.google.maps.MapTypeId.ROADMAP,
-            center: new window.google.maps.LatLng(0, 0),
-            disableDefaultUI: isHomepage,
-            draggable: !isHomepage,
-            mapTypeControl: false,
-            styles: gmapStyles
+    gmapsEls.forEach(el => {
+      el.addEventListener('click', function handleHover () {
+        el.removeEventListener('click', handleHover)
+        loadScriptIfWasNot(
+          `http://maps.google.com/maps/api/js?key=${
+            document.body.dataset.gmapApiKey
+          }`,
+          () => {
+            const isHomepage = el.classList.contains('js-map-homepage')
+            const mapOptions = {
+              zoom: 17,
+              mapTypeId: window.google.maps.MapTypeId.ROADMAP,
+              center: new window.google.maps.LatLng(0, 0),
+              disableDefaultUI: isHomepage,
+              draggable: !isHomepage,
+              mapTypeControl: false,
+              styles: gmapStyles
+            }
+            const map = new window.google.maps.Map(el, mapOptions)
+            const marker = new window.google.maps.Marker({
+              position: new window.google.maps.LatLng(48.923564, 24.711256),
+              icon: {
+                path:
+                    'M21.216.014C10.26.397 1.156 8.924.106 19.804-.11 21.982.013 24.09.398 26.11c0 0 .033.235.146.687.34 1.51.848 2.977 1.48 4.352 2.206 5.21 7.306 13.926 18.75 23.41.7.587 1.73.587 2.44 0 11.444-9.472 16.544-18.19 18.76-23.422.644-1.376 1.142-2.83 1.48-4.353.103-.44.148-.688.148-.688.26-1.353.396-2.74.396-4.16C44 9.553 33.722-.427 21.216.013zM22 34c-6.076 0-11-4.924-11-11s4.924-11 11-11 11 4.924 11 11-4.924 11-11 11z',
+                fillColor: '#FF0D35',
+                fillOpacity: 1,
+                anchor: new window.google.maps.Point(22, 55),
+                strokeWeight: 0
+              },
+              map
+            })
+            const mapCenter = new window.google.maps.LatLng(
+              marker.getPosition().lat() + (isHomepage ? -0.0003 : 0),
+              marker.getPosition().lng()
+            )
+            map.panTo(mapCenter)
           }
-          const map = new window.google.maps.Map(el, mapOptions)
-          const marker = new window.google.maps.Marker({
-            position: new window.google.maps.LatLng(48.923564, 24.711256),
-            icon: {
-              path:
-                'M21.216.014C10.26.397 1.156 8.924.106 19.804-.11 21.982.013 24.09.398 26.11c0 0 .033.235.146.687.34 1.51.848 2.977 1.48 4.352 2.206 5.21 7.306 13.926 18.75 23.41.7.587 1.73.587 2.44 0 11.444-9.472 16.544-18.19 18.76-23.422.644-1.376 1.142-2.83 1.48-4.353.103-.44.148-.688.148-.688.26-1.353.396-2.74.396-4.16C44 9.553 33.722-.427 21.216.013zM22 34c-6.076 0-11-4.924-11-11s4.924-11 11-11 11 4.924 11 11-4.924 11-11 11z',
-              fillColor: '#FF0D35',
-              fillOpacity: 1,
-              anchor: new window.google.maps.Point(22, 55),
-              strokeWeight: 0
-            },
-            map
-          })
-          const mapCenter = new window.google.maps.LatLng(
-            marker.getPosition().lat() + (isHomepage ? -.0003 : 0),
-            marker.getPosition().lng()
-          )
-          map.panTo(mapCenter)
-        })
-      }
-    )
+        )
+      })
+    })
   }
 
   // MENU
@@ -153,7 +155,7 @@ function initAll(ctx) {
   if (contactsText) {
     const homeLink = ctx.querySelector('.main-nav-link.link-home')
 
-    function fixPosition() {
+    function fixPosition () {
       if (window.innerWidth > 1023) {
         const left = homeLink.getBoundingClientRect().x
         contactsText.setAttribute('style', `padding-left: ${left}px`)
@@ -212,7 +214,7 @@ function initAll(ctx) {
     const homeSlider = new Swipejs(ctx.querySelector('.js-swipe'), {
       draggable: true,
       continuous: false,
-      transitionEnd(index, _) {
+      transitionEnd (index, _) {
         dots.forEach(d => d.classList.remove('is-active'))
         dots[index].classList.add('is-active')
 
@@ -261,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const isSafari = /^((?!chrome|android).)*safari/i.test(
     window.navigator.userAgent
   )
-  Barba.Pjax.getTransition = function() {
+  Barba.Pjax.getTransition = function () {
     if (!isSafari) return FadeTransition
 
     return linkClicked ? FadeTransition : HideShowTransition

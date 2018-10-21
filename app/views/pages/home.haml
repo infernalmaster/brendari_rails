@@ -55,7 +55,9 @@
           %path{d: "M6 9.028L.883.5h10.234L6 9.028z", stroke: "#F00", fill: "#F00", 'fill-rule': "evenodd"}
         %span.bp-red-line
       .bp-hover-wrap
-        .gmap.js-gmap.js-map-homepage
+
+        -# .gmap.js-gmap.js-map-homepage
+        .gmap.load-now{'data-src': asset_path("map.png")}
 
 .home-mobile.swipe.js-swipe
   .swipe-wrap
@@ -74,7 +76,8 @@
       %h2.mob-title= t("menu.logos")
       = link_to t("home.explore"), logos_path, class: 'btn-explore'
     %section.mob-section
-      .gmap.js-gmap.js-map-homepage
+      -# .gmap.js-gmap.js-map-homepage
+      .gmap.load-now{'data-src': asset_path("map.png")}
       %h2.mob-title= t("menu.contacts")
       = link_to t("home.explore"), contacts_path, class: 'btn-explore'
 
