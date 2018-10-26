@@ -131,6 +131,13 @@ export default function () {
           this.y = newY
         }
       },
+      fall: function () {
+        const newY = this.y + 1
+        if (this.canMoveToNewPosition(this.x, newY, this.data)) {
+          this.y = newY
+          this.fall()
+        }
+      },
       rotate: function () {
         let rotated = rotate(this.data)
 
@@ -183,10 +190,12 @@ export default function () {
   function listenToKeyboard() {
     document.addEventListener('keydown', e => {
       if (!figure) return
-      if (e.key === 'w' || e.key === 'ArrowUp' || e.key === ' ') {
+      if (e.key === 'w' || e.key === 'ArrowUp') {
         figure.rotate()
       } else if (e.key === 's' || e.key === 'ArrowDown') {
         figure.down()
+      } else if (e.key === ' ') {
+        figure.fall()
       } else if (e.key === 'a' || e.key === 'ArrowLeft') {
         figure.left()
       } else if (e.key === 'd' || e.key === 'ArrowRight') {
@@ -195,16 +204,6 @@ export default function () {
     })
   }
   listenToKeyboard()
-
-  function play() {
-    if (document.getElementById('game')) {
-      grid = createGrid(cols, rows)
-      figure = createFigure(createRandomFigureData(figureTemplates))
-      nextFigureData = createRandomFigureData(figureTemplates)
-      gameOver = false
-      requestAnimationFrame(loop)
-    }
-  }
 
   function loop() {
     if (!gameOver) {
@@ -239,7 +238,7 @@ export default function () {
 
       setTimeout(() => {
         restart()
-      }, 3000)
+      }, 2000)
     }
   }
 
