@@ -7,8 +7,20 @@ import gmapStyles from '../gmapsStyles'
 import { HideShowTransition, FadeTransition } from '../barbaTransitions'
 import 'intersection-observer'
 import ajaxGet from '../ajaxGet'
+import play from '../tetris'
 
-function initAll (ctx) {
+function initAll(ctx) {
+  let count = 0
+  let gc = ctx.querySelector('#game')
+  if (gc) {
+    gc.addEventListener('mouseover', e => {
+      count++
+      if (count === 3) {
+        play()
+      }
+    })
+  }
+
   // grid
   const msnryContainer = ctx.querySelector('.js-msnry')
   if (msnryContainer) {
@@ -94,7 +106,7 @@ function initAll (ctx) {
   const gmapsEls = ctx.querySelectorAll('.js-gmap')
   if (gmapsEls.length > 0) {
     gmapsEls.forEach(el => {
-      el.addEventListener('click', function handleHover () {
+      el.addEventListener('click', function handleHover() {
         el.removeEventListener('click', handleHover)
         loadScriptIfWasNot(
           `http://maps.google.com/maps/api/js?key=${
@@ -155,7 +167,7 @@ function initAll (ctx) {
   if (contactsText) {
     const homeLink = ctx.querySelector('.main-nav-link.link-home')
 
-    function fixPosition () {
+    function fixPosition() {
       if (window.innerWidth > 1023) {
         const left = homeLink.getBoundingClientRect().x
         contactsText.setAttribute('style', `padding-left: ${left}px`)
@@ -214,7 +226,7 @@ function initAll (ctx) {
     const homeSlider = new Swipejs(ctx.querySelector('.js-swipe'), {
       draggable: true,
       continuous: false,
-      transitionEnd (index, _) {
+      transitionEnd(index, _) {
         dots.forEach(d => d.classList.remove('is-active'))
         dots[index].classList.add('is-active')
 
