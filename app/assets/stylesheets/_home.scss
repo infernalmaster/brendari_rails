@@ -20,7 +20,7 @@
     height: 100vh;
     width: 25%;
 
-    background: #121212;
+    background: #000;
     position: relative;
 }
 
@@ -30,53 +30,7 @@
     left: 25%;
     height: 100%;
     width: 1px;
-
-    &:after {
-        content: '';
-        position: absolute;
-        height: 140px;
-        bottom: 0;
-        background: #454545;
-        width: 1px;
-    }
-    &:before {
-        content: '';
-        position: absolute;
-        height: 100%;
-        bottom: 165px;
-        background: #454545;
-        width: 1px;
-    }
-}
-.plate-divide-cross {
-    position: absolute;
-    bottom: 160px;
-    width: 1px;
-    height: 2px;
-    background: #969696;
-
-
-    &:after {
-        content: '';
-        position: absolute;
-        bottom: -14px;
-        width: 1px;
-        height: 10px;
-        background: #969696;
-
-    }
-    &:before {
-        content: '';
-
-        position: absolute;
-        bottom: -9px;
-        left: -5px;
-        width: 10px;
-        height: 1px;
-
-        background: #969696;
-
-    }
+    background: #383838;
 }
 .plate-divider-2{
     left: 50%;
@@ -117,24 +71,6 @@ $hover-link-size: 90px;
 
 
 
-.bp-red-line {
-    position: absolute;
-    left: 90px;
-    bottom: 33px;
-
-    display: block;
-    height: 4px;
-    width: 40px;
-    background: #FF0000;
-    transition: transform 0.3s;
-    transform-origin: 0 0;
-    will-change: transform;
-}
-
-.bp-link-wrap:hover .bp-red-line {
-    transform: scaleX(0)
-}
-
 .bp-shape {
   position: absolute;
   display: block;
@@ -143,7 +79,7 @@ $hover-link-size: 90px;
 }
 
 .bp-studio-short {
-    font-size: 22px;
+    font-size: 18px;
     line-height: 30px;
     color: #fff;
     position: absolute;
@@ -190,25 +126,6 @@ $hover-link-size: 90px;
   transform: scale(1.7, 1.7);
 }
 
-.projects-number-wrap {
-  position: absolute;
-  bottom: 150px;
-  left: 0;
-  width: 100%;
-  color: #2C2C2C;
-  text-align: right;
-  line-height: 0.75;
-  font-weight: 500;
-}
-.projects-number-txt {
-  font-size: 8vw;
-  line-height: 0.9;
-}
-.projects-number {
-  font-size: 15vw;
-
-}
-
 //.grid {
 //  display: inline-block;
 //}
@@ -248,7 +165,7 @@ $hover-link-size: 90px;
   }
   .home-mobile {
     display: block;
-    background: #121212;
+    background: #000;
   }
 
   .mobs {

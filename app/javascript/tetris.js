@@ -10,8 +10,6 @@ export default function () {
   canvas.width = world.width * dpr
   canvas.height = world.height * dpr
 
-  document.querySelector('.projects-number-wrap').style.display = 'none'
-
   /**
    * @type {CanvasRenderingContext2D}
    */

@@ -16,46 +16,35 @@
         = link_to t("menu.about"), about_path, class: 'bp-link'
         %svg{class: "bp-shape", width: "10", height: "10", viewBox: "0 0 10 10", xmlns: "http://www.w3.org/2000/svg"}
           %circle{cx: "45", cy: "6", r: "4.5", transform: "translate(-40 -1)", stroke: "#F00", fill: "#F00", 'fill-rule': "evenodd"}
-        %span.bp-red-line
       .bp-hover-wrap.bg-2men.load-now{'data-src': asset_path("about.jpg")}
   .plate-divider
-    .plate-divide-cross
   %section.big-plate
     .overflow-hdn
       .bp-link-wrap
         = link_to t("menu.projects"), projects_path, class: 'bp-link'
         %svg{class: "bp-shape", width: "9", height: "9", viewBox: "0 0 9 9", xmlns: "http://www.w3.org/2000/svg"}
           %path{d: "M.5.5h8v8h-8z", stroke: "#F00", fill: "#F00", 'fill-rule': "evenodd"}
-        %span.bp-red-line
       .bp-hover-wrap.bg-cover.load-now{'data-src': resize(project_image_url, w: 700, h: 1600, ext: 'jpg')}
 
   .plate-divider.plate-divider-2
-    .plate-divide-cross
   %section.big-plate
     .overflow-hdn
 
       %canvas#game
 
-      .projects-number-wrap
-        .projects-number-txt= t("home.all")
-        .projects-number= @numbers_of_logos
-
       .bp-link-wrap.js-play-home-video
         = link_to t("menu.logos"), logos_path, class: 'bp-link'
         %svg{class: "bp-shape", width: "11", height: "11", viewBox: "0 0 11 11", xmlns: "http://www.w3.org/2000/svg"}
           %path{d: "M5.5.63L.58 4.386 2.47 10.5h6.06l1.89-6.113L5.5.63z", stroke: "#F00", fill: "#F00", 'fill-rule': "evenodd"}
-        %span.bp-red-line
       .bp-hover-wrap
         %video.home-video.load-now.js-home-video{'data-src': asset_path("home_vid.mp4"), loop: true, muted: true, preload: "auto", type: "video/mp4"}
   .plate-divider.plate-divider-3
-    .plate-divide-cross
   %section.big-plate
     .overflow-hdn
       .bp-link-wrap
         = link_to t("menu.contacts"), contacts_path, class: 'bp-link'
         %svg{class: "bp-shape", width: "12", height: "10", viewBox: "0 0 12 10", xmlns: "http://www.w3.org/2000/svg"}
           %path{d: "M6 9.028L.883.5h10.234L6 9.028z", stroke: "#F00", fill: "#F00", 'fill-rule': "evenodd"}
-        %span.bp-red-line
       .bp-hover-wrap
 
         -# .gmap.js-gmap.js-map-homepage
