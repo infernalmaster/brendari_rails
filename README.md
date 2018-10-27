@@ -11,11 +11,9 @@ KEYS
 
 # Ideas
 * images resize
-* game
 * shop?
 * blog // https://marketplace.ghost.org/
 * погратися з анімаціями
-* для перформанса краще карту краще зробити статичним файлом з посиланням на гугл мапс
 
 # Block
 * open project and logo page

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="272px" height="189px" viewBox="0 0 272 189" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-4" transform="translate(1.000000, 1.000000)" stroke="#FFFFFF">
+            <polygon id="Rectangle" fill="#000000" stroke-linecap="round" stroke-linejoin="round" points="48 13.0023897 34.8026512 22 6 6.84744701 18.3665019 0"></polygon>
+            <polygon id="Rectangle" fill="#000000" stroke-linecap="round" stroke-linejoin="round" points="11 7 36 21.9713029 36 33 12.2191431 17.2255285"></polygon>
+            <polygon id="Rectangle" fill="#000000" stroke-linecap="round" stroke-linejoin="round" points="48.2073772 13.1535503 35.2073772 21.6897854 36.2188839 33.0079968 49.2188839 23.5079968"></polygon>
+            <polygon id="Rectangle" fill="#000000" stroke-linecap="round" stroke-linejoin="round" points="38 30.4974914 38 25 131 84.4001704 131 109"></polygon>
+            <ellipse id="Oval-2" fill="#000000" stroke-linecap="round" stroke-linejoin="round" transform="translate(11.500000, 15.500000) rotate(-32.000000) translate(-11.500000, -15.500000) " cx="11.5" cy="15.5" rx="6.5" ry="10.5"></ellipse>
+            <ellipse id="Oval-2" fill="#000000" stroke-linecap="round" stroke-linejoin="round" transform="translate(11.000000, 15.500000) rotate(-32.000000) translate(-11.000000, -15.500000) " cx="11" cy="15.5" rx="4" ry="6.5"></ellipse>
+            <path d="M11,19 C12.1045695,19 13,17.4329966 13,15.5 C13,13.5670034 12.1045695,12 11,12 C9.8954305,12 9,13.5670034 9,15.5 C9,17.4329966 9.8954305,19 11,19 Z" id="Oval-2" fill="#000000" stroke-linecap="round" stroke-linejoin="round" transform="translate(11.000000, 15.500000) rotate(-32.000000) translate(-11.000000, -15.500000) "></path>
+            <path d="M269.997763,120.198177 C269.864906,107.324034 259.443531,93.4615527 236.814443,80.2116217 C197.347089,57.1024392 145.394475,53.2383106 120.775033,71.580849 C111.900624,78.1926633 107.789079,86.7873624 108.008317,96.1586838 C108.39729,112.785343 139.190161,187 201.863736,187 C264.537312,187 270.130619,133.07232 269.997763,120.198177 Z" id="Oval-3" fill="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M253.99618,146.439834 C278.615766,128.138792 276.282785,103.2228 236.815199,80.1658972 C197.347613,57.1089943 145.394694,53.2536075 120.775108,71.5546497 C96.1555211,89.855692 108.192203,123.382931 147.659789,146.439834 C187.127376,169.496737 229.376593,164.740876 253.99618,146.439834 Z" id="Oval-3-Copy" fill="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+            <ellipse id="Oval-4" fill="#000000" stroke-linecap="round" stroke-linejoin="round" cx="178" cy="99" rx="22" ry="13"></ellipse>
+            <path d="M231,137 C239.284271,137 246,132.970563 246,128 C246,124.974242 243.511426,122.297226 239.695342,120.665591 C237.242557,119.616858 234.241341,117.726762 231,117.726762 C222.715729,117.726762 211.78438,123.029437 211.78438,128 C211.78438,130.725988 218.0199,133.168912 221.210667,134.819352 C223.837939,136.178322 227.259042,137 231,137 Z" id="Oval-4-Copy" fill="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M199.066293,125.736383 L227.531851,107.677216 C231.335341,105.2642 237.194929,105.480573 240.619608,108.1605 C244.044286,110.840426 243.737198,114.969072 239.933707,117.382089 L211.468149,135.441256 C207.664659,137.854272 201.805071,137.637899 198.380392,134.957973 C194.955714,132.278046 195.262802,128.1494 199.066293,125.736383 Z" id="Rectangle-4" fill="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+            <polygon id="Rectangle" fill="#000000" stroke-linecap="round" stroke-linejoin="round" points="48.6795972 15 39 21.343783 131.411529 80 148 69.15835"></polygon>
+            <polygon id="Rectangle" fill="#000000" stroke-linecap="round" stroke-linejoin="round" points="148.017541 73.4668733 131 85 131 80.4919869 148.017541 69.3006875"></polygon>
+            <polygon id="Rectangle" fill="#000000" stroke-linecap="round" stroke-linejoin="round" points="38 24.3993372 39.4120115 21 131 80.1536778 131 85"></polygon>
+            <path d="M40.7325427,13.5564313 L226.303917,116.990309" id="Path-2"></path>
+            <path d="M30.5991699,10.8176325 L222.289491,119.252492" id="Path-2"></path>
+            <path d="M18.6082406,6.68109556 L217.289491,121.252492" id="Path-2"></path>
+        </g>
+    </g>
+</svg>

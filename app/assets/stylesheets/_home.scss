@@ -47,7 +47,7 @@ $hover-link-size: 90px;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 150px;
+    height: 50%;
 }
 .bp-link {
     width: 400%;
@@ -79,13 +79,14 @@ $hover-link-size: 90px;
 }
 
 .bp-studio-short {
-    font-size: 18px;
-    line-height: 30px;
-    color: #fff;
-    position: absolute;
-    left: 70px;
-    top: 40%;
-    right: 70px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #fff;
+  position: absolute;
+  left: 70px;
+  top: 30%;
+  top: calc(8vw + 155px);
+  right: 20px;
 }
 
 .bp-hover-wrap {

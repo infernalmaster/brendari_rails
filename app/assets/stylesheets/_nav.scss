@@ -74,6 +74,12 @@
   right: 80px;
   top: 54px;
   font-size: 0;
+  &.ls-uk-text {
+    background: image-url('svg/lang-mob-uk-text.svg');
+  }
+  &.ls-en-text {
+    background: image-url('svg/lang-mob-en-text.svg');
+  }
   &.ls-uk {
     background: image-url('svg/lang-mob-uk.svg');
   }

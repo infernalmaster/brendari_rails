@@ -15,7 +15,7 @@ function initAll(ctx) {
   if (gc) {
     gc.addEventListener('mouseover', e => {
       count++
-      if (count === 3) {
+      if (count === 5) {
         play()
       }
     })
