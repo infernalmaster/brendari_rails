@@ -39,39 +39,6 @@ $mobile: "(max-width: 600px)";
   background-size: cover;
 }
 
-@keyframes pageIn {
-  from {
-    opacity: 0;
-    visibility: visible;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.pageIn {
-  animation-duration: 300ms;
-  animation-fill-mode: both;
-  animation-name: pageIn;
-}
-
-@keyframes pageOut {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-
-.pageOut {
-  animation-duration: 300ms;
-  animation-fill-mode: both;
-  animation-name: pageOut;
-}
-
 img {
   width: 100%;
   height: auto;

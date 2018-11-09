@@ -17,26 +17,29 @@ export const HideShowTransition = Barba.BaseTransition.extend({
 // some page transitions examples
 // https://codepen.io/djmarland/pen/CxEbK
 // https://codepen.io/jcoulterdesign/pen/EPNrzg
-export const FadeTransition = Barba.BaseTransition.extend({
-  start() {
-    Promise.all([this.newContainerLoading, this.pageOut()]).then(
-      this.pageIn.bind(this)
-    )
-  },
 
-  pageOut() {
-    return new Promise(resolve => {
-      this.oldContainer.classList.add('pageOut')
-      setTimeout(resolve, 300)
-    })
-  },
+export function createTransition(outClass, inClass) {
+  return Barba.BaseTransition.extend({
+    start() {
+      Promise.all([this.newContainerLoading, this.pageOut()]).then(
+        this.pageIn.bind(this)
+      )
+    },
 
-  pageIn() {
-    window.scrollTo(0, 0)
-    this.newContainer.classList.add('pageIn')
-    this.done()
-    setTimeout(() => {
-      this.newContainer.classList.remove('pageIn')
-    }, 300)
-  }
-})
+    pageOut() {
+      return new Promise(resolve => {
+        this.oldContainer.classList.add(outClass)
+        setTimeout(resolve, 500)
+      })
+    },
+
+    pageIn() {
+      window.scrollTo(0, 0)
+      this.newContainer.classList.add(inClass)
+      this.done()
+      setTimeout(() => {
+        this.newContainer.classList.remove(inClass)
+      }, 300)
+    }
+  })
+}

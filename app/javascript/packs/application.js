@@ -4,7 +4,7 @@ import Barba from 'barba.js'
 import LazyLoad from '../lazyload'
 import loadScriptIfWasNot from '../loadScript'
 import gmapStyles from '../gmapsStyles'
-import { HideShowTransition, FadeTransition } from '../barbaTransitions'
+import { HideShowTransition, createTransition } from '../barbaTransitions'
 import 'intersection-observer'
 import ajaxGet from '../ajaxGet'
 import play from '../tetris'
@@ -255,6 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
   Barba.Pjax.start()
   Barba.Prefetch.init()
 
+  let currentUrl = document.location.pathname
   let linkClicked = true
   // let lastElementClicked = null
   Barba.Dispatcher.on('linkClicked', el => {
@@ -275,9 +276,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const isSafari = /^((?!chrome|android).)*safari/i.test(
     window.navigator.userAgent
   )
-  Barba.Pjax.getTransition = function () {
-    if (!isSafari) return FadeTransition
 
-    return linkClicked ? FadeTransition : HideShowTransition
+  Barba.Pjax.getTransition = function () {
+    console.log(document.location.pathname)
+    if (isSafari && !linkClicked) return HideShowTransition
+
+    const nextUrl = document.location.pathname
+
+    let prev = currentUrl.split('/').length
+    let next = nextUrl.split('/').length
+
+    let outClass
+    let inClass
+    if (prev === next || (prev <= 2 && next <= 2)) {
+      outClass = 'pt-page-moveToLeft'
+      inClass = 'pt-page-scaleUp'
+    } else {
+      if (next > prev) {
+        outClass = 'pt-page-scaleDownUp'
+        inClass = 'pt-page-scaleUp'
+      } else {
+        // outClass = 'pt-page-scaleDownCenter'
+        // inClass = 'pt-page-scaleUpCenter'
+
+        outClass = 'pt-page-scaleDown'
+        inClass = 'pt-page-scaleUpDown'
+      }
+    }
+
+    currentUrl = nextUrl
+
+    // return createTransition('pageOut', 'pageIn')
+    return createTransition(outClass, inClass)
   }
 })

@@ -20,14 +20,11 @@ KEYS
 * about us page
 * HTTPS https://www.digitalocean.com/community/tutorials/how-to-set-up-let-s-encrypt-with-nginx-server-blocks-on-ubuntu-16-04
 * відео з логотипами на головну
-* фото брендарів на головну
 
 # Для Сивака:
 - відкритий проект
 - про нас
-- іконка мови en
 - favicon
-- шрифт для блоку "всі 124", бо зараз дефолтний
 
 може використати епловський шрифт?́
 body {

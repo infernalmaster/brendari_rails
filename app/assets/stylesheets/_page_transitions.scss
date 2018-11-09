@@ -1,0 +1,73 @@
+// https://tympanus.net/Development/PageTransitions/?fbclid=IwAR02L7QUqjvNIQMDZAag25tqDY-AnbhV-JUEBXJsnypGROlolwNjgq4bjzw
+
+#barba-wrapper {
+  position: relative;
+  // background: black;
+	perspective: 1200px;
+	transform-style: preserve-3d;
+}
+
+.barba-container {
+  // background: white;
+}
+
+
+.pageOut, .pageIn,
+[class*="pt-page"] {
+	height: 100vh;
+	overflow: hidden;
+	backface-visibility: hidden;
+	transform: translate3d(0, 0, 0);
+}
+
+
+.pt-page-scaleDownUp {
+	animation: scaleDownUp .5s ease both;
+}
+@keyframes scaleDownUp {
+	from { }
+	to { opacity: 0; transform: scale(1.2); }
+}
+.pt-page-scaleUp {
+	animation: scaleUp .3s ease both;
+}
+@keyframes scaleUp {
+	from { opacity: 0; transform: scale(.8); }
+}
+
+// .pt-page-scaleDownCenter {
+// 	animation: scaleDownCenter .4s ease-in both;
+// }
+// @keyframes scaleDownCenter {
+// 	from { }
+// 	to { opacity: 0; transform: scale(.7); }
+// }
+// .pt-page-scaleUpCenter {
+// 	animation: scaleUpCenter .4s ease-out both;
+// }
+// @keyframes scaleUpCenter {
+// 	from { opacity: 0; transform: scale(.7); }
+// }
+
+.pt-page-moveToLeft {
+  animation: moveToLeft .6s ease both;
+  z-index: 999;
+}
+@keyframes moveToLeft {
+	from { }
+	to { transform: translateX(-100%); }
+}
+
+.pt-page-scaleDown {
+	animation: scaleDown .7s ease both;
+}
+@keyframes scaleDown {
+	from { }
+	to { opacity: 0; transform: scale(.8); }
+}
+.pt-page-scaleUpDown {
+	animation: scaleUpDown .3s ease both;
+}
+@keyframes scaleUpDown {
+	from { opacity: 0; transform: scale(1.2); }
+}
