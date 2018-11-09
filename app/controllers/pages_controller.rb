@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   end
 
   def about
+    @brendars = Brendar.all.shuffle
   end
 
   def contacts

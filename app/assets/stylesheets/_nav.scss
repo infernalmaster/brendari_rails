@@ -2,7 +2,7 @@
   padding: 50px 0;
   margin: auto;
   text-align: center;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
@@ -106,9 +106,6 @@
   display: none;
 }
 
-.nav-push {
-  height: 120px;
-}
 
 @media (max-width: 1500px) {
   .main-nav-link {
@@ -168,8 +165,5 @@
     .main-nav-other {
       transform: translate3d(0, 0, 0);
     }
-  }
-  .nav-push {
-    height: 78px;
   }
 }

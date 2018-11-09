@@ -1,0 +1,65 @@
+
+
+.about-wrap {
+  display: flex;
+}
+
+.staff {
+  background: #121212;
+  color: white;
+  width: 480px;
+
+  @media (min-width: 1600px) {
+    width: 960px
+  }
+}
+
+
+.brendar {
+  width: 480px;
+  padding: 40px;
+
+  border-bottom: 1px solid #383838;
+  border-right: 1px solid #383838;
+  display: inline-block;
+}
+.brendar-img {
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  display: block;
+}
+.brendar-descr {
+  padding-left: 100px;
+}
+.brendar-name {
+  font-size: 22px;
+  margin: 15px 0 5px 0;
+  line-height: 1;
+}
+.brendar-surname {
+  font-size: 40px;
+  margin: 0;
+  line-height: 1;
+}
+.brendar-title {
+  margin-top: 30px;
+  font-size: 18px;
+}
+
+.about-text-wrap {
+  flex: 1;
+}
+.about-text {
+  padding: 20px 20px 20px 100px;
+  max-width: 700px;
+}
+.about-title {
+  margin: 80px 20px 0 100px;
+}
+.logo-color {
+  max-width: 800px;
+}
+.logo-color-big {
+  margin: -1px;
+}

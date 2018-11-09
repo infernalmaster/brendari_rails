@@ -1,5 +1,24 @@
 - content_for :title, t("seo.about.title")
 - content_for :description, t("seo.about.description")
 
-%h1 Pages#about
-%p Find me in app/views/pages/about.html.haml
+= render "partials/nav"
+
+%main.about-wrap
+  .staff
+    - @brendars.each do |b|
+      %section.brendar>
+        %img.brendar-img{src: b.photo_url, alt: b.surname}
+        .brendar-descr
+          %h3.brendar-name= b.name
+          %h2.brendar-surname= b.surname
+          %p.brendar-title= b.title
+
+  .about-text-wrap
+    %h1.about-title
+      %img.logo-color{src: asset_path("svg/logo-color.svg"), alt: 'Brendari'}
+    .rich-text.about-text
+      %h2 is a graphic design studio, focused on branding and systems of visual identification.
+      %p Brendari is a graphic design studio, focused on branding and systems of visual identification. Brendari is a graphic design studio, focused on branding and systems of visual identification with head office in Ivano-Frankivsk.
+      %p Studio's co-founders Mykola Shkvarok and Yevhen Yefimenko work as professional designers since 2007. By now more than 100 unique logos, marks and symbols were created for local, national and international companies. In 2015 designers united to create their own design studio.
+
+    %img.logo-color-big{src: asset_path("svg/logo-color-big.svg"), alt: 'Brendari'}
