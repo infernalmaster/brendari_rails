@@ -16,7 +16,7 @@
         = link_to t("menu.about"), about_path, class: 'bp-link'
         %svg{class: "bp-shape", width: "10", height: "10", viewBox: "0 0 10 10", xmlns: "http://www.w3.org/2000/svg"}
           %circle{cx: "45", cy: "6", r: "4.5", transform: "translate(-40 -1)", stroke: "#F00", fill: "#F00", 'fill-rule': "evenodd"}
-      .bp-hover-wrap.bg-2men.load-now{'data-src': asset_path("about.jpg")}
+      .bp-hover-wrap.bg-2men.lazyload{'data-src': asset_path("about.jpg")}
   .plate-divider
   %section.big-plate
     .overflow-hdn
@@ -24,8 +24,8 @@
         = link_to t("menu.projects"), projects_path, class: 'bp-link'
         %svg{class: "bp-shape", width: "9", height: "9", viewBox: "0 0 9 9", xmlns: "http://www.w3.org/2000/svg"}
           %path{d: "M.5.5h8v8h-8z", stroke: "#F00", fill: "#F00", 'fill-rule': "evenodd"}
-      .bp-hover-wrap.bg-cover.load-now{'data-src': project_image_url}
-      -# .bp-hover-wrap.bg-cover.load-now{'data-src': resize(project_image_url, w: 700, h: 1600, ext: 'jpg')}
+      .bp-hover-wrap.bg-cover.lazyload{'data-src': project_image_url}
+      -# .bp-hover-wrap.bg-cover.lazyload{'data-src': resize(project_image_url, w: 700, h: 1600, ext: 'jpg')}
 
   .plate-divider.plate-divider-2
   %section.big-plate
@@ -38,7 +38,7 @@
         %svg{class: "bp-shape", width: "11", height: "11", viewBox: "0 0 11 11", xmlns: "http://www.w3.org/2000/svg"}
           %path{d: "M5.5.63L.58 4.386 2.47 10.5h6.06l1.89-6.113L5.5.63z", stroke: "#F00", fill: "#F00", 'fill-rule': "evenodd"}
       .bp-hover-wrap
-        %video.home-video.load-now.js-home-video{'data-src': asset_path("home_vid.mp4"), loop: true, muted: true, preload: "auto", type: "video/mp4"}
+        %video.home-video.lazyload.js-home-video{'data-src': asset_path("home_vid.mp4"), loop: true, muted: true, preload: "auto", type: "video/mp4"}
   .plate-divider.plate-divider-3
   %section.big-plate
     .overflow-hdn
@@ -49,7 +49,7 @@
       .bp-hover-wrap
 
         -# .gmap.js-gmap.js-map-homepage
-        .gmap.load-now{'data-src': asset_path("map.png")}
+        .gmap.lazyload{'data-src': asset_path("map.png")}
 
 .home-mobile.swipe.js-swipe
   .swipe-wrap
@@ -57,20 +57,20 @@
       .mobs
         %object{type: "image/svg+xml", data: asset_path("svg/logo.svg")} Brendari
         %p.mobs-studio-short= raw(t("home.slogan"))
-    %section.mob-section.bg-2men.load-now{'data-src': asset_path("about.jpg")}
+    %section.mob-section.bg-2men.lazyload{'data-src': asset_path("about.jpg")}
       %h2.mob-title= t("menu.about")
       = link_to t("home.explore"), about_path, class: 'btn-explore'
-    -# %section.mob-section.bg-cover.load-now{'data-src': resize(project_image_url, w: 700, h: 1600, ext: 'jpg')}
-    %section.mob-section.bg-cover.load-now{'data-src': project_image_url}
+    -# %section.mob-section.bg-cover.lazyload{'data-src': resize(project_image_url, w: 700, h: 1600, ext: 'jpg')}
+    %section.mob-section.bg-cover.lazyload{'data-src': project_image_url}
       %h2.mob-title= t("menu.projects")
       = link_to t("home.explore"), projects_path, class: 'btn-explore'
     %section.mob-section.mob-section-video
-      %video.home-mob-video.load-now.js-home-mob-video{'data-src': asset_path("home_vid.mp4"), loop: true, muted: true, playsinline: true, preload: "auto", type: "video/mp4"}
+      %video.home-mob-video.lazyload.js-home-mob-video{'data-src': asset_path("home_vid.mp4"), loop: true, muted: true, playsinline: true, preload: "auto", type: "video/mp4"}
       %h2.mob-title= t("menu.logos")
       = link_to t("home.explore"), logos_path, class: 'btn-explore'
     %section.mob-section
       -# .gmap.js-gmap.js-map-homepage
-      .gmap.load-now{'data-src': asset_path("map.png")}
+      .gmap.lazyload{'data-src': asset_path("map.png")}
       %h2.mob-title= t("menu.contacts")
       = link_to t("home.explore"), contacts_path, class: 'btn-explore'
 

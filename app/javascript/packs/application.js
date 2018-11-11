@@ -1,7 +1,7 @@
 import Swipejs from 'swipejs'
 import Muuri from 'muuri'
 import Barba from 'barba.js'
-import LazyLoad from '../lazyload'
+import lazyLoad from '../lazyload'
 import loadScriptIfWasNot from '../loadScript'
 import gmapStyles from '../gmapsStyles'
 import { HideShowTransition, createTransition } from '../barbaTransitions'
@@ -55,8 +55,9 @@ function initAll(ctx) {
                 if (xhr.responseText.length > 0) {
                   const el = document.createElement('div')
                   el.innerHTML = xhr.responseText
+                  lazyLoad(el.querySelectorAll('.lazyload'))
+
                   grid.add(el.children)
-                  new LazyLoad()
                 } else {
                   observer.disconnect()
                 }
@@ -67,27 +68,6 @@ function initAll(ctx) {
                 loading = false
               }
             })
-
-            // window.Rails.ajax({
-            //   type: 'GET',
-            //   url: document.location.pathname,
-            //   data: `skip=${msnryContainer.childElementCount}`,
-            //   beforeSend: () => true, // looks like bug
-            //   success: data => {
-            //     if (data.body.children.length > 0) {
-            //       grid.add(data.body.children)
-            //       new LazyLoad()
-            //     } else {
-            //       observer.disconnect()
-            //     }
-            //   },
-            //   error: err => {
-            //     console.log(err)
-            //   },
-            //   complete: () => {
-            //     loading = false
-            //   }
-            // })
           }
         })
       },
@@ -167,7 +147,7 @@ function initAll(ctx) {
   if (contactsText) {
     const homeLink = ctx.querySelector('.main-nav-link.link-home')
 
-    function fixPosition() {
+    const fixPosition = function () {
       if (window.innerWidth > 1023) {
         const left = homeLink.getBoundingClientRect().x
         contactsText.setAttribute('style', `padding-left: ${left}px`)
@@ -246,8 +226,7 @@ function initAll(ctx) {
     )
   }
 
-  new LazyLoad()
-  new LazyLoad(ctx.querySelectorAll('.load-now')).loadAndDestroy()
+  lazyLoad(ctx.querySelectorAll('.lazyload'))
 }
 
 document.addEventListener('DOMContentLoaded', () => {
