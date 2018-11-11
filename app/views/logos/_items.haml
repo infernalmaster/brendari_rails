@@ -7,11 +7,11 @@
 
       -# .msnry-open-icon
 
-      %img.msnry-logo.lazyload{'data-src': resized_grid_image(logo.size, logo.image_gray_url), alt: logo.title, src: image_path('0.png')}
+      %img.msnry-logo.lazyload{'data-src': logo.image_gray_url("v#{logo.size}"), alt: logo.title, src: image_path('0.png')}
 
       - if logo.image_colorfull.present?
         -# background image has lower load priority
-        .msnry-logo-color.lazyload{'data-src': resized_grid_image(logo.size, logo.image_colorfull_url)}
+        .msnry-logo-color.lazyload{'data-src': logo.image_colorfull_url("v#{logo.size}")}
 
       - unless request.xhr?
         %noscript

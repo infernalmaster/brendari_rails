@@ -46,9 +46,10 @@ gem 'simple_form', '~> 3.5.0'
 
 gem 'autoprefixer-rails'
 gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
+gem 'mini_magick'
+
 gem 'kaminari-actionview'
 gem 'kaminari-mongoid'
-# gem 'mini_magick', require: true
 
 gem 'webpacker', '~> 3.5'
 gem 'rails_admin', '~> 1.3'

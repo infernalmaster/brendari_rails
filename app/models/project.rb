@@ -15,7 +15,7 @@ class Project
   field :seo_title, type: String, localize: true
   field :seo_description, type: String, localize: true
 
-  mount_uploader :main_image, AssetUploader
+  mount_uploader :main_image, GridImageUploader
 
   field :main_image_color, type: String, default: '#ffffff'
 

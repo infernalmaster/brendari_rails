@@ -35,4 +35,11 @@ namespace :brendari do
   task user_seeds: :environment do
     User.create!(email: 'q@q.q', password: '111111', password_confirmation: '111111')
   end
+
+  desc "recreate image versions"
+  task recreate_image_versions: :environment do
+    Logo.all.each { |l| l.image_gray.recreate_versions! }
+    Logo.all.each { |l| l.image_colorfull.recreate_versions! if l.image_colorfull.present? }
+    Project.all.each { |p| p.main_image.recreate_versions! }
+  end
 end

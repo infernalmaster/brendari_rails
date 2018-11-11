@@ -278,7 +278,6 @@ document.addEventListener('DOMContentLoaded', () => {
   )
 
   Barba.Pjax.getTransition = function () {
-    console.log(document.location.pathname)
     if (isSafari && !linkClicked) return HideShowTransition
 
     const nextUrl = document.location.pathname

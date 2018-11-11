@@ -10,8 +10,8 @@ class Logo
   field :size, type: String
   field :position, type: Integer
 
-  mount_uploader :image_gray, AssetUploader
-  mount_uploader :image_colorfull, AssetUploader
+  mount_uploader :image_gray, GridImageUploader
+  mount_uploader :image_colorfull, GridImageUploader
   mount_uploader :animation, AssetUploader
 
   validates :size, inclusion: { in: SIZES }, presence: true

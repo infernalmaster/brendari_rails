@@ -24,7 +24,8 @@
         = link_to t("menu.projects"), projects_path, class: 'bp-link'
         %svg{class: "bp-shape", width: "9", height: "9", viewBox: "0 0 9 9", xmlns: "http://www.w3.org/2000/svg"}
           %path{d: "M.5.5h8v8h-8z", stroke: "#F00", fill: "#F00", 'fill-rule': "evenodd"}
-      .bp-hover-wrap.bg-cover.load-now{'data-src': resize(project_image_url, w: 700, h: 1600, ext: 'jpg')}
+      .bp-hover-wrap.bg-cover.load-now{'data-src': project_image_url}
+      -# .bp-hover-wrap.bg-cover.load-now{'data-src': resize(project_image_url, w: 700, h: 1600, ext: 'jpg')}
 
   .plate-divider.plate-divider-2
   %section.big-plate
@@ -59,7 +60,8 @@
     %section.mob-section.bg-2men.load-now{'data-src': asset_path("about.jpg")}
       %h2.mob-title= t("menu.about")
       = link_to t("home.explore"), about_path, class: 'btn-explore'
-    %section.mob-section.bg-cover.load-now{'data-src': resize(project_image_url, w: 700, h: 1600, ext: 'jpg')}
+    -# %section.mob-section.bg-cover.load-now{'data-src': resize(project_image_url, w: 700, h: 1600, ext: 'jpg')}
+    %section.mob-section.bg-cover.load-now{'data-src': project_image_url}
       %h2.mob-title= t("menu.projects")
       = link_to t("home.explore"), projects_path, class: 'btn-explore'
     %section.mob-section.mob-section-video
