@@ -1,117 +1,117 @@
 export default [
   {
-    elementType: 'geometry',
+    elementType: "geometry",
     stylers: [
       {
-        color: '#333333'
+        color: "#333333"
       }
     ]
   },
   {
-    elementType: 'labels.icon',
+    elementType: "labels.icon",
     stylers: [
       {
-        visibility: 'off'
+        visibility: "off"
       }
     ]
   },
   {
-    elementType: 'labels.text.fill',
+    elementType: "labels.text.fill",
     stylers: [
       {
-        color: '#757575'
+        color: "#757575"
       }
     ]
   },
   {
-    elementType: 'labels.text.stroke',
+    elementType: "labels.text.stroke",
     stylers: [
       {
-        color: '#212121'
+        color: "#212121"
       }
     ]
   },
   {
-    featureType: 'administrative',
+    featureType: "administrative",
     stylers: [
       {
-        visibility: 'off'
+        visibility: "off"
       }
     ]
   },
   {
-    featureType: 'landscape.man_made',
+    featureType: "landscape.man_made",
     stylers: [
       {
-        visibility: 'off'
+        visibility: "off"
       }
     ]
   },
   {
-    featureType: 'poi',
-    elementType: 'labels.text.fill',
+    featureType: "poi",
+    elementType: "labels.text.fill",
     stylers: [
       {
-        color: '#757575'
+        color: "#757575"
       }
     ]
   },
   {
-    featureType: 'poi.park',
-    elementType: 'geometry',
+    featureType: "poi.park",
+    elementType: "geometry",
     stylers: [
       {
-        color: '#2c2c2c'
+        color: "#2c2c2c"
       }
     ]
   },
   {
-    featureType: 'road',
-    elementType: 'geometry.fill',
+    featureType: "road",
+    elementType: "geometry.fill",
     stylers: [
       {
-        color: '#1d1d1d'
+        color: "#1d1d1d"
       }
     ]
   },
   {
-    featureType: 'road',
-    elementType: 'labels.text.fill',
+    featureType: "road",
+    elementType: "labels.text.fill",
     stylers: [
       {
-        color: '#8a8a8a'
+        color: "#8a8a8a"
       }
     ]
   },
   {
-    featureType: 'road.arterial',
-    elementType: 'geometry',
+    featureType: "road.arterial",
+    elementType: "geometry",
     stylers: [
       {
-        color: '#373737'
+        color: "#373737"
       }
     ]
   },
   {
-    featureType: 'road.arterial',
-    elementType: 'geometry.fill',
+    featureType: "road.arterial",
+    elementType: "geometry.fill",
     stylers: [
       {
-        color: '#1d1d1d'
+        color: "#1d1d1d"
       }
     ]
   },
   {
-    featureType: 'road.highway.controlled_access',
-    elementType: 'geometry',
+    featureType: "road.highway.controlled_access",
+    elementType: "geometry",
     stylers: [
       {
-        color: '#4e4e4e'
+        color: "#4e4e4e"
       }
     ]
   },
   {
-    featureType: 'road.local',
+    featureType: "road.local",
     stylers: [
       {
         weight: 3
@@ -119,48 +119,48 @@ export default [
     ]
   },
   {
-    featureType: 'road.local',
-    elementType: 'geometry.fill',
+    featureType: "road.local",
+    elementType: "geometry.fill",
     stylers: [
       {
-        color: '#282828'
+        color: "#282828"
       }
     ]
   },
   {
-    featureType: 'road.local',
-    elementType: 'labels.text.fill',
+    featureType: "road.local",
+    elementType: "labels.text.fill",
     stylers: [
       {
-        color: '#616161'
+        color: "#616161"
       }
     ]
   },
   {
-    featureType: 'transit',
-    elementType: 'labels.text.fill',
+    featureType: "transit",
+    elementType: "labels.text.fill",
     stylers: [
       {
-        color: '#757575'
+        color: "#757575"
       }
     ]
   },
   {
-    featureType: 'water',
-    elementType: 'geometry',
+    featureType: "water",
+    elementType: "geometry",
     stylers: [
       {
-        color: '#000000'
+        color: "#000000"
       }
     ]
   },
   {
-    featureType: 'water',
-    elementType: 'labels.text.fill',
+    featureType: "water",
+    elementType: "labels.text.fill",
     stylers: [
       {
-        color: '#3d3d3d'
+        color: "#3d3d3d"
       }
     ]
   }
-]
+];

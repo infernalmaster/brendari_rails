@@ -15,22 +15,22 @@
 
 function lazyLoad(entries) {
   entries.forEach(entry => {
-    let src = entry.getAttribute('data-src')
-    let srcset = entry.getAttribute('data-srcset')
+    let src = entry.getAttribute("data-src");
+    let srcset = entry.getAttribute("data-srcset");
     if (
-      entry.tagName.toLowerCase() === 'img' ||
-      entry.tagName.toLowerCase() === 'video'
+      entry.tagName.toLowerCase() === "img" ||
+      entry.tagName.toLowerCase() === "video"
     ) {
       if (src) {
-        entry.src = src
+        entry.src = src;
       }
       if (srcset) {
-        entry.srcset = srcset
+        entry.srcset = srcset;
       }
     } else {
-      entry.style.backgroundImage = 'url(' + src + ')'
+      entry.style.backgroundImage = "url(" + src + ")";
     }
-  })
+  });
 }
 
-export default lazyLoad
+export default lazyLoad;

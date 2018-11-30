@@ -1,14 +1,14 @@
 //= require hammerjs/hammer.js
 //= require muuri/muuri.js
 
-$(document).on('ready', function() {
+$(document).on("ready", function() {
   // grid
-  var msnryContainer = document.querySelector('.js-msnry');
+  var msnryContainer = document.querySelector(".js-msnry");
   if (msnryContainer) {
-    msnryContainer.classList.add('js-activated');
+    msnryContainer.classList.add("js-activated");
 
-    var g = new Muuri('.msnry', {
-      items: '.msnry-item',
+    var g = new Muuri(".msnry", {
+      items: ".msnry-item",
       layoutDuration: 0,
       dragReleaseDuration: 0,
       dragEnabled: true,
@@ -16,7 +16,7 @@ $(document).on('ready', function() {
       dragSortInterval: 20,
       dragSortPredicate: {
         threshold: 60,
-        action: 'swap'
+        action: "swap"
       },
       layout: {
         fillGaps: true,
@@ -25,21 +25,24 @@ $(document).on('ready', function() {
         alignBottom: false,
         rounding: false
       }
-    }).on('dragReleaseEnd', function() {
+    }).on("dragReleaseEnd", function() {
       g.synchronize();
-      var ids = Array.from(document.querySelectorAll('.msnry-item'))
-        .map(function(el) { return el.dataset.id });
+      var ids = Array.from(document.querySelectorAll(".msnry-item")).map(
+        function(el) {
+          return el.dataset.id;
+        }
+      );
 
       $.ajax({
-        type: 'POST',
+        type: "POST",
         url: document.location.pathname,
         data: {
-          ids: ids.join(','),
+          ids: ids.join(",")
         },
         success: function(resp) {
-          console.log('saved')
+          console.log("saved");
         },
-        dataType: 'json'
+        dataType: "json"
       });
     });
   }
