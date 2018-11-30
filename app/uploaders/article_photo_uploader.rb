@@ -10,8 +10,12 @@ class ArticlePhotoUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  def filename
-    "#{Time.now.getutc.to_i}-#{Random.rand(999999)}__#{file.basename}.jpg" if original_filename
+  # def filename
+  #   "#{Time.now.getutc.to_i}-#{Random.rand(999999)}__#{file.basename}.#{file.extension}" if original_filename
+  # end
+
+  def store_dir
+    "uploads/articles/#{Time.zone.now.strftime("%d-%m-%Y")}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
