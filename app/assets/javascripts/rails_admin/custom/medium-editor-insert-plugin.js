@@ -48,7 +48,7 @@ return "            <li><button data-addon=\""
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
   var stack1;
 
-return "<div class=\"medium-insert-buttons\" contenteditable=\"false\" style=\"display: none\">\n    <button class=\"medium-insert-buttons-show\" type=\"button\"><span>+</span></button>\n    <ul class=\"medium-insert-buttons-addons\" style=\"display: none\">\n"
+return "<div class=\"medium-insert-buttons\" style=\"display: none\">\n  <button class=\"medium-insert-buttons-show\" type=\"button\"><span>+</span></button>\n    <ul class=\"medium-insert-buttons-addons\" style=\"display: none\">\n"
   + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.addons : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
   + "    </ul>\n</div>\n";
 },"useData":true});
@@ -56,7 +56,7 @@ return "<div class=\"medium-insert-buttons\" contenteditable=\"false\" style=\"d
 this["MediumInsert"]["Templates"]["src/js/templates/core-caption.hbs"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
   var helper;
 
-return "<figcaption contenteditable=\"true\" class=\"medium-insert-caption-placeholder\" data-placeholder=\""
+return "<figcaption class=\"medium-insert-caption-placeholder\" data-placeholder=\""
   + container.escapeExpression(((helper = (helper = helpers.placeholder || (depth0 != null ? depth0.placeholder : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"placeholder","hash":{},"data":data}) : helper)))
   + "\"></figcaption>";
 },"useData":true});
@@ -100,7 +100,7 @@ return ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.styles : de
 this["MediumInsert"]["Templates"]["src/js/templates/embeds-wrapper.hbs"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
   var stack1, helper;
 
-return "<div class=\"medium-insert-embeds\" contenteditable=\"false\">\n	<figure>\n		<div class=\"medium-insert-embed\">\n			"
+return "<div class=\"medium-insert-embeds\">\n	<figure>\n		<div class=\"medium-insert-embed\">\n			"
   + ((stack1 = ((helper = (helper = helpers.html || (depth0 != null ? depth0.html : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"html","hash":{},"data":data}) : helper))) != null ? stack1 : "")
   + "\n		</div>\n	</figure>\n	<div class=\"medium-insert-embeds-overlay\"></div>\n</div>";
 },"useData":true});
@@ -114,7 +114,7 @@ this["MediumInsert"]["Templates"]["src/js/templates/images-image.hbs"] = Handleb
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
   var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {});
 
-return "<figure contenteditable=\"false\">\n    <img src=\""
+return "<figure>\n    <img src=\""
   + container.escapeExpression(((helper = (helper = helpers.img || (depth0 != null ? depth0.img : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"img","hash":{},"data":data}) : helper)))
   + "\" alt=\"\" />\n"
   + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.progress : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
@@ -910,7 +910,6 @@ return "<div class=\"medium-insert-images-toolbar medium-editor-toolbar medium-t
   Embeds.prototype.init = function () {
       var $embeds = this.$el.find('.medium-insert-embeds');
 
-      $embeds.attr('contenteditable', false);
       $embeds.each(function () {
           if ($(this).find('.medium-insert-embeds-overlay').length === 0) {
               $(this).append($('<div />').addClass('medium-insert-embeds-overlay'));
@@ -985,8 +984,6 @@ return "<div class=\"medium-insert-images-toolbar medium-editor-toolbar medium-t
           var $data = $('<div />').html(data[key].value),
               $embeds = $data.find('.medium-insert-embeds');
 
-          $embeds.removeAttr('contenteditable');
-          $embeds.find('figcaption').removeAttr('contenteditable');
           $data.find('.medium-insert-embeds-overlay').remove();
 
           data[key].value = $data.html();
@@ -1615,7 +1612,7 @@ return "<div class=\"medium-insert-images-toolbar medium-editor-toolbar medium-t
                   // removed: function ($el) {}
               },
               grid: {
-                  label: '<span class="fa fa-th"></span>'
+                  label: '<span class="fa fa-align-justify fa-rotate-90"></span>'
                   // added: function ($el) {},
                   // removed: function ($el) {}
               }
@@ -1701,9 +1698,6 @@ return "<div class=\"medium-insert-images-toolbar medium-editor-toolbar medium-t
   Images.prototype.init = function () {
       var $images = this.$el.find('.medium-insert-images');
 
-      $images.find('figcaption').attr('contenteditable', true);
-      $images.find('figure').attr('contenteditable', false);
-
       this.events();
       this.backwardsCompatibility();
       this.sorting();
@@ -1718,7 +1712,7 @@ return "<div class=\"medium-insert-images-toolbar medium-editor-toolbar medium-t
   Images.prototype.events = function () {
       $(document)
           .on('click', $.proxy(this, 'unselectImage'))
-          .on('keydown', $.proxy(this, 'removeImage'))
+          .on('keydown', $.proxy(this, 'handleKeyDown'))
           .on('click', '.medium-insert-images-toolbar .medium-editor-action', $.proxy(this, 'toolbarAction'))
           .on('click', '.medium-insert-images-toolbar2 .medium-editor-action', $.proxy(this, 'toolbar2Action'));
 
@@ -1757,7 +1751,6 @@ return "<div class=\"medium-insert-images-toolbar medium-editor-toolbar medium-t
       $.each(data, function (key) {
           var $data = $('<div />').html(data[key].value);
 
-          $data.find('.medium-insert-images').find('figcaption, figure').removeAttr('contenteditable');
           $data.find('.medium-insert-images-progress').remove();
 
           data[key].value = $data.html();
@@ -2077,49 +2070,35 @@ return "<div class=\"medium-insert-images-toolbar medium-editor-toolbar medium-t
   };
 
   /**
-   * Remove image
+   * Handle click
    *
    * @param {Event} e
    * @returns {void}
    */
 
-  Images.prototype.removeImage = function (e) {
+  Images.prototype.handleKeyDown = function (e) {
+      console.log(e.which)
+      if (e.which === 13) {
+        this.$el.find('.medium-insert-active, .medium-insert-embeds-selected').after('<p><br></p>');
+        this.core.triggerInput();
+      }
+
+      var newTextColumn = '<section><section><p><br></p></section></section>'
+      // add right
+      if (e.which === 82) {
+        this.$el.find('.medium-insert-active, .medium-insert-embeds-selected').append(newTextColumn);
+      }
+      if (e.which === 76) {
+        this.$el.find('.medium-insert-active, .medium-insert-embeds-selected').prepend(newTextColumn);
+      }
+
       var images = [],
-          $selectedImage = this.$el.find('.medium-insert-image-active'),
-          $parent, $empty, selection, range, current, caretPosition, $current, $sibling, selectedHtml, i;
+        $selectedImage = this.$el.find('.medium-insert-image-active'),
+        $parent, $empty, selectedHtml, i;
 
       if (e.which === 8 || e.which === 46) {
           if ($selectedImage.length) {
               images.push($selectedImage);
-          }
-
-          // Remove image even if it's not selected, but backspace/del is pressed in text
-          selection = window.getSelection();
-          if (selection && selection.rangeCount) {
-              range = selection.getRangeAt(0);
-              current = range.commonAncestorContainer;
-              $current = current.nodeName === '#text' || current.nodeName === 'BR' ? $(current).parent() : $(current);
-              caretPosition = MediumEditor.selection.getCaretOffsets(current).left;
-
-              // Is backspace pressed and caret is at the beginning of a paragraph, get previous element
-              if (e.which === 8 && caretPosition === 0) {
-                  $sibling = $current.prev();
-              // Is del pressed and caret is at the end of a paragraph, get next element
-              } else if (e.which === 46 && caretPosition === $current.text().length) {
-                  $sibling = $current.next();
-              }
-
-              if ($sibling && $sibling.hasClass('medium-insert-images')) {
-                  images.push($sibling.find('img'));
-              }
-
-              // If text is selected, find images in the selection
-              selectedHtml = MediumEditor.selection.getSelectionHtml(document);
-              if (selectedHtml) {
-                  $('<div></div>').html(selectedHtml).find('.medium-insert-images img').each(function () {
-                      images.push($(this));
-                  });
-              }
           }
 
           if (images.length) {
@@ -2129,7 +2108,7 @@ return "<div class=\"medium-insert-images-toolbar medium-editor-toolbar medium-t
                   $parent = images[i].closest('.medium-insert-images');
                   images[i].closest('figure').remove();
 
-                  if ($parent.find('figure').length === 0) {
+                  if ($parent.find('figure').length === 0 && $parent.find('section').length === 0) {
                       $empty = $parent.next();
                       if ($empty.is('p') === false || $empty.text() !== '') {
                           $empty = $(this.templates['src/js/templates/core-empty-line.hbs']().trim());

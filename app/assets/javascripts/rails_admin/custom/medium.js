@@ -33,6 +33,7 @@ $(document).on("rails_admin.dom_ready", function() {
 
       var autolist = new AutoList();
       var editor = new MediumEditor($editorEl[0], {
+        placeholder: false,
         autoLink: true,
         imageDragging: false,
         disableExtraSpaces: true,
@@ -65,11 +66,45 @@ $(document).on("rails_admin.dom_ready", function() {
               url: "/article_photos/create",
               acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
             },
-            deleteScript: "/article_photos/delete",
+            deleteScript: false,//"/article_photos/delete",
 
+            actions: {
+              remove: {
+                label: '<span class="fa fa-times"></span>',
+                clicked: function () {
+                  var $event = $.Event('keydown');
+
+                  $event.which = 8;
+                  $(document).trigger($event);
+                }
+              },
+
+              addTextColumnLeft: {
+                label: '<span class="fa fa-chevron-left"></span>',
+                clicked: function () {
+                  var $event = $.Event('keydown');
+
+                  $event.which = 76;
+                  $(document).trigger($event);
+                }
+              },
+              addTextColumnRight: {
+                label: '<span class="fa fa-chevron-right"></span>',
+                clicked: function () {
+                  var $event = $.Event('keydown');
+
+                  $event.which = 82;
+                  $(document).trigger($event);
+                }
+              }
+            },
             preview: false, // preview is very laggy
-            captions: true,
+            captions: false,
             autoGrid: 2 // (integer) Min number of images that automatically form a grid
+          },
+          embeds: {
+            captions: false,
+            styles: null
           }
         }
       });
