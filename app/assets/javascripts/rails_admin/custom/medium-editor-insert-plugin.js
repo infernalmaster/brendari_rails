@@ -2077,20 +2077,24 @@ return "<div class=\"medium-insert-images-toolbar medium-editor-toolbar medium-t
    */
 
   Images.prototype.handleKeyDown = function (e) {
-      console.log(e.which)
-      if (e.which === 13) {
-        this.$el.find('.medium-insert-active, .medium-insert-embeds-selected').after('<p><br></p>');
-        this.core.triggerInput();
+      if (this.$el.find('.medium-insert-image-active').length) {
+        if (e.which === 13) {
+          this.$el.find('.medium-insert-active, .medium-insert-embeds-selected').after('<p><br></p>');
+          this.core.triggerInput();
+        }
+
+        var newTextColumn = '<section><section><p><br></p></section></section>'
+        // add right
+        if (e.which === 82) {
+          this.$el.find('.medium-insert-active, .medium-insert-embeds-selected').append(newTextColumn);
+          this.core.triggerInput();
+        }
+        if (e.which === 76) {
+          this.$el.find('.medium-insert-active, .medium-insert-embeds-selected').prepend(newTextColumn);
+          this.core.triggerInput();
+        }
       }
 
-      var newTextColumn = '<section><section><p><br></p></section></section>'
-      // add right
-      if (e.which === 82) {
-        this.$el.find('.medium-insert-active, .medium-insert-embeds-selected').append(newTextColumn);
-      }
-      if (e.which === 76) {
-        this.$el.find('.medium-insert-active, .medium-insert-embeds-selected').prepend(newTextColumn);
-      }
 
       var images = [],
         $selectedImage = this.$el.find('.medium-insert-image-active'),
