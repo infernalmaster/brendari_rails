@@ -1,11 +1,8 @@
 //= require medium-editor/dist/js/medium-editor.js
-//= require medium-editor-autolist/dist/autolist.js
 //= require 'handlebars/dist/handlebars.runtime.min.js'
 //= require 'blueimp-file-upload/js/jquery.fileupload.js'
-//= require './medium-editor-insert-plugin.js'
-
-// medium-editor-autolist fork used because of bug
-// https://github.com/varun-raj/medium-editor-autolist/issues/1
+//= require ./medium-editor-insert-plugin.js
+//= require ./autolist.js
 
 // So rails tries to load application.js|css from jquery-sortable
 // It's strange behavior of sprockets.
