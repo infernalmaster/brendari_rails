@@ -2083,7 +2083,7 @@ return "<div class=\"medium-insert-images-toolbar medium-editor-toolbar medium-t
           this.core.triggerInput();
         }
 
-        var newTextColumn = '<section><section><p><br></p></section></section>'
+        var newTextColumn = '<section><p><br></p></section>'
         // add right
         if (e.which === 82) {
           this.$el.find('.medium-insert-active, .medium-insert-embeds-selected').append(newTextColumn);

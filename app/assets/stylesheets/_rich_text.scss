@@ -14,7 +14,7 @@
   blockquote,
   ul, ol,
   h1, h2, h3, h4, h5, h6 {
-    margin: 1.5em auto;
+    margin: 1em auto;
     max-width: 740px;
 
     font-size: inherit;
@@ -49,79 +49,103 @@
     line-height: 1.4;
   }
 
-
   figure {
     margin: 0;
-    img {
-      display: block;
+  }
+
+  .medium-insert-images, .medium-insert-embeds {
+    margin: 1em -0.5em;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+
+    & > * {
+      padding: 0 0.5em;
+      margin-top: 0em;
+      flex: 1 0 0;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    figure {
+      img {
+        margin: 0;
+        max-width: 100%;
+        display: block;
+      }
+    }
+
+    section {
+      *:first-child {
+        margin-top: 0;
+      }
+      *:last-child {
+        margin-bottom: 0;
+      }
     }
   }
+
+  // really it's to make width as text
+  .medium-insert-embeds-left, .medium-insert-images-grid {
+    max-width: calc(740px + 1em);
+
+    @media (min-width: 800px) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+
+  .medium-insert-images-left,
+  .medium-insert-images-right {
+    margin: 0 0 1em 0;
+    max-width: 50%;
+    figure {
+      padding: 0;
+    }
+  }
+  .medium-insert-images-left {
+    margin-right: 0.5em;
+    padding-right: 0.5em;
+    float: left;
+  }
+  .medium-insert-images-right {
+    margin-left: 0.5em;
+    padding-left: 0.5em;
+    float: right;
+  }
+
+  @media (max-width: 600px) {
+    .medium-insert-images, .medium-insert-embeds {
+      display: block;
+
+      & > * {
+        margin: 1em 0 0 0;
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+
+  .medium-insert-images-left,
+  .medium-insert-images-right {
+      margin: 1em 0;
+      padding: 0;
+      max-width: 100%;
+      float: none;
+    }
+  }
+
+
 
   figcaption {
     text-align: center;
     font-size: 0.8em;
     margin-top: 10px !important;
     margin-bottom: 10px !important;
-  }
-
-  .medium-insert-images,
-  .medium-insert-embeds {
-    margin: 1em 0;
-  }
-
-  .medium-insert-images {
-    figure {
-      img {
-        max-width: 100%;
-        margin-top: 1em;
-        vertical-align: top;
-        width: 100%;
-      }
-    }
-
-    figure:first-child img {
-      margin-top: 0;
-    }
-
-    &.medium-insert-images-grid {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      justify-content: center;
-      margin: 1em -0.5em;
-      & > * {
-        flex: 1 0 0;
-        & > * {
-          max-width: calc(100% - 1em);
-          margin: 0 0.5em;
-          & > * {
-            margin-top: 0;
-          }
-        }
-      }
-    }
-
-    &.medium-insert-images-left,
-    &.medium-insert-images-right {
-      margin: 0 0 1em 0;
-      max-width: 50%;
-    }
-
-    &.medium-insert-images-left {
-      margin-right: 0.5em;
-      float: left;
-      img {
-        padding-right: 0.5em;
-      }
-    }
-
-    &.medium-insert-images-right {
-      margin-left: 0.5em;
-      float: right;
-      img {
-        padding-left: 0.5em;
-      }
-    }
   }
 
 

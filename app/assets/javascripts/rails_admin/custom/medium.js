@@ -50,6 +50,9 @@ $(document).on("rails_admin.dom_ready", function() {
             "h2",
             "h3",
             "quote",
+            "justifyLeft",
+            "justifyCenter",
+            "justifyRight",
             "unorderedlist",
             "orderedlist",
             "removeFormat"
@@ -66,13 +69,13 @@ $(document).on("rails_admin.dom_ready", function() {
               url: "/article_photos/create",
               acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
             },
-            deleteScript: false,//"/article_photos/delete",
+            deleteScript: false, // "/article_photos/delete",
 
             actions: {
               remove: {
                 label: '<span class="fa fa-times"></span>',
-                clicked: function () {
-                  var $event = $.Event('keydown');
+                clicked: function() {
+                  var $event = $.Event("keydown");
 
                   $event.which = 8;
                   $(document).trigger($event);
@@ -81,8 +84,8 @@ $(document).on("rails_admin.dom_ready", function() {
 
               addTextColumnLeft: {
                 label: '<span class="fa fa-chevron-left"></span>',
-                clicked: function () {
-                  var $event = $.Event('keydown');
+                clicked: function() {
+                  var $event = $.Event("keydown");
 
                   $event.which = 76;
                   $(document).trigger($event);
@@ -90,8 +93,8 @@ $(document).on("rails_admin.dom_ready", function() {
               },
               addTextColumnRight: {
                 label: '<span class="fa fa-chevron-right"></span>',
-                clicked: function () {
-                  var $event = $.Event('keydown');
+                clicked: function() {
+                  var $event = $.Event("keydown");
 
                   $event.which = 82;
                   $(document).trigger($event);
@@ -104,7 +107,15 @@ $(document).on("rails_admin.dom_ready", function() {
           },
           embeds: {
             captions: false,
-            styles: null
+            styles: {
+              wide: {
+                label: '<span class="fa fa-align-justify"></span>'
+              },
+              left: {
+                label: '<span class="fa fa-align-justify fa-rotate-90"></span>'
+              },
+              right: null
+            }
           }
         }
       });

@@ -50,14 +50,14 @@
     margin: 0 auto !important; }
   .medium-insert-embeds div, .mediumInsert-embeds div {
     margin: 0 auto !important; }
-  .medium-insert-embeds.medium-insert-embeds-left, .medium-insert-embeds-left.mediumInsert-embeds {
+  /* .medium-insert-embeds.medium-insert-embeds-left, .medium-insert-embeds-left.mediumInsert-embeds {
     width: 33.33%;
     float: left;
     margin: 0 30px 20px 0; }
   .medium-insert-embeds.medium-insert-embeds-right, .medium-insert-embeds-right.mediumInsert-embeds {
     width: 33.33%;
     float: right;
-    margin: 0 0 20px 30px; }
+    margin: 0 0 20px 30px; } */
 
 .medium-editor-insert-plugin {
   outline: 0 solid transparent; }
