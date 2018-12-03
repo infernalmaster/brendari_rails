@@ -14,6 +14,8 @@ KEYS
 * shop?
 * blog // https://marketplace.ghost.org/
 * погратися з анімаціями
+* https://github.com/jillix/medium-editor-custom-html
+* https://github.com/arcs-/medium-button
 
 # Block
 * open project and logo page

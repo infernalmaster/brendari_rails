@@ -16,9 +16,7 @@ $(document).on("rails_admin.dom_ready", function() {
       var $el = $(domEle);
 
       function getTextareaContent() {
-        return $el
-          .val()
-          .replace(/(contenteditable="false"|contenteditable="true")/g, "");
+        return $el.val().trim() || "<p><br></p>";
       }
 
       var $editorEl = $("<div></div>")
@@ -100,7 +98,7 @@ $(document).on("rails_admin.dom_ready", function() {
             },
             preview: false, // preview is very laggy
             captions: false,
-            autoGrid: 2 // (integer) Min number of images that automatically form a grid
+            autoGrid: 10 // (integer) Min number of images that automatically form a grid
           },
           embeds: {
             captions: false,
@@ -117,21 +115,26 @@ $(document).on("rails_admin.dom_ready", function() {
         }
       });
 
+      var isSyncFormToEditor = false;
       function syncEditorToForm() {
-        $el.html(
-          editor
-            .serialize()
-            ["element-0"].value.replace(
-              /(contenteditable="true"|contenteditable="false")/g,
-              ""
-            )
-            .replace(/(medium-insert-active)/g, "")
-            .replace(/class=""/g, "")
-        );
+        if (isSyncFormToEditor) {
+          isSyncFormToEditor = false;
+          return;
+        }
+
+        var html = editor
+          .serialize()
+          ["element-0"].value.replace(/(medium-insert-active)/g, "")
+          .replace(/ class=""/g, "");
+        // console.log("syncEditorToForm", html);
+        $el.val(html);
       }
 
-      function syncFromToEditor() {
-        editor.setContent(getTextareaContent());
+      function syncFormToEditor() {
+        isSyncFormToEditor = true;
+        var html = getTextareaContent();
+        // console.log("syncFormToEditor", html);
+        editor.setContent(html);
       }
 
       editor.subscribe("editableInput", syncEditorToForm);
@@ -140,6 +143,6 @@ $(document).on("rails_admin.dom_ready", function() {
 
       $el.addClass("js-initialized");
 
-      $el.on("change input", syncFromToEditor);
+      $el.on("change input", syncFormToEditor);
     });
 });
