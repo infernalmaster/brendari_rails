@@ -4,6 +4,7 @@ class Project
   include Mongoid::Slug
 
   SIZES = %w[1x1 1x2 2x1 2x2]
+  TEXT_COLORS = %w[black white]
 
   field :title, type: String, localize: true
   slug :title
@@ -15,18 +16,31 @@ class Project
   field :seo_title, type: String, localize: true
   field :seo_description, type: String, localize: true
 
+  field :text_color, type: String, default: TEXT_COLORS.first
+  field :background_color, type: String, default: '#fff'
+
   mount_uploader :main_image, GridImageUploader
 
   field :main_image_color, type: String, default: '#ffffff'
 
   validates :size, inclusion: { in: SIZES }, presence: true
-  validates :main_image_color, length: {is: 7}, presence: true
+  validates :main_image_color, length: { is: 7 }, presence: true
+
+  validates :text_color, inclusion: { in: TEXT_COLORS }, presence: true
+  validates :background_color, presence: true
 
   def size_enum
     SIZES
   end
 
+  def text_color_enum
+    TEXT_COLORS
+  end
+
   rails_admin do
+    configure :main_image_color, :string
+    configure :background_color, :string
+
     list do
       field :title do
         formatted_value do
@@ -50,7 +64,6 @@ class Project
           }
         end
       end
-      field :main_image_color, :string
     end
   end
 end

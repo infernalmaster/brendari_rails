@@ -1,5 +1,12 @@
-- content_for :title, @project.seo_title || @project.seo_title
-- content_for :description, @project.seo_description
+- content_for :title, @project.seo_title || @project.title
+- content_for :description, @project.seo_description || @project.subtitle
+
+- content_for :logo_color, @project.text_color
+:css
+  body, .main-nav {
+    background-color: #{@project.background_color};
+    color: #{@project.text_color};
+  }
 
 = render "partials/nav"
 

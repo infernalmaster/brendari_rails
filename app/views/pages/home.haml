@@ -8,7 +8,7 @@
   = link_to change_locale_path, class: "lang-switch ls-#{next_locale}" do
     %span.lang-switch-text= translate_locale(next_locale)
 
-  %img.big-logo{src: asset_path("svg/logo.svg"), alt: 'Brendari'}
+  %img.big-logo{src: asset_path("svg/logo-white.svg"), alt: 'Brendari'}
   %section.big-plate
     .overflow-hdn
       %p.bp-studio-short= raw(t("home.slogan"))
@@ -55,7 +55,7 @@
   .swipe-wrap
     %section.mob-section
       .mobs
-        %object{type: "image/svg+xml", data: asset_path("svg/logo.svg")} Brendari
+        %img{src: asset_path("svg/logo-white.svg"), alt: 'Brendari'}
         %p.mobs-studio-short= raw(t("home.slogan"))
     %section.mob-section.bg-2men.lazyload{'data-src': asset_path("about.jpg")}
       %h2.mob-title= t("menu.about")
