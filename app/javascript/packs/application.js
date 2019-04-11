@@ -9,6 +9,17 @@ import "intersection-observer";
 import ajaxGet from "../ajaxGet";
 import play from "../tetris";
 
+let supportsPassiveListener = false;
+try {
+  var opts = Object.defineProperty({}, "passive", {
+    get: function() {
+      supportsPassiveListener = true;
+    }
+  });
+  window.addEventListener("testPassive", null, opts);
+  window.removeEventListener("testPassive", null, opts);
+} catch (e) {}
+
 function initAll(ctx) {
   let count = 0;
   let gc = ctx.querySelector("#game");
@@ -132,16 +143,43 @@ function initAll(ctx) {
   // MENU
   const menu = ctx.querySelector(".js-menu");
   if (menu) {
-    ctx.querySelector(".js-open-menu").addEventListener("click", e => {
+    let isOpen = false;
+    ctx.querySelector(".js-open-close-menu").addEventListener("click", e => {
       e.preventDefault();
-      document.body.classList.add("no-scroll");
-      menu.classList.add("is-active");
+      if (isOpen) {
+        document.body.classList.remove("no-scroll");
+        menu.classList.remove("is-active");
+      } else {
+        document.body.classList.add("no-scroll");
+        menu.classList.add("is-active");
+      }
+      isOpen = !isOpen;
     });
-    ctx.querySelector(".js-close-menu").addEventListener("click", e => {
-      e.preventDefault();
-      document.body.classList.remove("no-scroll");
-      menu.classList.remove("is-active");
-    });
+
+    let html = document.querySelector("html");
+    let prevPosition = html.scrollTop;
+    let isHidden = false;
+    document.addEventListener(
+      "scroll",
+      e => {
+        let currentPosition = html.scrollTop;
+
+        if (isHidden && currentPosition < prevPosition) {
+          menu.classList.remove("is-hidden");
+          isHidden = false;
+        } else if (
+          !isHidden &&
+          currentPosition > 200 &&
+          currentPosition > prevPosition
+        ) {
+          menu.classList.add("is-hidden");
+          isHidden = true;
+        }
+
+        prevPosition = currentPosition;
+      },
+      supportsPassiveListener ? { passive: true } : false
+    );
   }
 
   // fix position for contacts page

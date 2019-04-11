@@ -3,6 +3,11 @@
 KEYS
 * SECRET_KEY_BASE
 
+scroll effects
+https://github.com/alexfoxy/laxxx
+
+native lazyload
+https://addyosmani.com/blog/lazy-loading/
 
 # Todo:
 * GA and other scripts

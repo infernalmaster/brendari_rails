@@ -11,10 +11,10 @@ docker-compose.*
 Dockerfile
 coverage/*
 log/*
+tmp/*
+storage/*
 node_modules/*
 public/assets/*
-storage/*
 public/packs/*
 public/packs-test/*
 public/uploads/*
-tmp/*

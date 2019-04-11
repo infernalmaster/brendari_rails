@@ -4,6 +4,10 @@
 = render "partials/nav"
 
 %main.about-wrap
+
+  .about-footer-wrap-mobile
+    = render "partials/footer"
+
   .staff
     - @brendars.each do |b|
       %section.brendar>
@@ -22,3 +26,5 @@
       %p Studio's co-founders Mykola Shkvarok and Yevhen Yefimenko work as professional designers since 2007. By now more than 100 unique logos, marks and symbols were created for local, national and international companies. In 2015 designers united to create their own design studio.
 
     %img.logo-color-big{src: asset_path("svg/logo-color-big.svg"), alt: 'Brendari'}
+    .about-footer-wrap-desktop
+      = render "partials/footer"

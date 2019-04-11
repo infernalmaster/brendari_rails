@@ -67,10 +67,10 @@
   will-change: filter;
 }
 .msnry-item-title {
-  font-size: 90px;
+  font-size: 48px;
+  line-height: 1;
   color: #ffffff;
-  line-height: 90px;
-  margin-left: 10px;
+  margin: 10px;
   font-weight: bold;
 
   transition: transform 0.3s;
@@ -78,12 +78,12 @@
   transform: translate3d(-125%, 0, 0);
 }
 .msnry-item-dscr {
-  font-size: 30px;
+  font-size: 24px;
+  line-height: 1;
   color: #ffffff;
-  line-height: 1.1;
   position: absolute;
   left: 10px;
-  bottom: 20px;
+  bottom: 10px;
   font-weight: bold;
 
   transition: transform 0.3s;
@@ -168,18 +168,18 @@
 @media #{$mobile} {
   .msnry-wrap {
     padding: 0;
+    margin: -5px;
   }
-  .msnry-aspect-inner {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
+
   .msnry-item,
   .msnry-item-2x2,
   .msnry-item-2x1,
   .msnry-item-1x2 {
     width: 100%;
+
+    &::before {
+      padding-bottom: 100%;
+    }
   }
 
   .msnry {
@@ -189,15 +189,31 @@
       .msnry-item-2x1,
       .msnry-item-1x2 {
         width: 100%;
+
+        &::before {
+          padding-bottom: 100%;
+        }
       }
     }
   }
 
-  .msnry-logos {
+  .msnry-wrap.msnry-logos {
+    margin: 0;
+
     .msnry-aspect-inner {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
       border-left: none;
       border-bottom: none;
       border-right: none;
+    }
+    .msnry-item:last-child {
+      .msnry-aspect-inner {
+        border-bottom: 1px solid #e1e1e1;
+      }
     }
   }
 }
@@ -228,10 +244,12 @@
 
 .msnry-logo, .msnry-logo-color {
   position: absolute;
-  width: 100%;
+  width: auto;
   height: 100%;
   top: 0;
-  left: 0;
+  margin: auto;
+  transform: translateX(-50%);
+  left: 50%;
 }
 
 .msnry-logo-color {
