@@ -4,37 +4,33 @@ class Project
   include Mongoid::Slug
 
   SIZES = %w[1x1 1x2 2x1 2x2]
-  TEXT_COLORS = %w[black white]
 
   field :title, type: String, localize: true
   slug :title
   field :subtitle, type: String, localize: true
   field :size, type: String, default: SIZES.first
   field :position, type: Integer
-  field :body, type: String, localize: true
 
   field :seo_title, type: String, localize: true
   field :seo_description, type: String, localize: true
 
-  field :text_color, type: String, default: TEXT_COLORS.first
+  field :is_text_dark, type: Boolean, default: true
   field :background_color, type: String, default: '#fff'
 
   mount_uploader :main_image, GridImageUploader
+
+  embeds_many :project_sections, cascade_callbacks: true
+  accepts_nested_attributes_for :project_sections
 
   field :main_image_color, type: String, default: '#ffffff'
 
   validates :size, inclusion: { in: SIZES }, presence: true
   validates :main_image_color, length: { is: 7 }, presence: true
 
-  validates :text_color, inclusion: { in: TEXT_COLORS }, presence: true
   validates :background_color, presence: true
 
   def size_enum
     SIZES
-  end
-
-  def text_color_enum
-    TEXT_COLORS
   end
 
   rails_admin do
@@ -56,14 +52,14 @@ class Project
 
     edit do
       exclude_fields :_slugs
-      configure :body do
-        html_attributes do
-          {
-            data: { richeditor: 'medium' },
-            class: 'rich-text'
-          }
-        end
-      end
+      # configure :body do
+      #   html_attributes do
+      #     {
+      #       data: { richeditor: 'medium' },
+      #       class: 'rich-text'
+      #     }
+      #   end
+      # end
     end
   end
 end

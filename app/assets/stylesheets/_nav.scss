@@ -1,5 +1,4 @@
 .main-nav {
-  padding: 42px 0;
   position: sticky;
   top: 0;
   left: 0;
@@ -7,13 +6,50 @@
   z-index: 50;
   background: #fff;
   line-height: 19px;
-  max-height: 120px;
+  height: 120px;
 
   transition: all 0.2s ease-in-out;
 
   &.is-hidden {
     transform: translateY(-100%);
   }
+}
+
+.main-nav-wrap {
+  padding: 42px 0;
+}
+
+
+.main-nav-header {
+  max-width: 690px;
+  margin: auto;
+  font-weight: bold;
+  overflow: hidden;
+}
+.main-nav-h1 {
+  font-size: 40px;
+  line-height: 49px;
+  margin: 18px 0 12px;
+}
+.main-nav-h2 {
+  font-size: 14px;
+  color: #9E9E9E;
+  margin: 0;
+}
+
+.main-nav-back {
+  position: absolute;
+  left: 70px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+
+  font-size: 14px;
+  color: #9E9E9E;
+
+  text-decoration: none;
+  width: 150px;
+  height: 17px;
 }
 
 // .main-nav-home {

@@ -1,18 +1,37 @@
 - content_for :title, @project.seo_title || @project.title
 - content_for :description, @project.seo_description || @project.subtitle
 
-- content_for :logo_color, @project.text_color
 :css
-  body, .main-nav {
+  body, .main-nav, .divider {
     background-color: #{@project.background_color};
-    color: #{@project.text_color};
+    color: #{@project.is_text_dark ? '#131313' : 'white'};
   }
 
-= render "partials/nav"
+  .rich-text {
+    color: #{@project.is_text_dark ? '#727272' : 'white'};
+  }
+
+  .main-nav-sandwich:before, .main-nav-sandwich__center, .main-nav-sandwich:after {
+    background: #{@project.is_text_dark ? 'black' : 'white'};
+  }
+
+= render "nav"
 
 %main.rich-text
-  %h1= @project.title
-  %h2= @project.subtitle
-  = raw @project.body
+  - @project.project_sections.order_by(position: :asc).each do |section|
+    %section{class: section.type}
+      - case section.type
+      - when 'text_one_column', 'text_two_columns'
+        = raw section.text
+      - when 'image_one_column'
+        %img{src: section.image1_url}
+      - when 'image_multi_column-1-1-1-1', 'image_multi_column_2-2', 'image_multi_column_1-1-2', 'image_multi_column_1-2-1', 'image_multi_column_2-1-1'
+        %img{src: section.image1_url}
+        %img{src: section.image2_url}
+        %img{src: section.image3_url}
+        %img{src: section.image4_url}
+        .divider.d1
+        .divider.d2
+        .divider.d3
 
 = render "partials/footer"

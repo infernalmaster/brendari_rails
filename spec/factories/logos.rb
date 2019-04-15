@@ -1,7 +1,5 @@
 FactoryBot.define do
   factory :logo do
-    size { Logo::SIZES.sample }
-
     title_translations do
       I18n.available_locales.inject({}) do |hash, locale|
         hash[locale] = Faker::Company.name

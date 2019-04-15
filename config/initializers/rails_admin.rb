@@ -30,14 +30,14 @@ RailsAdmin.config do |config|
     dashboard                     # mandatory
     index                         # mandatory
     new do
-      except ['SiteConfig', 'TextTranslation']
+      except %w[SiteConfig TextTranslation]
     end
     export
     bulk_delete
     show
     edit
     delete do
-      except ['SiteConfig', 'TextTranslation']
+      except %w[SiteConfig TextTranslation]
     end
     show_in_app
 
