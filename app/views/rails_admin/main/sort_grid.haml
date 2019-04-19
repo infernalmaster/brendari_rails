@@ -1,7 +1,7 @@
 .msnry-wrap
   .msnry.js-msnry
     - @objects.each do |object|
-      .msnry-item{class: "msnry-item-#{object.size}", data: {id: object.id.to_s}}
+      .msnry-item{class: "msnry-item-#{object.respond_to?(:size) ? object.size : '1x1'}", data: {id: object.id.to_s}}
         .msnry-aspect-inner
           - img = object.try(:image_gray_url) || object.try(:main_image_url)
 

@@ -213,6 +213,8 @@ function initAll(ctx) {
         video.src = e.target.dataset.video;
         video.autoplay = true;
         video.loop = true;
+        video.muted = true;
+
         video.classList.add("msnry-logo-video");
         e.target.parentNode.append(video);
       }
