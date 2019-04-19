@@ -10,6 +10,10 @@
   .rich-text {
     color: #{@project.is_text_dark ? '#727272' : 'white'};
   }
+  .rich-text h2, .rich-text h3 {
+    color: #{@project.is_text_dark ? '#131313' : 'white'};
+  }
+
 
   .main-nav-sandwich:before, .main-nav-sandwich__center, .main-nav-sandwich:after {
     background: #{@project.is_text_dark ? 'black' : 'white'};
@@ -26,10 +30,14 @@
       - when 'image_one_column'
         %img{src: section.image1_url}
       - when 'image_multi_column-1-1-1-1', 'image_multi_column_2-2', 'image_multi_column_1-1-2', 'image_multi_column_1-2-1', 'image_multi_column_2-1-1'
-        %img{src: section.image1_url}
-        %img{src: section.image2_url}
-        %img{src: section.image3_url}
-        %img{src: section.image4_url}
+        - if section.image1_url
+          %img{src: section.image1_url}
+        - if section.image2_url
+          %img{src: section.image2_url}
+        - if section.image3_url
+          %img{src: section.image3_url}
+        - if section.image4_url
+          %img{src: section.image4_url}
         .divider.d1
         .divider.d2
         .divider.d3

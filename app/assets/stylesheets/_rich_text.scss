@@ -17,7 +17,14 @@
 
   .text_one_column, .text_two_columns {
     margin: 80px auto;
-    max-width: 690px;
+    max-width: 710px;
+    padding: 0 10px;
+  }
+
+  @media #{$tablet} {
+    .text_one_column, .text_two_columns {
+      margin: 50px auto;
+    }
   }
 
   .text_two_columns {
@@ -25,6 +32,11 @@
     column-gap: 80px;
     & > *:first-child {
       margin-top: 0;
+    }
+  }
+  @media #{$tablet} {
+    .text_two_columns {
+      columns: unset;
     }
   }
 
@@ -84,6 +96,27 @@
     .d3 { display: none; }
   }
 
+
+  @media #{$mobile} {
+    .image_multi_column_1-1-1-1,
+    .image_multi_column_2-2,
+    .image_multi_column_1-1-2,
+    .image_multi_column_1-2-1,
+    .image_multi_column_2-1-1 {
+      img {
+        float: none;
+        width: 100% !important;
+        margin-bottom: 10px;
+      }
+      .divider {
+        display: none;
+      }
+      &:after {
+        display: none;
+      }
+    }
+  }
+
   p,
   blockquote,
   ul, ol,
@@ -94,24 +127,21 @@
     line-height: inherit;
   }
 
-  h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  h2+p, h3+p {
     margin-top: 0;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    margin: 1.5em auto 0.5em;
+  h2, h3 {
+    font-weight: normal;
+    margin: 30px auto 10px;
     line-height: 1.2;
-    color: #131313;
   }
 
-  h1 {
-    font-size: 2em;
-  }
   h2 {
-    font-size: 2em;
+    font-size: 28px;
   }
   h3 {
-    font-size: 1.5em;
+    font-size: 22px;
   }
 
   blockquote {

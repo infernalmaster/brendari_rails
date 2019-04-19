@@ -1,8 +1,10 @@
 //= require medium-editor/dist/js/medium-editor.js
-//= require 'handlebars/dist/handlebars.runtime.min.js'
-//= require 'blueimp-file-upload/js/jquery.fileupload.js'
-//= require ./medium-editor-insert-plugin.js
 //= require ./autolist.js
+
+// I don't use it right now
+/// = require 'handlebars/dist/handlebars.runtime.min.js'
+/// = require 'blueimp-file-upload/js/jquery.fileupload.js'
+/// = require ./medium-editor-insert-plugin.js
 
 // So rails tries to load application.js|css from jquery-sortable
 // It's strange behavior of sprockets.
@@ -23,8 +25,15 @@ $(document).on("rails_admin.dom_ready", function() {
         .html(getTextareaContent())
         .addClass($el.prop("class"));
 
-      $el.after($editorEl);
-      $editorEl.wrap("<div class='medium-editor-wrap'></div>");
+      $el.before($editorEl);
+
+      // show hide button
+      var $showHide = $('<button type="button">Show/Hide HTML</button>');
+      $el.before($showHide);
+      $el.toggle();
+      $showHide.on("click", function() {
+        $el.toggle();
+      });
 
       var autolist = new AutoList();
       var editor = new MediumEditor($editorEl[0], {
@@ -55,65 +64,66 @@ $(document).on("rails_admin.dom_ready", function() {
         }
       });
 
-      $editorEl.mediumInsert({
-        editor: editor,
-        addons: {
-          images: {
-            sorting: function() {}, // sorting plugin is a trash so I removed it
-            fileUploadOptions: {
-              url: "/article_photos/create",
-              acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
-            },
-            deleteScript: false, // "/article_photos/delete",
+      // $editorEl.wrap("<div class='medium-editor-wrap'></div>");
+      // $editorEl.mediumInsert({
+      //   editor: editor,
+      //   addons: {
+      //     images: {
+      //       sorting: function() {}, // sorting plugin is a trash so I removed it
+      //       fileUploadOptions: {
+      //         url: "/article_photos/create",
+      //         acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
+      //       },
+      //       deleteScript: false, // "/article_photos/delete",
 
-            actions: {
-              remove: {
-                label: '<span class="fa fa-times"></span>',
-                clicked: function() {
-                  var $event = $.Event("keydown");
+      //       actions: {
+      //         remove: {
+      //           label: '<span class="fa fa-times"></span>',
+      //           clicked: function() {
+      //             var $event = $.Event("keydown");
 
-                  $event.which = 8;
-                  $(document).trigger($event);
-                }
-              },
+      //             $event.which = 8;
+      //             $(document).trigger($event);
+      //           }
+      //         },
 
-              addTextColumnLeft: {
-                label: '<span class="fa fa-chevron-left"></span>',
-                clicked: function() {
-                  var $event = $.Event("keydown");
+      //         addTextColumnLeft: {
+      //           label: '<span class="fa fa-chevron-left"></span>',
+      //           clicked: function() {
+      //             var $event = $.Event("keydown");
 
-                  $event.which = 76;
-                  $(document).trigger($event);
-                }
-              },
-              addTextColumnRight: {
-                label: '<span class="fa fa-chevron-right"></span>',
-                clicked: function() {
-                  var $event = $.Event("keydown");
+      //             $event.which = 76;
+      //             $(document).trigger($event);
+      //           }
+      //         },
+      //         addTextColumnRight: {
+      //           label: '<span class="fa fa-chevron-right"></span>',
+      //           clicked: function() {
+      //             var $event = $.Event("keydown");
 
-                  $event.which = 82;
-                  $(document).trigger($event);
-                }
-              }
-            },
-            preview: false, // preview is very laggy
-            captions: false,
-            autoGrid: 10 // (integer) Min number of images that automatically form a grid
-          },
-          embeds: {
-            captions: false,
-            styles: {
-              wide: {
-                label: '<span class="fa fa-align-justify"></span>'
-              },
-              left: {
-                label: '<span class="fa fa-align-justify fa-rotate-90"></span>'
-              },
-              right: null
-            }
-          }
-        }
-      });
+      //             $event.which = 82;
+      //             $(document).trigger($event);
+      //           }
+      //         }
+      //       },
+      //       preview: false, // preview is very laggy
+      //       captions: false,
+      //       autoGrid: 10 // (integer) Min number of images that automatically form a grid
+      //     },
+      //     embeds: {
+      //       captions: false,
+      //       styles: {
+      //         wide: {
+      //           label: '<span class="fa fa-align-justify"></span>'
+      //         },
+      //         left: {
+      //           label: '<span class="fa fa-align-justify fa-rotate-90"></span>'
+      //         },
+      //         right: null
+      //       }
+      //     }
+      //   }
+      // });
 
       var isSyncFormToEditor = false;
       function syncEditorToForm() {
@@ -125,7 +135,8 @@ $(document).on("rails_admin.dom_ready", function() {
         var html = editor
           .serialize()
           ["element-0"].value.replace(/(medium-insert-active)/g, "")
-          .replace(/ class=""/g, "");
+          .replace(/ class=""/g, "")
+          .replace(/ style=""/g, "");
         // console.log("syncEditorToForm", html);
         $el.val(html);
       }

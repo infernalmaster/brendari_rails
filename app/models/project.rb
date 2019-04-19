@@ -17,7 +17,7 @@ class Project
   field :is_text_dark, type: Boolean, default: true
   field :background_color, type: String, default: '#fff'
 
-  mount_uploader :main_image, GridImageUploader
+  mount_uploader :main_image, AssetUploader
 
   embeds_many :project_sections, cascade_callbacks: true
   accepts_nested_attributes_for :project_sections

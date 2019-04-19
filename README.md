@@ -9,30 +9,6 @@ https://github.com/alexfoxy/laxxx
 native lazyload
 https://addyosmani.com/blog/lazy-loading/
 
-# Todo:
-* GA and other scripts
-* mongo backups
-* http://type-scale.com/
-
-# Ideas
-* images resize
-* shop?
-* blog // https://marketplace.ghost.org/
-* погратися з анімаціями
-* https://github.com/jillix/medium-editor-custom-html
-* https://github.com/arcs-/medium-button
-
-# Block
-* open project and logo page
-* about us page
-* HTTPS https://www.digitalocean.com/community/tutorials/how-to-set-up-let-s-encrypt-with-nginx-server-blocks-on-ubuntu-16-04
-* відео з логотипами на головну
-
-# Для Сивака:
-- відкритий проект
-- про нас
-- favicon
-
 може використати епловський шрифт?́
 body {
 font-family: SF Pro Text,-apple-system,-apple-system-font,Helvetica Neue,Helvetica,Verdana,Arial,sans-serif;

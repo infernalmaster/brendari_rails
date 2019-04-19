@@ -1,43 +1,15 @@
 %nav{class: "main-nav js-menu"}
 
-  = link_to projects_path, class: "main-nav-back" do
-    %svg{:height => "9", :width => "21", :xmlns => "http://www.w3.org/2000/svg"}
-      %g{:fill => "none", "fill-rule" => "evenodd", :stroke => "#9E9E9E"}
-        %path{:d => "M.5 4.5h5v4h-5zM.5.5h5v4h-5zM5.5 4.5h5v4h-5zM5.5.5h5v4h-5zM10.5.5h10v8h-10z"}
+  .main-nav-mobi-wrap
+    = link_to projects_path, class: "main-nav-back" do
+      %svg{:height => "9", :width => "21", :xmlns => "http://www.w3.org/2000/svg"}
+        %g{:fill => "none", "fill-rule" => "evenodd", :stroke => "#9E9E9E"}
+          %path{:d => "M.5 4.5h5v4h-5zM.5.5h5v4h-5zM5.5 4.5h5v4h-5zM5.5.5h5v4h-5zM10.5.5h10v8h-10z"}
 
-    = t("menu.back-to-grid")
+      = t("menu.back-to-grid")
+
+    = render 'partials/nav_other'
 
   %header.main-nav-header
     %h1.main-nav-h1= @project.title
     %p.main-nav-h2= @project.subtitle
-
-  -# = link_to root_path, class: "main-nav-link link-home" do
-  -#   - logo_src = yield(:logo_color) == 'white' ? asset_path("svg/logo-white.svg") : asset_path("svg/logo-black.svg")
-  -#   %img.nav-home-logo{src: logo_src, alt: 'Brendari'}
-
-  -# %span.main-nav-other
-  -#   - active = controller_name == 'pages' && action_name == 'about' ? "is-active" : ""
-  -#   = link_to about_path, class: "main-nav-link #{active}" do
-  -#     %svg.main-nav-icon{:height => "10", :viewbox => "0 0 10 10", :width => "10", :xmlns => "http://www.w3.org/2000/svg"}
-  -#       %circle{:cx => "45", :cy => "6", :fill => "#F00", "fill-rule" => "evenodd", :r => "4.5", :stroke => "#F00", :transform => "translate(-40 -1)"}
-  -#     = t("menu.about")
-
-  -#   - active = controller_name == 'projects' && action_name == 'index' ? "is-active" : ""
-  -#   = link_to projects_path, class: "main-nav-link #{active}" do
-  -#     %svg.main-nav-icon{:height => "9", :viewbox => "0 0 9 9", :width => "9", :xmlns => "http://www.w3.org/2000/svg"}
-  -#       %path{:d => "M.5.5h8v8h-8z", :fill => "#F00", "fill-rule" => "evenodd", :stroke => "#F00"}
-  -#     = t("menu.projects")
-
-  -#   - active = controller_name == 'logos' && action_name == 'index' ? "is-active" : ""
-  -#   = link_to logos_path, class: "main-nav-link #{active}" do
-  -#     %svg.main-nav-icon{:height => "11", :viewbox => "0 0 11 11", :width => "11", :xmlns => "http://www.w3.org/2000/svg"}
-  -#       %path{:d => "M5.5.63L.58 4.386 2.47 10.5h6.06l1.89-6.113L5.5.63z", :fill => "#F00", "fill-rule" => "evenodd", :stroke => "#F00"}
-  -#     = t("menu.logos")
-
-  -#   - active = controller_name == 'pages' && action_name == 'contacts' ? "is-active" : ""
-  -#   = link_to contacts_path, class: "main-nav-link #{active}" do
-  -#     %svg.main-nav-icon{:height => "10", :viewbox => "0 0 12 10", :width => "12", :xmlns => "http://www.w3.org/2000/svg"}
-  -#       %path{:d => "M6 9.028L.883.5h10.234L6 9.028z", :fill => "#F00", "fill-rule" => "evenodd", :stroke => "#F00"}
-  -#     = t("menu.contacts")
-
-  = render 'partials/nav_other'

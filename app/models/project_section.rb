@@ -1,10 +1,10 @@
 class ProjectSection
   include Mongoid::Document
 
+  # video
   TYPES = %w[
     text_one_column
     text_two_columns
-    video
     image_one_column
     image_multi_column_1-1-1-1
     image_multi_column_2-2
@@ -21,7 +21,7 @@ class ProjectSection
 
   # maybe just upload full video to site then pase url there
   # or  maybe upload banner first
-  field :video_url, type: String
+  # field :video_url, type: String
   # html = url.replace(/\n?/g, '')
   #   .replace(/^((http(s)?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/(watch\?v=|v\/)?)([a-zA-Z0-9\-_]+)(.*)?$/, '<div class="video video-youtube"><iframe width="420" height="315" src="//www.youtube.com/embed/$7" frameborder="0" allowfullscreen></iframe></div>')
   #   .replace(/^https?:\/\/vimeo\.com(\/.+)?\/([0-9]+)$/, '<div class="video video-vimeo"><iframe src="//player.vimeo.com/video/$2" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>')
@@ -46,10 +46,19 @@ class ProjectSection
   end
 
   rails_admin do
-    configure :video_url, :string
+    # configure :video_url, :string
 
     edit do
       # exclude_fields :_slugs
+
+      configure :type do
+        html_attributes do
+          {
+            class: 'js-section-type'
+          }
+        end
+      end
+
       configure :text do
         html_attributes do
           {
