@@ -16,7 +16,7 @@ $(document).on("ready", function() {
   };
 
   function handleChange($el) {
-    const $root = $el.parents(".fields.tab-pane");
+    var $root = $el.parents(".fields.tab-pane");
 
     $root.find(".form-group").hide();
     $root.find(cfg[$el[0].value]).show();

@@ -243,29 +243,33 @@ function initAll(ctx) {
 
   // Home mobile slider
   if (ctx.querySelector(".js-swipe")) {
-    const video = ctx.querySelector(".js-home-mob-video");
-    const dots = ctx.querySelectorAll(".js-mob-dot");
-    const homeSlider = new Swipejs(ctx.querySelector(".js-swipe"), {
-      draggable: true,
-      continuous: false,
-      transitionEnd(index, _) {
-        dots.forEach(d => d.classList.remove("is-active"));
-        dots[index].classList.add("is-active");
+    ctx.querySelectorAll(".js-swipe").forEach(slider => {
+      let homeSlider;
 
-        if (index === 3) {
-          video.play();
-        } else {
-          video.pause();
-          video.currentTime = 0;
+      let dw = slider.querySelector('.dots')
+      let dots = [...slider.querySelectorAll('.swipe-slide')].map((_, index) => {
+        let dot = document.createElement("div");
+        dot.classList.add("dot");
+        dw.append(dot);
+
+        dot.addEventListener("click", _ => {
+          homeSlider.slide(index, 300);
+        })
+
+        return dot
+      });
+      dots[0].classList.add("is-active");
+
+      homeSlider = new Swipejs(slider, {
+        draggable: true,
+        continuous: false,
+        callback(index, _) {
+          dots.forEach(d => d.classList.remove("is-active"));
+          dots[index].classList.add("is-active");
         }
-      }
-    });
+      });
 
-    dots.forEach((d, index) =>
-      d.addEventListener("click", _ => {
-        homeSlider.slide(index, 300);
-      })
-    );
+    });
   }
 
   lazyLoad(ctx.querySelectorAll(".lazyload"));
