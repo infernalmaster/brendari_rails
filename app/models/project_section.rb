@@ -18,6 +18,7 @@ class ProjectSection
   field :position, type: Integer
 
   field :text, type: String, localize: true
+  field :text2, type: String, localize: true
 
   # maybe just upload full video to site then pase url there
   # or  maybe upload banner first
@@ -60,6 +61,15 @@ class ProjectSection
       end
 
       configure :text do
+        html_attributes do
+          {
+            data: { richeditor: 'medium' },
+            class: 'rich-text'
+          }
+        end
+      end
+
+      configure :text2 do
         html_attributes do
           {
             data: { richeditor: 'medium' },

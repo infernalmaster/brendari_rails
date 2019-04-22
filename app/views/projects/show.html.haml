@@ -25,8 +25,13 @@
   - @project.project_sections.order_by(position: :asc).each do |section|
     %section{class: section.type}
       - case section.type
-      - when 'text_one_column', 'text_two_columns'
+      - when 'text_one_column'
         = raw section.text
+      - when 'text_two_columns'
+        .text-col1
+          = raw section.text
+        .text-col2
+          = raw section.text2
       - when 'image_one_column'
         %img{src: section.image1_url}
       - when 'image_multi_column-1-1-1-1', 'image_multi_column_2-2', 'image_multi_column_1-1-2', 'image_multi_column_1-2-1', 'image_multi_column_2-1-1'
