@@ -7,6 +7,8 @@ class Logo
   slug :title
   field :position, type: Integer
 
+  belongs_to :project, inverse_of: nil, optional: true
+
   mount_uploader :image_gray, AssetUploader
   mount_uploader :image_colorfull, AssetUploader
   mount_uploader :animation, AssetUploader

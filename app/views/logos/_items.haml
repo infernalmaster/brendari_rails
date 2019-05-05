@@ -5,7 +5,8 @@
       - if logo.animation.present?
         .msnry-gif-icon.js-play{'data-video': logo.animation_url} GIF
 
-      -# .msnry-open-icon
+      - if logo.project.present?
+        = link_to "", project_path(id: logo.project_id), class: "msnry-open-icon"
 
       %img.msnry-logo.lazyload{'data-src': logo.image_gray_url, alt: logo.title, src: image_path('0.png')}
 

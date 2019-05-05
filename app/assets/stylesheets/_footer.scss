@@ -61,7 +61,13 @@
 
 .f-contacs {
   text-align: right;
-  margin: 75px 0 90px;
+  margin: 65px 0 70px;
+  padding: 0;
+  list-style: none;
+  li {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .cf:after {

@@ -60,7 +60,11 @@
   }
   @media #{$tablet} {
     .text_two_columns {
-      columns: unset;
+      .text-col1, .text-col2 {
+        padding: 0;
+        float: none;
+        width: 100%;
+      }
     }
   }
 
