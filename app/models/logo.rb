@@ -30,6 +30,18 @@ class Logo
 
     edit do
       exclude_fields :_slugs
+
+      configure :image_gray do
+        help 'svg, png or jpg file. Aspect ratio 3x2'
+      end
+
+      configure :image_colorfull do
+        help 'svg, png or jpg file. Aspect ratio 3x2'
+      end
+
+      configure :animation do
+        help 'mp4 file. Aspect ratio 3x2'
+      end
     end
   end
 end
