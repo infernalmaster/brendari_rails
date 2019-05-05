@@ -225,39 +225,26 @@ function initAll(ctx) {
       }
     });
   })();
-  // video player on homepage
-  (() => {
-    const btn = ctx.querySelector(".js-play-home-video");
-    const video = ctx.querySelector(".js-home-video");
-    if (video) {
-      let playPromise;
-      btn.addEventListener("mouseover", _ => {
-        video.currentTime = 0;
-        playPromise = video.play();
-      });
-      btn.addEventListener("mouseout", _ => {
-        playPromise.then(_ => video.pause()).catch(console.log);
-      });
-    }
-  })();
 
   // Home mobile slider
   if (ctx.querySelector(".js-swipe")) {
     ctx.querySelectorAll(".js-swipe").forEach(slider => {
       let homeSlider;
 
-      let dw = slider.querySelector('.dots')
-      let dots = [...slider.querySelectorAll('.swipe-slide')].map((_, index) => {
-        let dot = document.createElement("div");
-        dot.classList.add("dot");
-        dw.append(dot);
+      let dw = slider.querySelector(".dots");
+      let dots = [...slider.querySelectorAll(".swipe-slide")].map(
+        (_, index) => {
+          let dot = document.createElement("div");
+          dot.classList.add("dot");
+          dw.append(dot);
 
-        dot.addEventListener("click", _ => {
-          homeSlider.slide(index, 300);
-        })
+          dot.addEventListener("click", _ => {
+            homeSlider.slide(index, 300);
+          });
 
-        return dot
-      });
+          return dot;
+        }
+      );
       dots[0].classList.add("is-active");
 
       homeSlider = new Swipejs(slider, {
@@ -268,7 +255,6 @@ function initAll(ctx) {
           dots[index].classList.add("is-active");
         }
       });
-
     });
   }
 

@@ -242,7 +242,7 @@
   z-index: 5;
 }
 
-.msnry-logo, .msnry-logo-color {
+.msnry-logo, .msnry-logo-color, .msnry-logo-video {
   position: absolute;
   width: auto;
   height: 100%;
@@ -253,15 +253,6 @@
 }
 
 .msnry-logo-color {
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   opacity: 0;
   transition: all 0.7s;
-  background-image: image-url('0.png')
-}
-
-.msnry-logo-video {
-  width: 100.1%;
-  position: absolute;
-  top: 0;
 }
