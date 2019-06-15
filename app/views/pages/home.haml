@@ -20,7 +20,7 @@
 
         .bp-hover__wrap
           .square
-            .square__inner.bphi.bphi--brendari-all          
+            .square__inner.bphi.bphi--brendari-all
           - @brendars.each_with_index do |b, i|
             .square
               .square__inner.bphi.bphi--brendar{style: "background-image: url(#{b.photo_url}); background-color: #{colors[i % colors.size]}"}
@@ -74,7 +74,7 @@
             .square__inner.bphi.bphi--be
           .square
             .square__inner.bphi.bphi--in
-              
+
 
 
 .home-mobile
@@ -86,18 +86,18 @@
     <svg class="m-down" width="48" height="48" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M24 .5C36.979.5 47.5 11.021 47.5 24S36.979 47.5 24 47.5.5 36.979.5 24 11.021.5 24 .5z" stroke="#B7B7B7"/><path fill="#B7B7B7" d="M23.22 26.336l-3.72-3.622-.75.708 5 4.828 5-4.828-.75-.708-3.72 3.622V17.75h-1.06z"/></g></svg>
 
   %section.m-s
-    %h2.m-title= t("menu.projects")
+    %h2.m-title
+      = link_to t("menu.projects"), projects_path
     .swipe.js-swipe
       .swipe-wrap
         - @projects.each do |p|
-          .swipe-slide.square
+          = link_to p, class: "swipe-slide square" do
             .square__inner.bphi{style: "background-image: url(#{p.main_image_url})"}
       .dots
-        -# - @projects.each do |_|
-        -#   .dot.js-mob-dot
 
   %section.m-s
-    %h2.m-title= t("menu.logos")
+    %h2.m-title
+      = link_to t("menu.projects"), logos_path
     .swipe.js-swipe
       .swipe-wrap
         - @logos.each do |l|
@@ -106,70 +106,32 @@
       .dots
 
   %section.m-s
-    %h2.m-title= t("menu.about")
+    %h2.m-title
+      = link_to t("menu.about"), about_path
     .swipe.js-swipe
       .swipe-wrap
         .swipe-slide.square
-          .square__inner.bphi.bphi--brendari-all          
+          .square__inner.bphi.bphi--brendari-all
         - @brendars.each_with_index do |b, i|
           .swipe-slide.square
             .square__inner.bphi.bphi--brendar{style: "background-image: url(#{b.photo_url}); background-color: #{colors[i % colors.size]}"}
       .dots
 
   %section.m-s
-    %h2.m-title= t("menu.contacts")
+    %h2.m-title
+      = link_to t("menu.contacts"), contacts_path
     .swipe.js-swipe
       .swipe-wrap
-        .swipe-slide.square
+        = link_to contacts_path, class: "swipe-slide square" do
           .square__inner.bphi.bphi--map
-        .swipe-slide.square
+        = link_to SiteConfig.get(:fb), class: "swipe-slide square", rel: "noopener" do
           .square__inner.bphi.bphi--fb
-        .swipe-slide.square
+        = link_to SiteConfig.get(:dribble), class: "swipe-slide square", rel: "noopener" do
           .square__inner.bphi.bphi--dr
-        .swipe-slide.square
+        = link_to SiteConfig.get(:behance), class: "swipe-slide square", rel: "noopener" do
           .square__inner.bphi.bphi--be
-        .swipe-slide.square
+        = link_to SiteConfig.get(:instagram), class: "swipe-slide square", rel: "noopener" do
           .square__inner.bphi.bphi--in
       .dots
 
   = render "partials/footer"
-
-
--#       = link_to t("home.explore"), projects_path, class: 'btn-explore'
-
--# .swipe.js-swipe
--#   .swipe-wrap
--#     %section.mob-section
--#       .mobs
--#         %img{src: asset_path("svg/logo-white.svg"), alt: 'Brendari'}
--#         %p.mobs-studio-short= raw(t("home.slogan"))
--#     %section.mob-section.bg-2men.lazyload{'data-src': asset_path("about.jpg")}
--#       %h2.mob-title= t("menu.about")
--#       = link_to t("home.explore"), about_path, class: 'btn-explore'
--#     -# %section.mob-section.bg-cover.lazyload{'data-src': resize(project_image_url, w: 700, h: 1600, ext: 'jpg')}
--#     %section.mob-section.bg-cover.lazyload{'data-src': project_image_url}
--#       %h2.mob-title= t("menu.projects")
--#       = link_to t("home.explore"), projects_path, class: 'btn-explore'
--#     %section.mob-section.mob-section-video
--#       %video.home-mob-video.lazyload.js-home-mob-video{'data-src': asset_path("home_vid.mp4"), loop: true, muted: true, playsinline: true, preload: "auto", type: "video/mp4"}
--#       %h2.mob-title= t("menu.logos")
--#       = link_to t("home.explore"), logos_path, class: 'btn-explore'
--#     %section.mob-section
--#       -# .gmap.js-gmap.js-map-homepage
--#       .gmap.lazyload{'data-src': asset_path("map.png")}
--#       %h2.mob-title= t("menu.contacts")
--#       = link_to t("home.explore"), contacts_path, class: 'btn-explore'
-
--#   = render "partials/nav"
-
--#   .mob-dots
--#     %svg.dot.js-mob-dot.is-active{height: "11", viewbox: "0 0 10 11", width: "10", xmlns: "http://www.w3.org/2000/svg"}
--#       %path{d: "M4.98.648L.5 4.35v6.15h4.098V6.563h2.898V10.5H9.5V4.35L4.98.65z", fill: "#F00", 'fill-rule': "evenodd", stroke: "#F00"}
--#     %svg.dot.js-mob-dot{height: "10", viewbox: "0 0 10 10", width: "10", xmlns: "http://www.w3.org/2000/svg"}
--#       %circle{cx: "45", cy: "6", fill: "#F00", 'fill-rule': "evenodd", r: "4.5", stroke: "#F00", transform: "translate(-40 -1)"}
--#     %svg.dot.js-mob-dot{height: "9", viewbox: "0 0 9 9", idth: "9", xmlns: "http://www.w3.org/2000/svg"}
--#       %path{d: "M.5.5h8v8h-8z", fill: "#F00", 'fill-rule': "evenodd", stroke: "#F00"}
--#     %svg.dot.js-mob-dot{height: "11", viewbox: "0 0 11 11", width: "11", xmlns: "http://www.w3.org/2000/svg"}
--#       %path{d: "M5.5.63L.58 4.386 2.47 10.5h6.06l1.89-6.113L5.5.63z", fill: "#F00", 'fill-rule': "evenodd", stroke: "#F00"}
--#     %svg.dot.js-mob-dot{height: "10", viewbox: "0 0 12 10", width: "12", xmlns: "http://www.w3.org/2000/svg"}
--#       %path{d: "M6 9.028L.883.5h10.234L6 9.028z", fill: "#F00", 'fill-rule': "evenodd", stroke: "#F00"}

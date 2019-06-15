@@ -29,6 +29,10 @@ namespace :brendari do
     SiteConfig.create(key: 'brief_link', value: '')
     SiteConfig.create(key: 'presentation_link', value: '')
     SiteConfig.create(key: 'phone', value: '067 998-87-27')
+    SiteConfig.create(key: 'fb', value: 'https://www.facebook.com/brendari.agency')
+    SiteConfig.create(key: 'instagram', value: 'https://www.instagram.com/brendari.agency/')
+    SiteConfig.create(key: 'dribble', value: 'https://dribbble.com/brendari')
+    SiteConfig.create(key: 'behance', value: 'https://www.behance.net/brendari-agency')
   end
 
   desc "create admin user"
