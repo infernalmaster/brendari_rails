@@ -46,12 +46,13 @@ img {
 
 
 .square {
-    position: relative;
-    &::after {
-        content: '';
-        display: block;
-        padding-bottom: 100%;
-    }
+  display: block;
+  position: relative;
+  &::after {
+      content: '';
+      display: block;
+      padding-bottom: 100%;
+  }
   &__inner {
       position: absolute;
       z-index: 2;

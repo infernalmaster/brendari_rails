@@ -29,15 +29,14 @@
   %section.big-plate
     .overflow-hdn
 
-      = link_to projects_path, class: 'bp-link' do
-        .bp-link-text= t("menu.projects")
+      .bp-link
+        = link_to t("menu.projects"), projects_path, class: 'bp-link-text'
         %svg{class: "bp-shape", width: "9", height: "9", viewBox: "0 0 9 9", xmlns: "http://www.w3.org/2000/svg"}
           %path{d: "M.5.5h8v8h-8z", stroke: "#F00", fill: "#F00", 'fill-rule': "evenodd"}
         .bp-hover__wrap
-          - @projects.each do |p|
-            .square
-              .square__inner.bphi{style: "background-image: url(#{p.main_image_url})"}
-
+          - @projects.each do |project|
+            = link_to project, class: "square" do
+              .square__inner.bphi{style: "background-image: url(#{project.main_image_url})"}
 
   .plate-divider.plate-divider-2
   %section.big-plate
@@ -45,36 +44,39 @@
 
       %canvas#game
 
-      = link_to logos_path, class: 'bp-link' do
-        .bp-link-text= t("menu.logos")
+      .bp-link
+        = link_to t("menu.logos"), logos_path, class: 'bp-link-text'
         %svg{class: "bp-shape", width: "11", height: "11", viewBox: "0 0 11 11", xmlns: "http://www.w3.org/2000/svg"}
           %path{d: "M5.5.63L.58 4.386 2.47 10.5h6.06l1.89-6.113L5.5.63z", stroke: "#F00", fill: "#F00", 'fill-rule': "evenodd"}
         .bp-hover__wrap
-          - @logos.each do |l|
-            .square
-              .square__inner.bphi.bphi--logo{style: "background-image: url(#{l.image_gray_url})"}
-
+          - @logos.each do |logo|
+            - if logo.project.present?
+              = link_to logo.project, class: "square" do
+                .square__inner.bphi.bphi--logo{style: "background-image: url(#{logo.image_gray_url})"}
+            - else
+              = link_to logos_path, class: "square" do
+                .square__inner.bphi.bphi--logo{style: "background-image: url(#{logo.image_gray_url})"}
 
   .plate-divider.plate-divider-3
   %section.big-plate
     .overflow-hdn
 
-      = link_to contacts_path, class: 'bp-link' do
-        .bp-link-text= t("menu.contacts")
+      .bp-link
+        = link_to t("menu.contacts"), contacts_path, class: 'bp-link-text'
+
         %svg{class: "bp-shape", width: "12", height: "10", viewBox: "0 0 12 10", xmlns: "http://www.w3.org/2000/svg"}
           %path{d: "M6 9.028L.883.5h10.234L6 9.028z", stroke: "#F00", fill: "#F00", 'fill-rule': "evenodd"}
         .bp-hover__wrap
-          .square
+          = link_to contacts_path, class: "square" do
             .square__inner.bphi.bphi--map
-          .square
+          = link_to SiteConfig.get(:fb), class: "square", rel: "noopener" do
             .square__inner.bphi.bphi--fb
-          .square
+          = link_to SiteConfig.get(:dribble), class: "square", rel: "noopener" do
             .square__inner.bphi.bphi--dr
-          .square
+          = link_to SiteConfig.get(:behance), class: "square", rel: "noopener" do
             .square__inner.bphi.bphi--be
-          .square
+          = link_to SiteConfig.get(:instagram), class: "square", rel: "noopener" do
             .square__inner.bphi.bphi--in
-
 
 
 .home-mobile
@@ -90,19 +92,23 @@
       = link_to t("menu.projects"), projects_path
     .swipe.js-swipe
       .swipe-wrap
-        - @projects.each do |p|
-          = link_to p, class: "swipe-slide square" do
-            .square__inner.bphi{style: "background-image: url(#{p.main_image_url})"}
+        - @projects.each do |project|
+          = link_to project, class: "swipe-slide square" do
+            .square__inner.bphi{style: "background-image: url(#{project.main_image_url})"}
       .dots
 
   %section.m-s
     %h2.m-title
-      = link_to t("menu.projects"), logos_path
+      = link_to t("menu.logos"), logos_path
     .swipe.js-swipe
       .swipe-wrap
-        - @logos.each do |l|
-          .swipe-slide.square
-            .square__inner.bphi{style: "background-image: url(#{l.image_gray_url})"}
+        - @logos.each do |logo|
+          - if logo.project.present?
+            = link_to logo.project, class: "swipe-slide square" do
+              .square__inner.bphi{style: "background-image: url(#{logo.image_gray_url})"}
+          - else
+            .swipe-slide.square
+              .square__inner.bphi{style: "background-image: url(#{logo.image_gray_url})"}
       .dots
 
   %section.m-s
