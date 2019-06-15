@@ -1,8 +1,8 @@
 class PagesController < ApplicationController
   def home
     @brendars = Brendar.all.shuffle
-    @projects = Project.order_by(position: :asc).limit(10)
-    @logos = Logo.order_by(position: :asc).limit(10)
+    @projects = Project.sorted.limit(5)
+    @logos = Logo.sorted.limit(5)
   end
 
   def about

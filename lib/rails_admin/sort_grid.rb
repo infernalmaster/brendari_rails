@@ -13,7 +13,7 @@ module RailsAdmin
 
         register_instance_option :controller do
           proc do
-            @objects ||= list_entries.unscoped.order_by(position: :asc).to_a
+            @objects ||= list_entries.unscoped.sorted.to_a
 
             if request.post?
               params['ids'].split(',').each_with_index do |id, index|

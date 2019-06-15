@@ -4,7 +4,7 @@ class LogosController < ApplicationController
   # GET /logos
   # GET /logos.json
   def index
-    @logos = Logo.order_by(position: :asc).skip(params.fetch(:skip, 0)).limit(50)
+    @logos = Logo.sorted.skip(params.fetch(:skip, 0)).limit(50)
     render '_items', layout: false if request.xhr?
   end
 

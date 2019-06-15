@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.order_by(position: :asc).skip(params.fetch(:skip, 0)).limit(30)
+    @projects = Project.sorted.skip(params.fetch(:skip, 0)).limit(30)
     render '_items', layout: false if request.xhr?
   end
 

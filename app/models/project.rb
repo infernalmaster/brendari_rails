@@ -29,6 +29,8 @@ class Project
 
   validates :background_color, presence: true
 
+  scope :sorted, -> { order_by(position: :asc, created_at: :desc) }
+
   def size_enum
     SIZES
   end

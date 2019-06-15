@@ -15,6 +15,8 @@ class Logo
 
   validates :image_gray, presence: true
 
+  scope :sorted, -> { order_by(position: :asc, created_at: :desc) }
+
   rails_admin do
     list do
       field :title do
