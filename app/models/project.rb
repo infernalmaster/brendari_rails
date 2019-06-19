@@ -20,7 +20,7 @@ class Project
   mount_uploader :main_image, AssetUploader
 
   embeds_many :project_sections, cascade_callbacks: true
-  accepts_nested_attributes_for :project_sections
+  accepts_nested_attributes_for :project_sections, allow_destroy: true
 
   field :main_image_color, type: String, default: '#ffffff'
 
