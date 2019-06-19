@@ -42,8 +42,8 @@ namespace :brendari do
 
   desc "recreate image versions"
   task recreate_image_versions: :environment do
-    Logo.all.each { |l| l.image_gray.recreate_versions! }
+    Logo.all.each { |l| l.image_gray.recreate_versions! if l.image_gray.present? }
     Logo.all.each { |l| l.image_colorfull.recreate_versions! if l.image_colorfull.present? }
-    Project.all.each { |p| p.main_image.recreate_versions! }
+    Project.all.each { |p| p.main_image.recreate_versions! if p.main_image.present? }
   end
 end

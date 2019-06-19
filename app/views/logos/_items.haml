@@ -8,10 +8,10 @@
       - if logo.project.present?
         = link_to "", logo.project, class: "msnry-open-icon"
 
-      %img.msnry-logo.lazyload{'data-src': logo.image_gray_url, alt: logo.title, src: image_path('0.png')}
+      %img.msnry-logo.lazyload{'data-src': logo.image_gray_url(:v1x1), alt: logo.title, src: image_path('0.png')}
 
       - if logo.image_colorfull.present?
-        %img.msnry-logo-color.lazyload{'data-src': logo.image_colorfull_url, alt: logo.title, src: image_path('0.png')}
+        %img.msnry-logo-color.lazyload{'data-src': logo.image_colorfull_url(:v1x1), alt: logo.title, src: image_path('0.png')}
 
       - unless request.xhr?
         %noscript

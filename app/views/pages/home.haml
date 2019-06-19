@@ -36,7 +36,7 @@
         .bp-hover__wrap
           - @projects.each do |project|
             = link_to project, class: "square" do
-              .square__inner.bphi{style: "background-image: url(#{project.main_image_url})"}
+              .square__inner.bphi{style: "background-image: url(#{project.main_image_url(:v1x1)})"}
 
   .plate-divider.plate-divider-2
   %section.big-plate
@@ -52,10 +52,10 @@
           - @logos.each do |logo|
             - if logo.project.present?
               = link_to logo.project, class: "square" do
-                .square__inner.bphi.bphi--logo{style: "background-image: url(#{logo.image_gray_url})"}
+                .square__inner.bphi.bphi--logo{style: "background-image: url(#{logo.image_gray_url(:v1x1)})"}
             - else
               = link_to logos_path, class: "square" do
-                .square__inner.bphi.bphi--logo{style: "background-image: url(#{logo.image_gray_url})"}
+                .square__inner.bphi.bphi--logo{style: "background-image: url(#{logo.image_gray_url(:v1x1)})"}
 
   .plate-divider.plate-divider-3
   %section.big-plate

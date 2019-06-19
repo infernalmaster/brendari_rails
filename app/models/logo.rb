@@ -9,8 +9,8 @@ class Logo
 
   belongs_to :project, inverse_of: nil, optional: true
 
-  mount_uploader :image_gray, AssetUploader
-  mount_uploader :image_colorfull, AssetUploader
+  mount_uploader :image_gray, GridImageUploader
+  mount_uploader :image_colorfull, GridImageUploader
   mount_uploader :animation, AssetUploader
 
   validates :image_gray, presence: true
