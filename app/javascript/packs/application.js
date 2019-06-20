@@ -48,7 +48,7 @@ function initAll(ctx) {
         horizontal: false,
         alignRight: false,
         alignBottom: false,
-        rounding: false
+        rounding: true
       }
     });
 
@@ -59,9 +59,7 @@ function initAll(ctx) {
           if (entry.intersectionRatio > 0 && !loading) {
             loading = true;
 
-            const url = `${document.location.pathname}?skip=${
-              msnryContainer.childElementCount
-            }`;
+            const url = `${document.location.pathname}?skip=${msnryContainer.childElementCount}`;
             ajaxGet({
               url,
               onSuccess: xhr => {
@@ -102,9 +100,7 @@ function initAll(ctx) {
       el.addEventListener("click", function handleHover() {
         el.removeEventListener("click", handleHover);
         loadScriptIfWasNot(
-          `http://maps.google.com/maps/api/js?key=${
-            document.body.dataset.gmapApiKey
-          }`,
+          `http://maps.google.com/maps/api/js?key=${document.body.dataset.gmapApiKey}`,
           () => {
             const isHomepage = el.classList.contains("js-map-homepage");
             const mapOptions = {
@@ -264,7 +260,7 @@ function initAll(ctx) {
 document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => initAll(document));
   Barba.Pjax.start();
-  Barba.Prefetch.init();
+  // Barba.Prefetch.init();
 
   let currentUrl = document.location.pathname;
   let linkClicked = true;

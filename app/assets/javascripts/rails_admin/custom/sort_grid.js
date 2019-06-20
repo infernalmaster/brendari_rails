@@ -23,7 +23,7 @@ $(document).on("ready", function() {
         horizontal: false,
         alignRight: false,
         alignBottom: false,
-        rounding: false
+        rounding: true
       }
     }).on("dragReleaseEnd", function() {
       g.synchronize();

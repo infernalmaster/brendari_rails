@@ -9,24 +9,20 @@ class GridImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  version 'v1x1' do
-    process resize_to_fill: [960, 640]
-    process convert: 'jpg'
-  end
-
-  version 'v1x2' do
-    process resize_to_fill: [960, 1280]
-    process convert: 'jpg'
-  end
-
-  version 'v2x1' do
-    process resize_to_fill: [1920, 640]
-    process convert: 'jpg'
-  end
-
-  version 'v2x2' do
+  version :v2x2 do
     process resize_to_fill: [1920, 1280]
-    process convert: 'jpg'
+  end
+
+  version :v1x1 do
+    process resize_to_fill: [960, 640]
+  end
+
+  version :v1x2 do
+    process resize_to_fill: [960, 1280]
+  end
+
+  version :v2x1 do
+    process resize_to_fill: [1920, 640]
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -52,7 +48,7 @@ class GridImageUploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist
-    %w(jpg jpeg png)
+    %w(jpg jpeg)
   end
 
   # Override the filename of the uploaded files:

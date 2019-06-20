@@ -6,6 +6,6 @@
           - img = object.try(:image_gray_url) || object.try(:main_image_url)
 
           - if object.try(:image_gray_url)
-            %img.msnry-logo.lazyload{src: object.try(:image_gray_url)}
+            %img.msnry-logo.lazyload{src: object.try(:image_gray_url, :v1x1)}
           - else
-            .msnry-item-bg.lazyload{style: "background-image: url(#{object.try(:main_image_url)})"}
+            .msnry-item-bg.lazyload{style: "background-image: url(#{object.try(:main_image_url, :v1x1)})"}
