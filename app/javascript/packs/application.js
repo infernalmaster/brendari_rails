@@ -32,6 +32,25 @@ function initAll(ctx) {
     });
   }
 
+  //
+  document.addEventListener("mouseover", ({ target }) => {
+    if (!target.classList.contains("js-fnl")) return;
+
+    const index = [].indexOf.call(target.parentNode.children, target);
+
+    const prev = document.querySelector(".js-menu-content.content-active");
+    if (prev) prev.classList.remove("content-active");
+
+    const next = document.querySelectorAll(".js-menu-content")[index];
+
+    next.classList.add("content-active");
+
+    if (next.tagName === "VIDEO") {
+      next.currentTime = 0;
+      next.play();
+    }
+  });
+
   // grid
   const msnryContainer = ctx.querySelector(".js-msnry");
   if (msnryContainer) {
@@ -59,7 +78,9 @@ function initAll(ctx) {
           if (entry.intersectionRatio > 0 && !loading) {
             loading = true;
 
-            const url = `${document.location.pathname}?skip=${msnryContainer.childElementCount}`;
+            const url = `${document.location.pathname}?skip=${
+              msnryContainer.childElementCount
+            }`;
             ajaxGet({
               url,
               onSuccess: xhr => {
@@ -100,7 +121,9 @@ function initAll(ctx) {
       el.addEventListener("click", function handleHover() {
         el.removeEventListener("click", handleHover);
         loadScriptIfWasNot(
-          `http://maps.google.com/maps/api/js?key=${document.body.dataset.gmapApiKey}`,
+          `http://maps.google.com/maps/api/js?key=${
+            document.body.dataset.gmapApiKey
+          }`,
           () => {
             const isHomepage = el.classList.contains("js-map-homepage");
             const mapOptions = {

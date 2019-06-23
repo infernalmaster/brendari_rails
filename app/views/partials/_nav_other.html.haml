@@ -5,28 +5,29 @@
   %span.lang-switch-text= translate_locale(next_locale)
 
 .main-nav-full
-  .main-nav-full-image-wrap
-    -# .main-nav-full-image.lazyload{'data-src': asset_path("map-menu.png")}
-    -# .main-nav-full-image.lazyload{'data-src': asset_path("svg/menu-heads.svg")}
-    -# %video.lazyload{'data-src': asset_path("home_vid.mp4"), loop: true, muted: true, preload: "auto", type: "video/mp4"}
+  .main-nav-full-content-wrap
+    .main-nav-full-content.main-nav-full-image.lazyload.js-menu-content{'data-src': asset_path("svg/menu-heads.svg")}
+    .main-nav-full-content.main-nav-full-image.lazyload.js-menu-content{'data-src': Project.all.first.main_image_url(:v2x2)}
+    %video.main-nav-full-content.main-nav-full-video.lazyload.js-menu-content{'data-src': asset_path("home_vid.mp4"), loop: true, muted: true, preload: "auto", type: "video/mp4"}
+    .main-nav-full-content.main-nav-full-image.lazyload.js-menu-content{'data-src': asset_path("map-menu.png")}
 
   .main-nav-full-links
     -# %h2 menu
 
     - active = controller_name == 'pages' && action_name == 'about' ? "is-active" : ""
-    = link_to about_path, class: "full-nav-link #{active}" do
+    = link_to about_path, class: "full-nav-link #{active} js-fnl" do
       = t("menu.about")
 
     - active = controller_name == 'projects' && action_name == 'index' ? "is-active" : ""
-    = link_to projects_path, class: "full-nav-link #{active}" do
+    = link_to projects_path, class: "full-nav-link #{active} js-fnl" do
       = t("menu.projects")
 
     - active = controller_name == 'logos' && action_name == 'index' ? "is-active" : ""
-    = link_to logos_path, class: "full-nav-link #{active}" do
+    = link_to logos_path, class: "full-nav-link #{active} js-fnl" do
       = t("menu.logos")
 
     - active = controller_name == 'pages' && action_name == 'contacts' ? "is-active" : ""
-    = link_to contacts_path, class: "full-nav-link #{active}" do
+    = link_to contacts_path, class: "full-nav-link #{active} js-fnl" do
       = t("menu.contacts")
 
 
