@@ -5,6 +5,7 @@ class Project
 
   SIZES = %w[1x1 1x2 2x1 2x2]
 
+  field :is_published, type: Boolean, default: false
   field :title, type: String, localize: true
   slug :title
   field :subtitle, type: String, localize: true
