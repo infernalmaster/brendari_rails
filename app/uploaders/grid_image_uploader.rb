@@ -48,7 +48,7 @@ class GridImageUploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist
-    %w(jpg jpeg)
+    %w(jpg jpeg png)
   end
 
   # Override the filename of the uploaded files:
