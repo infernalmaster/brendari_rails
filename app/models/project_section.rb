@@ -42,6 +42,8 @@ class ProjectSection
 
   embedded_in :project
 
+  default_scope ->{ order_by(position: :asc) }
+
   def type_enum
     TYPES
   end

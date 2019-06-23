@@ -5,3 +5,23 @@
 body.rails_admin .form-horizontal.denser .remove_nested_fields, body.rails_admin .form-horizontal.denser .remove_nested_one_fields {
   z-index: 99;
 }
+
+
+.project_sections_field {
+ & > .controls {
+   & > .nav.nav-tabs {
+     display: none !important;
+   }
+ }
+
+ & > .tab-content {
+  & > .tab-pane {
+    display: block !important;
+    border: 1px solid black;
+  }
+ }
+
+ img {
+   max-width: 300px !important;
+ }
+}

@@ -22,7 +22,7 @@
 = render "nav"
 
 %main.rich-text
-  - @project.project_sections.order_by(position: :asc).each do |section|
+  - @project.project_sections.each do |section|
     %section{class: section.type}
       - case section.type
       - when 'text_one_column'
