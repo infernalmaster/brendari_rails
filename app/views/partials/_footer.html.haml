@@ -11,10 +11,13 @@
           PDF
 
   %ul.f-contacs
-    %li.fc-email hello@brendari.com
+    %li.fc-email
+      %a{href: "mailto:hello@brendari.com"}
+        hello@brendari.com
     %li.fc-phone
-      +38
-      = SiteConfig.get(:phone)
+      %a{href: "tel:38#{SiteConfig.get(:phone)}"}
+        +38
+        = SiteConfig.get(:phone)
 
   .cf.lh-20
     %ul.c1-3.scls.f-socials
