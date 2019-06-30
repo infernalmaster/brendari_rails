@@ -6,17 +6,33 @@
   z-index: 50;
   background: #fff;
   line-height: 19px;
-  height: 120px;
 
-  transition: all 0.2s ease-in-out;
+  transition: all 0.4s ease-in-out;
 
   &.is-hidden {
     transform: translateY(-100%);
   }
+
+  &.is-small {
+
+    .main-nav-wrap {
+      padding: 5px 0 1px;
+    }
+
+    .nav-home-logo {
+      height: 21px;
+      width: 110px;
+      margin-top: 13px;
+    }
+    .main-nav-link {
+      font-size: 12px;
+    }
+  }
 }
 
 .main-nav-wrap {
-  padding: 42px 0;
+  padding: 42px 0 24px;
+  transition: all 0.1s ease-in-out;
 }
 
 
@@ -76,6 +92,7 @@
 }
 
 .main-nav-link {
+  display: inline-block;
   font-size: 16px;
   color: inherit;
   font-weight: bold;
@@ -199,9 +216,10 @@
 
 .nav-home-logo {
   height: 35px;
-  width: 186px;
+  width: 183px;
   position: relative;
   z-index: -1;
+  transition: all 0.1s ease-in-out;
 }
 
 .lang-switch {

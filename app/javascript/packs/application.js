@@ -178,10 +178,19 @@ function initAll(ctx) {
     let container = ctx.querySelector(".barba-container") || ctx;
     let prevPosition = container.scrollTop;
     let isHidden = false;
+    let isBig = true
     container.addEventListener(
       "scroll",
       e => {
         let currentPosition = container.scrollTop;
+
+        if (isBig && currentPosition > 400) {
+          menu.classList.add("is-small");
+          isBig = false
+        } else if (!isBig && currentPosition < 200) {
+          menu.classList.remove("is-small");
+          isBig = true
+        }
 
         if (isHidden && currentPosition < prevPosition) {
           menu.classList.remove("is-hidden");
