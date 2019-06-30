@@ -175,13 +175,13 @@ function initAll(ctx) {
       isOpen = !isOpen;
     });
 
-    let html = document.querySelector("html");
-    let prevPosition = html.scrollTop;
+    let container = ctx.querySelector(".barba-container") || ctx;
+    let prevPosition = container.scrollTop;
     let isHidden = false;
-    document.addEventListener(
+    container.addEventListener(
       "scroll",
       e => {
-        let currentPosition = html.scrollTop;
+        let currentPosition = container.scrollTop;
 
         if (isHidden && currentPosition < prevPosition) {
           menu.classList.remove("is-hidden");
