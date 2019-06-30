@@ -73,6 +73,7 @@
 .main-nav-home {
   background: transparent;
   position: absolute;
+  height: 120px;
 
   .main-nav-wrap {
     display: none;
@@ -182,7 +183,7 @@
     overflow: scroll;
     background: #2E2E2E;
     margin-left: 100vh;
-    padding: 160px 80px;
+    padding: 160px 80px 80px;
   }
 }
 
@@ -298,6 +299,9 @@
 
 
 .main-nav.is-active {
+  &.is-hidden {
+    transform: translateY(0);
+  }
   .main-nav-full {
     transform: translate3d(0, 0, 0);
   }

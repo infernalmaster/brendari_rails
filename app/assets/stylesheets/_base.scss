@@ -30,7 +30,7 @@ $mobile: "(max-width: 600px)";
   overflow: hidden;
 }
 
-.no-scroll {
+.no-scroll .barba-container {
   overflow: hidden;
 }
 
@@ -59,4 +59,11 @@ img {
       width: 100%;
       height: 100%;
   }
+}
+
+img.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
 }
