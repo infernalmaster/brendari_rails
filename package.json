@@ -18,7 +18,7 @@
     "barba.js": "^1.0.0",
     "blueimp-file-upload": "^9.22.0",
     "colorthief": "^2.0.2",
-    "handlebars": "^4.0.12",
+    "handlebars": "^4.3.0",
     "intersection-observer": "^0.5.0",
     "medium-editor": "^5.23.3",
     "muuri": "^0.5.3",
