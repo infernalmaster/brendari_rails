@@ -52,7 +52,7 @@ gem 'kaminari-actionview'
 gem 'kaminari-mongoid'
 
 gem 'webpacker', '~> 3.5'
-gem 'rails_admin', '~> 1.3'
+gem 'rails_admin', '~> 2.0'
 gem "rails_admin_mongoid_localize_field", "~> 0.1.2"
 
 group :development, :test do
